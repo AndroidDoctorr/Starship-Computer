@@ -1037,7 +1037,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1279718181335207440, guid: 432bfd40355c97b46a20e4753a7c6932, type: 3}
       propertyPath: m_Name
-      value: Warp Core Main Control
+      value: Warp Core Main Control [C]
       objectReference: {fileID: 0}
     - target: {fileID: 1279718181335207443, guid: 432bfd40355c97b46a20e4753a7c6932, type: 3}
       propertyPath: m_RootOrder

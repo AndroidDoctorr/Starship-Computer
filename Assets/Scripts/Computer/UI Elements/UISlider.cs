@@ -59,13 +59,10 @@ public class UISlider : UIElement
         Debug.Log($"{gameObject.name} - Slide to {output}");
         // Limit between 0 and Limit
         if (output >= Limit)
-        {
             output = Limit;
-        }
         else if (output <= 0)
-        {
             output = 0;
-        }
+        
         Vector3 trackVector = Top.position - Bottom.position;
         Vector3 projection = trackVector * output;
         Button.transform.position = Bottom.position + projection;

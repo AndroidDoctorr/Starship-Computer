@@ -458,7 +458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c4c74086b32d34387c6ea6814dd596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Border: {fileID: 3654313515183426729}
+  Outline: {fileID: 3654313515183426729}
   Label: {fileID: 3436056927887096921}
   Bottom: {fileID: 8789964667593525925}
   Top: {fileID: 1415339200319359987}

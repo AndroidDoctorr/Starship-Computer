@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Computer.Systems.Warp_Core
 {
-    public class DilithiumMatrix
+    public class DilithiumMatrix : SubSystem
     {
         // TODO: Some measure of capacity - heat distribution or something?
         public double Capacity => 10;

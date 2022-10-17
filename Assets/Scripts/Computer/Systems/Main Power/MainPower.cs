@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Computer.Systems.Warp_Core
 {
-    public class WarpCore : ShipSystem
+    public class MainPower : ShipSystem
     {
-        public AntimatterReaction Reaction;
         // Subsystems
-
+        public ReactorControl reactorControl;
 
         // Properties
-        public double Power => Reaction.TotalPower;
+        
         
         // Methods
     }

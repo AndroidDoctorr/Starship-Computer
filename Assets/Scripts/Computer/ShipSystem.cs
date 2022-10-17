@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.Scripts.Computer
 {
-    public class ShipSystem
+    public class ShipSystem : MonoBehaviour
     {
         protected bool _isActive;
 
@@ -22,6 +23,7 @@ namespace Assets.Scripts.Computer
         public ShipSystem()
         {
             Id = Guid.NewGuid();
+
         }
 
         public virtual void ShutDown()

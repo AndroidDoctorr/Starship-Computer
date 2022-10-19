@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Computer
 {
-    public class ShipSystem : MonoBehaviour
+    public class ShipSystem : MonoBehaviour, ISystem
     {
         protected bool _isActive;
 

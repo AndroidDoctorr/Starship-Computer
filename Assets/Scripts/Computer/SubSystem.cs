@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Computer
 {
-    public class SubSystem : MonoBehaviour
+    public class SubSystem : MonoBehaviour, ISystem
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

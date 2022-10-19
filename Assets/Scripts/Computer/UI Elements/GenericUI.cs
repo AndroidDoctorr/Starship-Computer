@@ -30,6 +30,7 @@ namespace Assets.Scripts
     }
     public abstract class GenericUI : MonoBehaviour
     {
+        private ISystem _system;
         private AudioSource _as;
         public bool IsEnabled { get; protected set; } = false;
         public bool HasPower { get; protected set; } = false;
@@ -46,13 +47,14 @@ namespace Assets.Scripts
         {
             _as = GetComponent<AudioSource>();
         }
-        private void SetSystem(ISystem system)
+        public void SetSystem(ISystem system)
         {
             if (system == null)
             {
                 Debug.LogError("UI Property - No system provided");
                 return;
             }
+            _system = system;
         }
         protected void PlaySound(int clipId)
         {

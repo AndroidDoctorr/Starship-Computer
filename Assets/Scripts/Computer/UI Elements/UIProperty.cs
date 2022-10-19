@@ -23,7 +23,7 @@ public class UIProperty : UIElement
     {
 
     }
-    private void SetSystem(ISystem system)
+    public void SetSystem(ISystem system)
     {
         if (system == null)
         {
@@ -37,18 +37,12 @@ public class UIProperty : UIElement
             Debug.LogError("UI Property - Prop does not exist on system");
             return;
         }
-
-
-
-            if (prop != null)
-        {
-            string value = prop.GetValue(PropertyName).ToString();
-            ValueText.text = value;
-        }
+        system.OnPropertyChange += UpdateProperty;
     }
-    private void UpdateProperty(string newValue)
+    private void UpdateProperty(string propertyName, object newValue)
     {
-        ValueText.text = newValue;
+        if (propertyName != PropertyName) return;
+        ValueText.text = newValue.ToString();
     }
     public override void SetColor(Color color)
     {

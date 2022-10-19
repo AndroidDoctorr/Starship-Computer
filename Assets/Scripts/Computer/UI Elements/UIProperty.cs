@@ -18,6 +18,8 @@ public class UIProperty : UIElement
     {
         if (!string.IsNullOrWhiteSpace(Label))
             LabelText.text = Label;
+        else if (!string.IsNullOrWhiteSpace(PropertyName))
+            LabelText.text = PropertyName;
     }
     void Update()
     {

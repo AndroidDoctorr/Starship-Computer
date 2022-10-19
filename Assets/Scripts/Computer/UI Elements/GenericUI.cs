@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Computer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -44,6 +45,14 @@ namespace Assets.Scripts
         void Start()
         {
             _as = GetComponent<AudioSource>();
+        }
+        private void SetSystem(ISystem system)
+        {
+            if (system == null)
+            {
+                Debug.LogError("UI Property - No system provided");
+                return;
+            }
         }
         protected void PlaySound(int clipId)
         {

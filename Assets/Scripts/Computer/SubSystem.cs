@@ -21,5 +21,7 @@ namespace Assets.Scripts.Computer
         {
             Id = Guid.NewGuid();
         }
+
+        public event ISystem.PropertyChangeDelegate OnPropertyChange;
     }
 }

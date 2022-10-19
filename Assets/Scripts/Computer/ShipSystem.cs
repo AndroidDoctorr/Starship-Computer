@@ -12,6 +12,8 @@ namespace Assets.Scripts.Computer
     {
         protected bool _isActive;
 
+        public event ISystem.PropertyChangeDelegate OnPropertyChange;
+
         public Guid Id { get; set; }
         public string Name { get; set; }
         public int Priority { get; set; }

@@ -1538,6 +1538,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warp Engine Monitor
       objectReference: {fileID: 0}
+    - target: {fileID: 6843494034924062027, guid: d7ed5ff7f0b64d645b12aef96c7b11ad, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+    - target: {fileID: 6843494034924062027, guid: d7ed5ff7f0b64d645b12aef96c7b11ad, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7ed5ff7f0b64d645b12aef96c7b11ad, type: 3}
 --- !u!4 &1103447038515457380 stripped
@@ -1552,6 +1560,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1151408686}
     m_Modifications:
+    - target: {fileID: 1239392231, guid: f66323af5e5680e409ce4da8f8259544, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+    - target: {fileID: 1239392231, guid: f66323af5e5680e409ce4da8f8259544, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
     - target: {fileID: 380140314339795000, guid: f66323af5e5680e409ce4da8f8259544, type: 3}
       propertyPath: m_Name
       value: Injector Control
@@ -1609,6 +1625,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1151408686}
     m_Modifications:
+    - target: {fileID: 1723921407, guid: fa0275f8e67eee54aac627122c0c106e, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+    - target: {fileID: 1723921407, guid: fa0275f8e67eee54aac627122c0c106e, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
     - target: {fileID: 320397838708040928, guid: fa0275f8e67eee54aac627122c0c106e, type: 3}
       propertyPath: m_Name
       value: Dilithium Matrix Monitor
@@ -1666,6 +1690,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1151408686}
     m_Modifications:
+    - target: {fileID: 742403027, guid: 33a0017e86294974e8f0edb6ad3e0e79, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+    - target: {fileID: 742403027, guid: 33a0017e86294974e8f0edb6ad3e0e79, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
     - target: {fileID: 4176778523090636628, guid: 33a0017e86294974e8f0edb6ad3e0e79, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1723,6 +1755,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1151408686}
     m_Modifications:
+    - target: {fileID: 2138146887, guid: db2a79953e9d1fa4ab980b53bd2bef27, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+    - target: {fileID: 2138146887, guid: db2a79953e9d1fa4ab980b53bd2bef27, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
     - target: {fileID: 3064495569324427201, guid: db2a79953e9d1fa4ab980b53bd2bef27, type: 3}
       propertyPath: m_Name
       value: Phase Coil Control
@@ -1780,6 +1820,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1151408686}
     m_Modifications:
+    - target: {fileID: 1421637405, guid: dee8f9a4e833bd14b8e1acf38fc3ef7e, type: 3}
+      propertyPath: m_text
+      value: Main Reactor Control
+      objectReference: {fileID: 0}
+    - target: {fileID: 1421637405, guid: dee8f9a4e833bd14b8e1acf38fc3ef7e, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+    - target: {fileID: 1421637405, guid: dee8f9a4e833bd14b8e1acf38fc3ef7e, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
     - target: {fileID: 3339157016103070189, guid: dee8f9a4e833bd14b8e1acf38fc3ef7e, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1902,6 +1954,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1151408686}
     m_Modifications:
+    - target: {fileID: 1143109512, guid: 9d6bd07bca55e004b8d8f17aeee225da, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+    - target: {fileID: 1143109512, guid: 9d6bd07bca55e004b8d8f17aeee225da, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
     - target: {fileID: 8211487672750444836, guid: 9d6bd07bca55e004b8d8f17aeee225da, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1959,6 +2019,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1151408686}
     m_Modifications:
+    - target: {fileID: 2027677439, guid: c524144b3127c2046bb46fc305a48751, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+    - target: {fileID: 2027677439, guid: c524144b3127c2046bb46fc305a48751, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
     - target: {fileID: 8427413820010097505, guid: c524144b3127c2046bb46fc305a48751, type: 3}
       propertyPath: m_Name
       value: EPS Monitor
@@ -2016,6 +2084,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1151408686}
     m_Modifications:
+    - target: {fileID: 1563599889, guid: bb68963348148834a8c4a7d6e9b4977b, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+    - target: {fileID: 1563599889, guid: bb68963348148834a8c4a7d6e9b4977b, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
     - target: {fileID: 8022727620107004257, guid: bb68963348148834a8c4a7d6e9b4977b, type: 3}
       propertyPath: m_Name
       value: Fusion Reactor Control

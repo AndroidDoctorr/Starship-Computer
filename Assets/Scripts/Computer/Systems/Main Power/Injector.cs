@@ -10,9 +10,9 @@ namespace Assets.Scripts.Computer.Systems.Warp_Core
 {
     public class Injector : Device
     {
-        protected double _baseRate = 0.025; // Used for determining matter flow rate
+        protected double _baseRate = 0.025;    // Used for determining matter flow rate
         protected double _targetFlowRate = 0;
-        protected double acceleration = 0.1f;
+        protected double acceleration = 0.01f;
         protected bool _accelerating = false;
         public double FlowRate { get; private set; } // g/s
         public double ActualFlowRate
@@ -25,14 +25,12 @@ namespace Assets.Scripts.Computer.Systems.Warp_Core
         }
         public double FlowLevel { get; private set; } // %
         public double InitialVelocity = 10000; // m/s
-
         protected void SetFlowRate(double flowRate)
         {
             _targetFlowRate = flowRate;
             if (FlowRate != _targetFlowRate)
                 _accelerating = true;
         }
-
         protected void Update()
         {
             if (_accelerating) Accelerate();
@@ -59,7 +57,6 @@ namespace Assets.Scripts.Computer.Systems.Warp_Core
                 }
             }
         }
-
         public void SetFlowLevel(float level, int priority)
         {
             if (level < 0) throw new Exception("Flow level cannot be negative");
@@ -77,15 +74,12 @@ namespace Assets.Scripts.Computer.Systems.Warp_Core
                 // throw new Exception(errorMessage);
             }
 
-            // Mass Flow Rate Equation
-            // Calibrated to increase exponentially from normal output at 5% and max output at 100%
+            // Mass Flow Rate Equation (Calibrated to increase exponentially from normal output at 5% and max output at 100%)
             double flowRate = _baseRate * Math.Exp(9.105 * level);
             SetFlowRate(flowRate);
             FlowLevel = level;
         }
     }
-
-
     public class AntimatterInjector : Injector
     {
 

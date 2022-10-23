@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AntimatterReaction : MonoBehaviour
+public class AntimatterReaction : MonoBehaviour, IThermalProcess
 {
     public static double C = 299792458;
 
@@ -20,7 +20,7 @@ public class AntimatterReaction : MonoBehaviour
     public double TotalPower => 2 * AntimatterStream.FlowRate * Math.Pow(C, 2);
     public double LossQ => TotalPower * (1 - Efficiency);
     // TODO: Come up with a better way to estimate temp
-    public double Temp => LossQ / 1000 * Randomness;
+    public double Temperature => LossQ / 1000 * Randomness;
     public double PlasmaQ => TotalPower * Efficiency;
     public double PlasmaV => Math.Sqrt(2 * PlasmaQ / PlasmaRateTotal);
     // TODO: What leads to variance???

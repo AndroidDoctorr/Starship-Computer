@@ -8,10 +8,14 @@ using UnityEngine;
 
 namespace Assets.Scripts.Computer.Systems.Warp_Core
 {
-    public class MatterStream : MonoBehaviour
+    public class MatterStream : MonoBehaviour, IThermalProcess, IKineticProcess
     {
         public Injector Injector;
         public ConstrictionCoils Coils;
+
+        public double Temperature { get; }
+        public double V { get { return (vFinal + vInitial) / 2; } }
+        public double Mdot { get { return FlowRate; } }
 
         private ParticleSystem _ps;
         private void Start()

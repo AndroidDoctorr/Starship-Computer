@@ -6,4 +6,5 @@ public interface IKineticProcess
 {
     public double Mdot { get; }
     public double V { get; }
+    public double SigmaRadius { get; }
 }

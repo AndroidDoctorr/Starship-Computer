@@ -4,14 +4,8 @@ using UnityEngine;
 
 public class TemperatureSensor : MonoBehaviour
 {
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
+    public IThermalProcess ThermalProcess;
+    void OnEnable()
     {
         
     }

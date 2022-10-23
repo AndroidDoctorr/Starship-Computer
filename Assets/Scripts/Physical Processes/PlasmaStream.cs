@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PlasmaStream : MonoBehaviour, IKineticProcess, IThermalProcess
 {
-    public double Temperature { get; }
-    public double Mdot { get; }
-    public double V { get; }
-    public double SigmaRadius { get; }
+    public AntimatterReaction AntimatterReaction;
+
+    public double Temperature { get { return AntimatterReaction.Temperature; } }
+    public double Mdot { get { return AntimatterReaction.PlasmaRatePerEngine; } }
+    public double V { get { return AntimatterReaction.PlasmaV; } }
+    public double SigmaRadius { get; } = 0.1;
     void Start()
     {
         

@@ -10,6 +10,7 @@ public class AntimatterReaction : MonoBehaviour
 
     public MatterStream MatterStream;
     public MatterStream AntimatterStream;
+    public DilithiumMatrix DilithiumMatrix;
 
     public double IntermixRatio => MatterStream.FlowRate / AntimatterStream.FlowRate;
     public double PlasmaRateTotal => MatterStream.FlowRate - AntimatterStream.FlowRate;

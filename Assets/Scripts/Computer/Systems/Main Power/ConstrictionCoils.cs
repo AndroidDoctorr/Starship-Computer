@@ -1,9 +1,10 @@
+using Assets.Scripts.Computer;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ConstrictionCoils : MonoBehaviour
+public class ConstrictionCoils : Device
 {
     private double timeSinceSwitch = 0;
     private int coilIndex = 0;
@@ -11,12 +12,19 @@ public class ConstrictionCoils : MonoBehaviour
     public List<Renderer> Coils;
     public Material LitMaterial;
     public Material DimMaterial;
+
+    public double Draw
+    {
+        get
+        {
+            return 5;
+        }
+    }
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
     void Update()
     {
         timeSinceSwitch += Time.deltaTime;

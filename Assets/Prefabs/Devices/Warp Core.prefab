@@ -202,6 +202,7 @@ GameObject:
   - component: {fileID: 944566318140036030}
   - component: {fileID: 1237861100762115891}
   - component: {fileID: 813921746259560368}
+  - component: {fileID: 532817999228405270}
   m_Layer: 0
   m_Name: Drive Plasma
   m_TagString: Untagged
@@ -5003,6 +5004,18 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &532817999228405270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989081045131497124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad565902e63586943a084180ad703764, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &999340300377087002
 GameObject:
   m_ObjectHideFlags: 0
@@ -7217,8 +7230,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e8624bfb867e8942bdcdec28e3faf21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MatterInjector: {fileID: 0}
-  AntimatterInjector: {fileID: 0}
+  MatterStream: {fileID: 0}
+  AntimatterStream: {fileID: 0}
+  DilithiumMatrix: {fileID: 0}
+  Variance: 0.05
 --- !u!1 &5665467053920671083
 GameObject:
   m_ObjectHideFlags: 0
@@ -7230,6 +7245,7 @@ GameObject:
   - component: {fileID: 1874025789450276998}
   - component: {fileID: 8680684061103442881}
   - component: {fileID: 6406255269355450947}
+  - component: {fileID: 7336869338897898938}
   m_Layer: 0
   m_Name: Drive Plasma
   m_TagString: Untagged
@@ -12031,6 +12047,18 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &7336869338897898938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5665467053920671083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad565902e63586943a084180ad703764, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5742557338102907193
 GameObject:
   m_ObjectHideFlags: 0

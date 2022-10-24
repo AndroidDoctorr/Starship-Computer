@@ -8,17 +8,17 @@ using UnityEngine;
 
 namespace Assets.Scripts.Computer.Systems.Warp_Core
 {
-    public class MatterStream : MonoBehaviour, IThermalProcess, IKineticProcess
+    public class MatterStream : KineticProcess
     {
         public Injector Injector;
         public ConstrictionCoils Coils;
 
-        public double Temperature { get; }
-        public event IThermalProcess.TemperatureChangeDelegate OnTemperatureChange;
-        public double V { get { return (vFinal + vInitial) / 2; } }
-        public event IKineticProcess.VChangeDelegate OnVChange;
-        public double Mdot { get { return FlowRate; } }
-        public event IKineticProcess.MdotChangeDelegate OnMdotChange;
+        public override double Temperature { get; }
+        public event TemperatureChangeDelegate OnTemperatureChange;
+        public override double V { get { return (vFinal + vInitial) / 2; } }
+        public event VChangeDelegate OnVChange;
+        public override double Mdot { get { return FlowRate; } }
+        public event MdotChangeDelegate OnMdotChange;
 
         private ParticleSystem _ps;
         private void Start()
@@ -34,12 +34,12 @@ namespace Assets.Scripts.Computer.Systems.Warp_Core
             }
         }
         // Velocity at the injector
-        public double vInitial { get; set; }
+        public double vInitial { get; }
         // Velocity at the reactor
-        public double vFinal { get; set; }
+        public double vFinal { get; }
         // Confinement - radius that contains 1 sigma of plasma concentration
-        public double SigmaRadius { get; set; }
-        public event IKineticProcess.SigmaChangeDelegate OnSigmaChange;
+        public override double SigmaRadius { get; }
+        public event SigmaChangeDelegate OnSigmaChange;
         // Density of the stream at the reactor
         public double Density {
             get

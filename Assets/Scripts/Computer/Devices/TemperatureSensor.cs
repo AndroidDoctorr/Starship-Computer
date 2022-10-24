@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TemperatureSensor : MonoBehaviour
 {
-    public IThermalProcess ThermalProcess;
+    public ThermalProcess ThermalProcess;
     void OnEnable()
     {
         

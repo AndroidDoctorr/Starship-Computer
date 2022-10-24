@@ -14,17 +14,17 @@ namespace Assets.Scripts.Computer.Systems.Warp_Core
         public ConstrictionCoils Coils;
 
         public double Temperature { get; }
+        public event IThermalProcess.TemperatureChangeDelegate OnTemperatureChange;
         public double V { get { return (vFinal + vInitial) / 2; } }
+        public event IKineticProcess.VChangeDelegate OnVChange;
         public double Mdot { get { return FlowRate; } }
+        public event IKineticProcess.MdotChangeDelegate OnMdotChange;
 
         private ParticleSystem _ps;
         private void Start()
         {
             _ps = GetComponentInChildren<ParticleSystem>();
-            if (_ps == null)
-            {
-                Debug.LogError("Matter stream cannot find particle system!!");
-            }
+            if (_ps == null) Debug.LogError("Matter stream cannot find particle system!!");
         }
         // Mass flow rate (~1 g/s is typical?)
         public double FlowRate {
@@ -39,6 +39,7 @@ namespace Assets.Scripts.Computer.Systems.Warp_Core
         public double vFinal { get; set; }
         // Confinement - radius that contains 1 sigma of plasma concentration
         public double SigmaRadius { get; set; }
+        public event IKineticProcess.SigmaChangeDelegate OnSigmaChange;
         // Density of the stream at the reactor
         public double Density {
             get

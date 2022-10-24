@@ -7,13 +7,13 @@ public class PlasmaStream : KineticProcess
     public AntimatterReaction AntimatterReaction;
 
     public override double Temperature { get { return AntimatterReaction.Temperature; } }
-    public event TemperatureChangeDelegate OnTemperatureChange;
+    public override event TemperatureChangeDelegate OnTemperatureChange;
     public override double Mdot { get { return AntimatterReaction.PlasmaRatePerEngine; } }
-    public event MdotChangeDelegate OnMdotChange;
+    public override event MdotChangeDelegate OnMdotChange;
     public override double V { get { return AntimatterReaction.PlasmaV; } }
-    public event VChangeDelegate OnVChange;
+    public override event VChangeDelegate OnVChange;
     public override double SigmaRadius { get; } = 0.1;
-    public event SigmaChangeDelegate OnSigmaChange;
+    public override event SigmaChangeDelegate OnSigmaChange;
     void Start()
     {
         

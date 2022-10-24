@@ -21,7 +21,7 @@ public class AntimatterReaction : ThermalProcess
     public double LossQ => TotalPower * (1 - Efficiency);
     // TODO: Come up with a better way to estimate temp
     public override double Temperature => LossQ / 1000 * Randomness;
-    public event TemperatureChangeDelegate OnTemperatureChange;
+    public override event TemperatureChangeDelegate OnTemperatureChange;
     public double PlasmaQ => TotalPower * Efficiency;
     public double PlasmaV => Math.Sqrt(2 * PlasmaQ / PlasmaRateTotal);
     // TODO: What leads to variance???

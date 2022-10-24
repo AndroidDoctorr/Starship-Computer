@@ -6,5 +6,5 @@ public class ThermalProcess : MonoBehaviour
 {
     public virtual double Temperature { get; }
     public delegate void TemperatureChangeDelegate(double newTemp);
-    public event TemperatureChangeDelegate OnTemperatureChange;
+    public virtual event TemperatureChangeDelegate OnTemperatureChange;
 }

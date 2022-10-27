@@ -24406,6 +24406,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 5254403792267617564, guid: 124c4f5da6c3bdd49a0aed24630309e9, type: 3}
+      propertyPath: Coils
+      value: 
+      objectReference: {fileID: 8837246761445060412}
     - target: {fileID: 6258594742398140366, guid: 124c4f5da6c3bdd49a0aed24630309e9, type: 3}
       propertyPath: m_Name
       value: Antimatter Injector
@@ -24487,6 +24491,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Matter Injector
       objectReference: {fileID: 0}
+    - target: {fileID: 8778360272166133177, guid: 8d46305bbc032e6499e8a664b36aba4d, type: 3}
+      propertyPath: Coils
+      value: 
+      objectReference: {fileID: 7883445619636575655}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d46305bbc032e6499e8a664b36aba4d, type: 3}
 --- !u!114 &1436894128711737965 stripped

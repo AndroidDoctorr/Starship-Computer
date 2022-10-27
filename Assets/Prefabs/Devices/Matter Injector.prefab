@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbaeaf45abe6ec341b3bdf7070fe4184, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Injector: {fileID: 0}
+  Injector: {fileID: 4667477034441896618}
   Coils: {fileID: 0}
 --- !u!1 &7485715416489789291
 GameObject:

@@ -6,11 +6,21 @@ using UnityEngine;
 
 public class AntimatterReaction : ThermalProcess
 {
+    // Physical constants
     public static double C = 299792458;
+    // Variance constants
+    public static double Ccap = 0.01;
+    public static double Cdil = 0.01;
+    public static double Crad = 0.01;
+    public static double Cvel = 0.01;
+    public static double Cmas = 0.0001;
+    public static double Cint = 0.01;
 
     public MatterStream MatterStream;
     public MatterStream AntimatterStream;
     public DilithiumMatrix DilithiumMatrix;
+    public PlasmaStream PortPlasmaStream;
+    public PlasmaStream StarboardPlasmaStream;
 
     public double IntermixRatio => MatterStream.FlowRate / AntimatterStream.FlowRate;
     public double PlasmaRateTotal => MatterStream.FlowRate - AntimatterStream.FlowRate;
@@ -24,20 +34,22 @@ public class AntimatterReaction : ThermalProcess
     public override event TemperatureChangeDelegate OnTemperatureChange;
     public double PlasmaQ => TotalPower * Efficiency;
     public double PlasmaV => Math.Sqrt(2 * PlasmaQ / PlasmaRateTotal);
-    // TODO: What leads to variance???
-    // - Reaction naturally has some variance
-    // - Increasing output increases variance
-    // - Reaction stabilization via dilithium matrix reduces variance
-    // - Stream confinement reduces variance (costs energy, maxes out)
-    // - Reactor confinement reduces variance (costs energy, maxes out)
-    public float Variance = 0.05f;
-    // Variance = DilithiumMatrix.Variance * 
-    public double Randomness => 1 + UnityEngine.Random.Range(-Variance, Variance);
 
-    void Start()
-    {
 
-    }
+    public double Randomness => 1 + UnityEngine.Random.Range((float) -Variance, (float) Variance);
+    public double Variance =>
+        DilithiumCapacityVariance +
+        DilithiumUsageVariance +
+        SigmaRadiusVariance +
+        VelocityVariance;
+    // Variance Contributions
+    public double DilithiumCapacityVariance => Ccap / (DilithiumMatrix.Capacity);
+    public double DilithiumUsageVariance => Cdil * Math.Pow(DilithiumMatrix.Usage, 4);
+    public double SigmaRadiusVariance => Crad / (MatterStream.SigmaRadius * AntimatterStream.SigmaRadius);
+    public double VelocityVariance => Cvel / (Math.Sqrt(MatterStream.V) * Math.Sqrt(AntimatterStream.V));
+    public double MassVariance => Cmas * Math.Sqrt(AntimatterStream.Mdot);
+    public double IntermixVariance => Cint / Math.Pow(IntermixRatio, 2);
+
 
     void Update()
     {

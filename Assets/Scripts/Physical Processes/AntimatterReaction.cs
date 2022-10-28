@@ -25,8 +25,6 @@ public class AntimatterReaction : ThermalProcess
     public double IntermixRatio => MatterStream.FlowRate / AntimatterStream.FlowRate;
     public double PlasmaRateTotal => MatterStream.FlowRate - AntimatterStream.FlowRate;
     public double PlasmaRatePerEngine => PlasmaRateTotal / 2;
-    // TODO: Come up with a way to estimate/change efficiency
-    public double Efficiency => 0.4;
     public double TotalPower => 2 * AntimatterStream.FlowRate * Math.Pow(C, 2);
     public double LossQ => TotalPower * (1 - Efficiency);
     // TODO: Come up with a better way to estimate temp
@@ -35,13 +33,19 @@ public class AntimatterReaction : ThermalProcess
     public double PlasmaQ => TotalPower * Efficiency;
     public double PlasmaV => Math.Sqrt(2 * PlasmaQ / PlasmaRateTotal);
 
+    // Efficiency calculations
+    public double Efficiency => 0.4;
 
+
+    // Variance calculations
     public double Randomness => 1 + UnityEngine.Random.Range((float) -Variance, (float) Variance);
     public double Variance =>
         DilithiumCapacityVariance +
         DilithiumUsageVariance +
         SigmaRadiusVariance +
-        VelocityVariance;
+        VelocityVariance +
+        MassVariance +
+        IntermixVariance;
     // Variance Contributions
     public double DilithiumCapacityVariance => Ccap / (DilithiumMatrix.Capacity);
     public double DilithiumUsageVariance => Cdil * Math.Pow(DilithiumMatrix.Usage, 4);

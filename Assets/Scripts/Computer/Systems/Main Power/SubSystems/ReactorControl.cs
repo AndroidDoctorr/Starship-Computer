@@ -10,6 +10,8 @@ namespace Assets.Scripts.Computer.Systems.Warp_Core
     {
         public GenericUI ConsoleUI;
 
+        public TemperatureSensor[] TemperatureSensors;
+
         private double _output;
         public double Output {
             get { return _output; }

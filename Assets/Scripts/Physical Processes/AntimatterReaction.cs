@@ -33,6 +33,7 @@ public class AntimatterReaction : ThermalProcess
     public override double Temperature => LossQ / 1000 * Randomness;
     public override event TemperatureChangeDelegate OnTemperatureChange;
     // Output properties
+    public double Output => PlasmaRateTotal * PlasmaV;
     public double PlasmaRateTotal => MatterStream.FlowRate - AntimatterStream.FlowRate;
     public double PlasmaRatePerEngine => PlasmaRateTotal / 2;
     public double PlasmaV => Math.Sqrt(2 * PlasmaQ / PlasmaRateTotal);

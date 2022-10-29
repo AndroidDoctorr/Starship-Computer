@@ -10,7 +10,7 @@ namespace Assets.Scripts.Computer.Systems.Warp_Core
 {
     public class Injector : Device
     {
-        protected double _baseRate = 0.025;    // Used for determining matter flow rate
+        protected double _baseRate = 0.00025;    // Used for determining matter flow rate
         protected double _targetFlowRate = 0;
         protected double acceleration = 0.01f;
         protected bool _accelerating = false;

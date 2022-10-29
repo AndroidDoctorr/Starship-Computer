@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class CoolantStream : KineticProcess
 {
-    public AntimatterReaction AntimatterReaction;
+    // Physical Constants
     private static double _CoolantCapacity = 50;
     private static double _CoolantRate = 20;
     private static double _CoolantDensity = 1;
     private static double _PumpArea = 1;
     private static double _ReactorCapacity = 10;
+    // Physical Processes
+    public AntimatterReaction AntimatterReaction;
 
     public override double Temperature =>
         (AntimatterReaction.Temperature * _ReactorCapacity) / _CoolantCapacity;

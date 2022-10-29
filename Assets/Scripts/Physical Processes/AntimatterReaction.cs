@@ -1,20 +1,19 @@
 using Assets.Scripts.Computer.Systems.Warp_Core;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class AntimatterReaction : ThermalProcess
 {
     // Physical constants
     public static double C = 299792458;
     // Variance constants
-    public static double Ccap = 0.01;
-    public static double Cdil = 0.01;
-    public static double Crad = 0.01;
-    public static double Cvel = 0.01;
-    public static double Cmas = 0.0001;
-    public static double Cint = 0.01;
+    public static double Vcap = 0.01;
+    public static double Vdil = 0.01;
+    public static double Vrad = 0.01;
+    public static double Vvel = 0.01;
+    public static double Vmas = 0.0001;
+    public static double Vint = 0.01;
+    // Efficiency constants
+    public static double 
 
     public MatterStream MatterStream;
     public MatterStream AntimatterStream;
@@ -47,12 +46,12 @@ public class AntimatterReaction : ThermalProcess
         MassVariance +
         IntermixVariance;
     // Variance Contributions
-    public double DilithiumCapacityVariance => Ccap / (DilithiumMatrix.Capacity);
-    public double DilithiumUsageVariance => Cdil * Math.Pow(DilithiumMatrix.Usage, 4);
-    public double SigmaRadiusVariance => Crad / (MatterStream.SigmaRadius * AntimatterStream.SigmaRadius);
-    public double VelocityVariance => Cvel / (Math.Sqrt(MatterStream.V) * Math.Sqrt(AntimatterStream.V));
-    public double MassVariance => Cmas * Math.Sqrt(AntimatterStream.Mdot);
-    public double IntermixVariance => Cint / Math.Pow(IntermixRatio, 2);
+    public double DilithiumCapacityVariance => Vcap / (DilithiumMatrix.Capacity);
+    public double DilithiumUsageVariance => Vdil * Math.Pow(DilithiumMatrix.Usage, 4);
+    public double SigmaRadiusVariance => Vrad / (MatterStream.SigmaRadius * AntimatterStream.SigmaRadius);
+    public double VelocityVariance => Vvel / (Math.Sqrt(MatterStream.V) * Math.Sqrt(AntimatterStream.V));
+    public double MassVariance => Vmas * Math.Sqrt(AntimatterStream.Mdot);
+    public double IntermixVariance => Vint / Math.Pow(IntermixRatio, 2);
 
 
     void Update()

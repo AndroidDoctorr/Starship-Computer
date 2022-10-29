@@ -6,12 +6,16 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Computer
 {
-    public class IODevice
+    public class IODevice : Device
     {
-        public string PhysicalAddress { get; set; }
+        private GenericUI _ui;
         public void SendMessage()
         {
 
+        }
+        public void SetUI(GenericUI ui)
+        {
+            _ui = ui;
         }
     }
 }

@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Computer
 {
-    public class SubSystem : MonoBehaviour, ISystem
+    public abstract class SubSystem : MonoBehaviour, ISystem
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
@@ -17,11 +17,11 @@ namespace Assets.Scripts.Computer
         public UsageProfile UsageProfile { get; set; }
         public PowerProfile PowerProfile { get; set; }
 
+        public virtual event ISystem.PropertyChangeDelegate OnPropertyChange;
+
         public SubSystem ()
         {
             Id = Guid.NewGuid();
         }
-
-        public event ISystem.PropertyChangeDelegate OnPropertyChange;
     }
 }

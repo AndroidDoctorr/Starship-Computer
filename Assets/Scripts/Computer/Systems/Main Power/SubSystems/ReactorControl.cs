@@ -8,17 +8,18 @@ namespace Assets.Scripts.Computer.Systems.Warp_Core
 {
     public class MainReactorControl : SubSystem
     {
-        public GenericUI ConsoleUI;
+        private double _output;
 
         public TemperatureSensor[] TemperatureSensors;
 
-        private double _output;
+        public override event ISystem.PropertyChangeDelegate OnPropertyChange;
+
         public double Output {
             get { return _output; }
             set
             {
                 _output = value;
-                // OnPropertyChange("Output", value);
+                OnPropertyChange(nameof(Output), value);
             }
         }
     }

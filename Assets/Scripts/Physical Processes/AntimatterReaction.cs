@@ -5,6 +5,7 @@ public class AntimatterReaction : ThermalProcess
 {
     // Physical constants
     public static double C = 299792458;
+    public static double Cplasma = 143044; // Heat capacity of 
     // Variance constants
     public static double Vcap = 0.01;
     public static double Vdil = 0.01;
@@ -30,13 +31,14 @@ public class AntimatterReaction : ThermalProcess
     public double PlasmaQ => TotalPower * Efficiency;
     public double LossQ => TotalPower * (1 - Efficiency);
     // TODO: Come up with a better way to estimate temp
-    public override double Temperature => LossQ / 1000 * Randomness;
+    public override double Temperature => (LossQ / 1000) * Randomness;
     public override event TemperatureChangeDelegate OnTemperatureChange;
     // Output properties
     public double Output => PlasmaRateTotal * PlasmaV;
     public double PlasmaRateTotal => MatterStream.FlowRate - AntimatterStream.FlowRate;
     public double PlasmaRatePerEngine => PlasmaRateTotal / 2;
     public double PlasmaV => Math.Sqrt(2 * PlasmaQ / PlasmaRateTotal);
+    public double PlasmaTemperature => PlasmaQ / (PlasmaRateTotal * Cplasma);
 
 
     // Efficiency Calculations

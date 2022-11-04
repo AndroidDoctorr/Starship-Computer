@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
 {
-    public class Lights : SubSystem
+    public class Lighting : SubSystem
     {
     }
 }

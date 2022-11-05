@@ -28,6 +28,8 @@ namespace Assets.Scripts.Computer
 
         // Networks
         // ICollection<INetwork>
+
+        public ShipSystem[] Systems;
         public MainComputer()
         {
             var powerProfiles = new Dictionary<string, PowerProfile>();

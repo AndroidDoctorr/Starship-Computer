@@ -8,5 +8,17 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
 {
     public class Lighting : SubSystem
     {
+        public LightFixture[] LightFixtures;
+
+        public bool DisconnectLightFixture()
+        {
+            // Generic method for subsystems - ConnectDevice?
+            // Or this makes use of it/extends it?
+            return true;
+        }
+        public bool ConnectLightFixture()
+        {
+            return true;
+        }
     }
 }

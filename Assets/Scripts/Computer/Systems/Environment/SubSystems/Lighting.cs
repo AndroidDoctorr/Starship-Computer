@@ -20,5 +20,15 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
         {
             return true;
         }
+        public void TurnOnAllLights()
+        {
+            foreach (LightFixture fixture in LightFixtures)
+                fixture.TurnOn();
+        }
+        public void TurnOffAllLights()
+        {
+            foreach (LightFixture fixture in LightFixtures)
+                fixture.TurnOff();
+        }
     }
 }

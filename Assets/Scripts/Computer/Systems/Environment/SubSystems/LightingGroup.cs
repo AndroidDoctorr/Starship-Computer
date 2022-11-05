@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
 {
-    public class Lighting : SubSystem
+    public class LightingGroup : SubSystem
     {
         public LightFixture[] LightFixtures;
 

@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.Scripts.Computer
 {
-    public class MainComputer
+    public class MainComputer : MonoBehaviour
     {
         private PowerAllocator _powerAllocator;
         // Computer Core

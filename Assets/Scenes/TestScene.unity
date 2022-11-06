@@ -569,7 +569,7 @@ GameObject:
   - component: {fileID: 1168938932}
   - component: {fileID: 1168938933}
   m_Layer: 0
-  m_Name: Engineering Light Group - Main
+  m_Name: Light Group - Main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -615,7 +615,7 @@ GameObject:
   - component: {fileID: 1169444333}
   - component: {fileID: 1169444334}
   m_Layer: 0
-  m_Name: Environment
+  m_Name: Environment - Engineering
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

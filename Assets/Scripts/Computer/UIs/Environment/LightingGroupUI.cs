@@ -1,17 +1,17 @@
 using Assets.Scripts;
+using Assets.Scripts.Computer.Systems.Environment.SubSystems;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class LightingGroupUI : GenericUI
 {
-    // Start is called before the first frame update
+    public LightingGroup LightingGroup;
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         

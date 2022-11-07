@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
-    public enum ConsoleTypes {
+    public enum ConsoleType {
         // Name          // Dimensions (w x h)
         StandardConsole, // 0.8m x 0.25m
         WideConsole,     // 1m x 0.25m
@@ -43,6 +43,8 @@ namespace Assets.Scripts
         public GameObject EnabledObject;
         public GameObject DisabledObject;
         public GameObject RedAlertObject;
+
+        public ConsoleType Type;
         void Start()
         {
             _as = GetComponent<AudioSource>();

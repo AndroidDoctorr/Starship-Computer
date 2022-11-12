@@ -20,11 +20,12 @@ namespace Assets.Scripts.Computer.Core
         {
             foreach (IPowerModule powerModule in powerModules)
                 PowerModules.Add(powerModule.Id, powerModule);
+
             foreach (KeyValuePair<string, PowerProfile> kvp in powerProfiles)
             {
                 PowerProfile profile = kvp.Value;
-                string id = kvp.Key;
-                PowerProfiles.Add(Guid.Parse(id), profile);
+                Guid id = Guid.Parse(kvp.Key);
+                PowerProfiles.Add(id, profile);
             }
         }
 

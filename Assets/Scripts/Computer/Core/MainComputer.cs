@@ -14,8 +14,8 @@ namespace Assets.Scripts.Computer
         private PowerAllocator _powerAllocator;
         // Computer Core
         public IComputerCore ComputerCore { get; private set; }
-        public ICollection<IThermalModule> ThermalModules { get; private set; }
-        public ICollection<IPowerModule> PowerModules { get; private set; }
+        public ICollection<IThermalModule> ThermalModules { get; private set; } = new List<IThermalModule>();
+        public ICollection<IPowerModule> PowerModules { get; private set; } = new List<IPowerModule>();
 
         // Power Supply
         // IPowerSupply

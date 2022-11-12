@@ -165,7 +165,6 @@ GameObject:
   - component: {fileID: 2968990459675387718}
   - component: {fileID: 4452995653935112165}
   - component: {fileID: 9071565584735434683}
-  - component: {fileID: 6268890294795270543}
   - component: {fileID: 7813688350419216532}
   m_Layer: 0
   m_Name: Toggle
@@ -291,21 +290,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 100, y: 30, z: 0.02}
   m_Center: {x: 0, y: 0, z: 0.01}
---- !u!114 &6268890294795270543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7957174084350180587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e100a795e515b8a449b7356a9c3bee98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsActive: 1
-  KeepColor: 0
-  ActionName: 
 --- !u!114 &7813688350419216532
 MonoBehaviour:
   m_ObjectHideFlags: 0

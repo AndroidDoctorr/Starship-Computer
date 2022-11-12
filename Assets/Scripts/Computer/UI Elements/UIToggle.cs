@@ -34,7 +34,8 @@ public class UIToggle : UIElement
     {
         if (_isMoving)
         {
-            MoveTowardsPosition(Time.deltaTime * 0.1f);
+            Debug.Log("Moving to next position");
+            MoveTowardsPosition(Time.deltaTime * 0.5f);
             if (IsKnobClose())
                 SnapToPosition();
         }
@@ -81,7 +82,7 @@ public class UIToggle : UIElement
     {
         Vector3 destination = (_isOn ? OnPosition : OffPosition).position;
         Vector3 knobPos = Knob.transform.position;
-        Vector3.MoveTowards(knobPos, destination, step);
+        Knob.transform.position = Vector3.MoveTowards(knobPos, destination, step);
     }
     private bool IsKnobClose()
     {

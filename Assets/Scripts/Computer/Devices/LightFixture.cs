@@ -9,7 +9,7 @@ public class LightFixture : Device
     private float _intensity;
 
     public Light Light;
-    public GameObject Fixture;
+    public GameObject Bulb;
     // Maximum value of 8
     public float MaxIntensity = 1;
 
@@ -25,6 +25,7 @@ public class LightFixture : Device
     }
     public void TurnOn()
     {
+        Debug.Log("TURN LIGHT ON!");
         _isOn = true;
         Light.intensity = _intensity;
     }
@@ -36,7 +37,11 @@ public class LightFixture : Device
     public void SetColor(float hue)
     {
         Color.RGBToHSV(Light.color, out float h, out float s, out float v);
-        Light.color = Color.HSVToRGB(hue, s, v);
+        Color color = Color.HSVToRGB(hue, s, v);
+        Light.color = color;
+
+        Material material = Bulb.GetComponentInChildren<Renderer>().material;
+        material.color = color;
     }
     public void SetBrightness(float brightness)
     {

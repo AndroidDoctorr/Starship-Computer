@@ -45,6 +45,14 @@ namespace Assets.Scripts
         public GameObject RedAlertObject;
 
         public ConsoleType Type;
+        private void OnEnable()
+        {
+            // TODO EPIC:
+            // Refactor UIs to allow ONE ACTION PER USER AT A TIME
+            // This way if your finger touches another button
+            //   it keeps controlling the first one pressed and
+            //   ignores any subsequent actions until the collider exits
+        }
         void Start()
         {
             _as = GetComponent<AudioSource>();

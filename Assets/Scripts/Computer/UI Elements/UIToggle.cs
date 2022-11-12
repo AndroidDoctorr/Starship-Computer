@@ -20,7 +20,7 @@ public class UIToggle : UIElement
     public Transform OnPosition;
     public Transform OffPosition;
 
-    public delegate void OnToggleAction();
+    public delegate void OnToggleAction(string sourceName, string actionName, GameObject hand);
     public event OnToggleAction onToggle;
 
     void Start()
@@ -42,7 +42,7 @@ public class UIToggle : UIElement
     private void ToggleButton(GameObject hand)
     {
         Debug.Log("Button activated: " + ActionName);
-        onToggle();
+        onToggle(_sourceName, ActionName, hand);
         _isOn = !_isOn;
 
         if (_isOn) SetToOn(); else SetToOff();

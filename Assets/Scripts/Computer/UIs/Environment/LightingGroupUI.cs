@@ -33,7 +33,7 @@ public class LightingGroupUI : PadUI
     {
         LightingGroup.SetGroupBrightness(brightness);
     }
-    private void ToggleGroup()
+    private void ToggleGroup(string sourceName, string actionName, GameObject hand)
     {
         if (LightingGroup.IsOn) LightingGroup.TurnOffAllLights();
         else LightingGroup.TurnOnAllLights();

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class LightFixture : Device
 {
-    private bool _isOn;
+    private bool _isOn = false;
     private float _intensity;
 
     public Light Light;

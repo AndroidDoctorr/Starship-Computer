@@ -9,7 +9,13 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
     public class LightingGroup : SubSystem
     {
         public LightFixture[] LightFixtures;
+        public bool BeginOn = false;
+        public bool IsOn { get; private set; }
 
+        private void Start()
+        {
+            if (BeginOn) TurnOnAllLights();
+        }
         public bool DisconnectLightFixture()
         {
             // Generic method for subsystems - ConnectDevice?
@@ -22,11 +28,13 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
         }
         public void TurnOnAllLights()
         {
+            IsOn = true;
             foreach (LightFixture fixture in LightFixtures)
                 fixture.TurnOn();
         }
         public void TurnOffAllLights()
         {
+            IsOn = false;
             foreach (LightFixture fixture in LightFixtures)
                 fixture.TurnOff();
         }

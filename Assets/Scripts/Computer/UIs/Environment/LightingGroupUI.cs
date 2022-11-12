@@ -17,11 +17,13 @@ public class LightingGroupUI : PadUI
     {
         ColorSlider.OnLevelSet += SetColor;
         BrightnessSlider.OnLevelSet += SetBrightness;
+        Toggle.onToggle += ToggleGroup;
     }
     private void OnDestroy()
     {
         ColorSlider.OnLevelSet -= SetColor;
         BrightnessSlider.OnLevelSet -= SetBrightness;
+        Toggle.onToggle -= ToggleGroup;
     }
     private void SetColor(float hue)
     {
@@ -30,5 +32,10 @@ public class LightingGroupUI : PadUI
     private void SetBrightness(float brightness)
     {
         LightingGroup.SetGroupBrightness(brightness);
+    }
+    private void ToggleGroup()
+    {
+        if (LightingGroup.IsOn) LightingGroup.TurnOffAllLights();
+        else LightingGroup.TurnOnAllLights();
     }
 }

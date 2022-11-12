@@ -13,12 +13,16 @@ public class UIToggle : UIElement
     public bool KeepColor = false;
     public string ActionName;
 
-    public delegate void OnButtonAction(string sourceName, string actionName, GameObject hand);
-    public event OnButtonAction onToggle;
+    public bool StartOn = false;
+
+    public delegate void OnToggleAction();
+    public event OnToggleAction onToggle;
 
     void Start()
     {
         _sourceName = transform.parent.gameObject.name;
+
+        // if (StartOn) SetToOn();
     }
     void Update()
     {
@@ -33,8 +37,10 @@ public class UIToggle : UIElement
     private void ToggleButton(GameObject hand)
     {
         Debug.Log("Button activated: " + ActionName);
-        onToggle(_sourceName, ActionName, hand);
+        onToggle();
         _isOn = !_isOn;
+
+        // if (_isOn) SetToOn() else SetToOff();
     }
     public override void SetColor(Color color)
     {

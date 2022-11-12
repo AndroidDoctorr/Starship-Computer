@@ -303,10 +303,10 @@ MonoBehaviour:
   SoundEffects: []
   ImagesToColor: []
   TextsToColor: []
-  EnabledObject: {fileID: 9109981594137086574}
-  DisabledObject: {fileID: 0}
+  EnabledObject: {fileID: 4495849664333108083}
+  DisabledObject: {fileID: 3274721309548899958}
   RedAlertObject: {fileID: 0}
-  Type: 300
+  Type: 201
   LightingGroup: {fileID: 0}
 --- !u!1001 &486236821855257046
 PrefabInstance:

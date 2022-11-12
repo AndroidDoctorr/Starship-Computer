@@ -1194,6 +1194,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8981738899287966596, guid: 070010dbfeca2ca459f78c6d6f1f0e0a, type: 3}
+      propertyPath: Type
+      value: 201
+      objectReference: {fileID: 0}
+    - target: {fileID: 8981738899287966596, guid: 070010dbfeca2ca459f78c6d6f1f0e0a, type: 3}
+      propertyPath: LightingGroup
+      value: 
+      objectReference: {fileID: 1168938933}
     - target: {fileID: 9109981595229720248, guid: 070010dbfeca2ca459f78c6d6f1f0e0a, type: 3}
       propertyPath: m_RootOrder
       value: 0

@@ -27,11 +27,11 @@ public class AntimatterReaction : ThermalProcess
 
     // Reaction properties
     public double IntermixRatio => MatterStream.FlowRate / AntimatterStream.FlowRate;
-    public double TotalPower => 2 * AntimatterStream.FlowRate * Math.Pow(C, 2);
+    public double TotalPower => 2 * AntimatterStream.FlowRate * Math.Pow(C, 2) * Randomness;
     public double PlasmaEnergy => TotalPower * Efficiency;
     public double LossQ => TotalPower * (1 - Efficiency);
     // TODO: Come up with a better way to estimate temp
-    public override double Temperature => (LossQ / 1000) * Randomness;
+    public override double Temperature => (LossQ / 1000);
     public override event TemperatureChangeDelegate OnTemperatureChange;
     // Output properties
     public double Output => PlasmaRateTotal * PlasmaV;

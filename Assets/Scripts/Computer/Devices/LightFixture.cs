@@ -9,7 +9,7 @@ public class LightFixture : Device
     private float _intensity;
 
     public Light Light;
-    public GameObject LightObject;
+    public GameObject Fixture;
     // Maximum value of 8
     public float MaxIntensity = 1;
 

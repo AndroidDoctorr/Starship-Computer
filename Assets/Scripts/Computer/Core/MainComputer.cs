@@ -33,7 +33,7 @@ namespace Assets.Scripts.Computer
         public MainComputer()
         {
             var powerProfiles = new Dictionary<string, PowerProfile>();
-            _powerAllocator = new PowerAllocator(PowerModules, (ICollection<PowerProfile>) powerProfiles);
+            _powerAllocator = new PowerAllocator(PowerModules, powerProfiles);
         }
     }
 }

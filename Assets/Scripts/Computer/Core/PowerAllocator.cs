@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Scripts.Computer.Core
@@ -14,13 +15,17 @@ namespace Assets.Scripts.Computer.Core
         public Dictionary<Guid, PowerProfile> PowerProfiles { get; private set; }
         public PowerAllocator(
             ICollection<IPowerModule> powerModules,
-            ICollection<PowerProfile> powerProfiles
+            Dictionary<string, PowerProfile> powerProfiles
         )
         {
             foreach (IPowerModule powerModule in powerModules)
                 PowerModules.Add(powerModule.Id, powerModule);
-            foreach (PowerProfile powerProfile in powerProfiles)
-                PowerProfiles.Add(powerProfile.Id, powerProfile);
+            foreach (KeyValuePair<string, PowerProfile> kvp in powerProfiles)
+            {
+                PowerProfile profile = kvp.Value;
+                string id = kvp.Key;
+                PowerProfiles.Add(Guid.Parse(id), profile);
+            }
         }
 
         public bool AddPowerModule(IPowerModule powerModule)

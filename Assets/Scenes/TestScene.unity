@@ -294,7 +294,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1629363573}
   - {fileID: 983718490}
   m_Father: {fileID: 124869699}
   m_RootOrder: 0
@@ -330,7 +329,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 583205400}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &983718491
 MeshRenderer:
@@ -477,7 +476,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1169444333}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1168938933
 MonoBehaviour:
@@ -523,6 +522,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1629363573}
   - {fileID: 1168938932}
   m_Father: {fileID: 1057590115}
   m_RootOrder: 0
@@ -1172,7 +1172,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5731772498181215488, guid: 4e65bba925cd0e04c8a280010812f5f5, type: 3}
       propertyPath: m_Name
-      value: Light
+      value: Light Fixture
       objectReference: {fileID: 0}
     - target: {fileID: 5731772498181215495, guid: 4e65bba925cd0e04c8a280010812f5f5, type: 3}
       propertyPath: m_RootOrder
@@ -1225,7 +1225,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 583205400}
+    m_TransformParent: {fileID: 1169444333}
     m_Modifications:
     - target: {fileID: 48395520469382827, guid: 070010dbfeca2ca459f78c6d6f1f0e0a, type: 3}
       propertyPath: m_IsActive
@@ -1249,11 +1249,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9109981595229720248, guid: 070010dbfeca2ca459f78c6d6f1f0e0a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 9109981595229720248, guid: 070010dbfeca2ca459f78c6d6f1f0e0a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9109981595229720248, guid: 070010dbfeca2ca459f78c6d6f1f0e0a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1289,7 +1289,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9109981595229720249, guid: 070010dbfeca2ca459f78c6d6f1f0e0a, type: 3}
       propertyPath: m_Name
-      value: Screen
+      value: Lighting Group UI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 070010dbfeca2ca459f78c6d6f1f0e0a, type: 3}

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class UIToggle : UIElement
 {
+    private bool _isMoving = false;
     private string _sourceName;
     private bool _isOn = false;
 
@@ -27,25 +28,31 @@ public class UIToggle : UIElement
     {
         _sourceName = transform.parent.gameObject.name;
 
-        if (StartOn) SetToOn();
+        if (StartOn) SetToOn(true);
     }
     void Update()
     {
-        
+        if (_isMoving)
+        {
+            MoveTowardsPosition(Time.deltaTime);
+            if (IsKnobClose())
+                SnapToPosition();
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
         if (!IsActive) return;
+        if (_isMoving) return;
+
         if (other.name.ToLower().Contains("finger"))
             ToggleButton(other.gameObject);
     }
     private void ToggleButton(GameObject hand)
     {
-        Debug.Log("Button activated: " + ActionName);
+        Debug.Log("Toggle activated: " + ActionName);
         onToggle(_sourceName, ActionName, hand);
-        _isOn = !_isOn;
 
-        if (_isOn) SetToOn(); else SetToOff();
+        if (_isOn) SetToOff(); else SetToOn();
     }
     public override void SetColor(Color color)
     {
@@ -55,14 +62,38 @@ public class UIToggle : UIElement
     }
     private void SetToOn()
     {
+        SetToOn(false);
+    }
+    private void SetToOn(bool doInstant)
+    {
+        _isOn = true;
         OffCover.SetActive(false);
-        // TODO: MOVE SLOWLY AND TIME OUT, DON'T JUST TELEPORT
-        Knob.transform.position = OnPosition.position;
+        if (doInstant) SnapToPosition();
+        else _isMoving = true;
     }
     private void SetToOff()
     {
+        _isOn = false;
         OffCover.SetActive(true);
-        // TODO: MOVE SLOWLY AND TIME OUT, DON'T JUST TELEPORT
-        Knob.transform.position = OffPosition.position;
+        _isMoving = true;
+    }
+    private void MoveTowardsPosition(float step)
+    {
+        Vector3 destination = (_isOn ? OnPosition : OffPosition).position;
+        Vector3 knobPos = Knob.transform.position;
+        Vector3.MoveTowards(knobPos, destination, step);
+    }
+    private bool IsKnobClose()
+    {
+        Vector3 pos = (_isOn ? OnPosition : OffPosition).position;
+        Vector3 knobPos = Knob.transform.position;
+        float dist = Vector3.Distance(pos, knobPos);
+        return (dist < 0.1);
+    }
+    private void SnapToPosition()
+    {
+        Vector3 pos = (_isOn ? OnPosition : OffPosition).position;
+        Knob.transform.position = pos;
+        _isMoving = false;
     }
 }

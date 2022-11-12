@@ -30,5 +30,11 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
             foreach (LightFixture fixture in LightFixtures)
                 fixture.TurnOff();
         }
+
+        public void SetGroupColor(float hue)
+        {
+            foreach (LightFixture fixture in LightFixtures)
+                fixture.SetColor(hue);
+        }
     }
 }

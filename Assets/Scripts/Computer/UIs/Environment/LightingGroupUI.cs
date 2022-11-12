@@ -16,14 +16,19 @@ public class LightingGroupUI : PadUI
     private void OnEnable()
     {
         ColorSlider.OnLevelSet += SetColor;
+        BrightnessSlider.OnLevelSet += SetBrightness;
     }
     private void OnDestroy()
     {
         ColorSlider.OnLevelSet -= SetColor;
+        BrightnessSlider.OnLevelSet -= SetBrightness;
     }
-
     private void SetColor(float hue)
     {
         LightingGroup.SetGroupColor(hue);
+    }
+    private void SetBrightness(float brightness)
+    {
+        LightingGroup.SetGroupBrightness(brightness);
     }
 }

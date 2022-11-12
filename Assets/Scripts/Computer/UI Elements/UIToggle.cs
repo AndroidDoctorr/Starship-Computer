@@ -15,6 +15,11 @@ public class UIToggle : UIElement
 
     public bool StartOn = false;
 
+    public GameObject Knob;
+    public GameObject OffCover;
+    public Transform OnPosition;
+    public Transform OffPosition;
+
     public delegate void OnToggleAction();
     public event OnToggleAction onToggle;
 
@@ -22,7 +27,7 @@ public class UIToggle : UIElement
     {
         _sourceName = transform.parent.gameObject.name;
 
-        // if (StartOn) SetToOn();
+        if (StartOn) SetToOn();
     }
     void Update()
     {
@@ -40,12 +45,24 @@ public class UIToggle : UIElement
         onToggle();
         _isOn = !_isOn;
 
-        // if (_isOn) SetToOn() else SetToOff();
+        if (_isOn) SetToOn(); else SetToOff();
     }
     public override void SetColor(Color color)
     {
         if (KeepColor) return;
         var image = GetComponent<Image>();
         image.color = color;
+    }
+    private void SetToOn()
+    {
+        OffCover.SetActive(false);
+        // TODO: MOVE SLOWLY AND TIME OUT, DON'T JUST TELEPORT
+        Knob.transform.position = OnPosition.position;
+    }
+    private void SetToOff()
+    {
+        OffCover.SetActive(true);
+        // TODO: MOVE SLOWLY AND TIME OUT, DON'T JUST TELEPORT
+        Knob.transform.position = OffPosition.position;
     }
 }

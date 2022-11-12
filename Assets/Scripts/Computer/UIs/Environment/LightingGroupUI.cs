@@ -9,6 +9,9 @@ public class LightingGroupUI : PadUI
 {
     public LightingGroup LightingGroup;
 
+    public UISlider ColorSlider;
+    public UISlider BrightnessSlider;
+    public UIToggle Toggle;
 
     void Start()
     {

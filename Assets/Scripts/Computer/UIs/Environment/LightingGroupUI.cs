@@ -13,13 +13,17 @@ public class LightingGroupUI : PadUI
     public UISlider BrightnessSlider;
     public UIToggle Toggle;
 
-    void Start()
+    private void OnEnable()
     {
-        
+        ColorSlider.OnLevelSet += SetColor;
+    }
+    private void OnDestroy()
+    {
+        ColorSlider.OnLevelSet -= SetColor;
     }
 
-    void Update()
+    private void SetColor(float hue)
     {
-        
+        LightingGroup.SetGroupColor(hue);
     }
 }

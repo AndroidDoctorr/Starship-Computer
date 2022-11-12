@@ -56,7 +56,6 @@ public class UISlider : UIElement
     }
     public void SlideTo(float output)
     {
-        Debug.Log($"{gameObject.name} - Slide to {output}");
         // Limit between 0 and Limit
         if (output >= Limit)
             output = Limit;

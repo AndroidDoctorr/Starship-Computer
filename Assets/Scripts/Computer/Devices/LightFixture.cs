@@ -26,4 +26,10 @@ public class LightFixture : Device
         _isOn = false;
         Light.intensity = 0;
     }
+
+    public void SetColor(float hue)
+    {
+        Color.RGBToHSV(Light.color, out float h, out float s, out float v);
+        Light.color = Color.HSVToRGB(hue, s, v);
+    }
 }

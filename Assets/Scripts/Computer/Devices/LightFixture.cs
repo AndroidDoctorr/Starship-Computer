@@ -25,7 +25,6 @@ public class LightFixture : Device
     }
     public void TurnOn()
     {
-        Debug.Log("TURN LIGHT ON!");
         _isOn = true;
         Light.intensity = _intensity;
     }
@@ -34,10 +33,9 @@ public class LightFixture : Device
         _isOn = false;
         Light.intensity = 0;
     }
-    public void SetColor(float hue)
+    public void SetColor(float hue, float value)
     {
-        Color.RGBToHSV(Light.color, out float h, out float s, out float v);
-        Color color = Color.HSVToRGB(hue, s, v);
+        Color color = Color.HSVToRGB(hue, 1, value);
         Light.color = color;
 
         Material material = Bulb.GetComponentInChildren<Renderer>().material;
@@ -46,5 +44,6 @@ public class LightFixture : Device
     public void SetBrightness(float brightness)
     {
         Light.intensity = brightness * MaxIntensity;
+        _intensity = brightness;
     }
 }

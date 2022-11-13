@@ -9,25 +9,25 @@ public class LightingGroupUI : PadUI
 {
     public LightingGroup LightingGroup;
 
-    public UISlider ColorSlider;
+    public UIXYInput ColorInput;
     public UISlider BrightnessSlider;
     public UIToggle Toggle;
 
     private void OnEnable()
     {
-        ColorSlider.OnLevelSet += SetColor;
+        ColorInput.OnLevelSet += SetColor;
         BrightnessSlider.OnLevelSet += SetBrightness;
         Toggle.onToggle += ToggleGroup;
     }
     private void OnDestroy()
     {
-        ColorSlider.OnLevelSet -= SetColor;
+        ColorInput.OnLevelSet -= SetColor;
         BrightnessSlider.OnLevelSet -= SetBrightness;
         Toggle.onToggle -= ToggleGroup;
     }
-    private void SetColor(float hue)
+    private void SetColor(float hue, float value)
     {
-        LightingGroup.SetGroupColor(hue);
+        LightingGroup.SetGroupColor(hue, value);
     }
     private void SetBrightness(float brightness)
     {

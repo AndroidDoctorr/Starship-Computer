@@ -32,6 +32,7 @@ namespace Assets.Scripts
     {
         private ISystem _system;
         private AudioSource _as;
+        private bool _isInteracting = false;
         public bool IsEnabled { get; protected set; } = false;
         public bool HasPower { get; protected set; } = false;
         public float PowerDraw = 1;
@@ -51,7 +52,8 @@ namespace Assets.Scripts
             // Refactor UIs to allow ONE ACTION PER USER AT A TIME
             // This way if your finger touches another button
             //   it keeps controlling the first one pressed and
-            //   ignores any subsequent actions until the collider exits
+            //      ignores any subsequent actions until the user's
+            //      hand exits the collider of the first button
         }
         void Start()
         {

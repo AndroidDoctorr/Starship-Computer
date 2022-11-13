@@ -527,6 +527,7 @@ GameObject:
   m_Component:
   - component: {fileID: 937103795745933634}
   - component: {fileID: 7026600090522554631}
+  - component: {fileID: 5051622180171214436}
   m_Layer: 0
   m_Name: XY Input
   m_TagString: Untagged
@@ -584,6 +585,18 @@ MonoBehaviour:
   StartValue: 0
   Limit: 1
   LabelText: 
+--- !u!114 &5051622180171214436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6274255858909286348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e4e36dae62e57449e8d96847dcacdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7137669789252131689
 GameObject:
   m_ObjectHideFlags: 0

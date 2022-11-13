@@ -375,7 +375,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 12}
+  m_AnchoredPosition: {x: 0, y: 9}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5326832411612983177
@@ -526,7 +526,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 937103795745933634}
-  - component: {fileID: 7026600090522554631}
   - component: {fileID: 5051622180171214436}
   m_Layer: 0
   m_Name: XY Input
@@ -562,29 +561,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7026600090522554631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6274255858909286348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba2e9632b3a421748bc12666d473edf3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Button: {fileID: 2806987597236718805}
-  Outline: {fileID: 3654313515183426729}
-  Label: {fileID: 3436056927887096921}
-  Bottom: {fileID: 8789964667593525925}
-  Top: {fileID: 1415339200319359987}
-  Cover: {fileID: 7625517211943785133}
-  MaxValue: 10
-  MinValue: -10
-  StartValue: 0
-  Limit: 1
-  LabelText: 
 --- !u!114 &5051622180171214436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -597,6 +573,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e4e36dae62e57449e8d96847dcacdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Knob: {fileID: 2806987597236718805}
+  Outline: {fileID: 3654313515183426729}
+  Label: {fileID: 3436056927887096921}
+  Bottom: {fileID: 8789964667593525925}
+  Top: {fileID: 1415339200319359987}
+  Left: {fileID: 5527287197478560822}
+  Right: {fileID: 7434534348715166106}
+  Cover: {fileID: 7625517211943785133}
+  MaxXValue: 10
+  MinXValue: -10
+  MaxYValue: 10
+  MinYValue: -10
+  StartValue: 0
+  Limit: 1
+  LabelText: 
 --- !u!1 &7137669789252131689
 GameObject:
   m_ObjectHideFlags: 0

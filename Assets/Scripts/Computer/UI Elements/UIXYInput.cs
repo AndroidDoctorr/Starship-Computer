@@ -7,66 +7,68 @@ using UnityEngine.UI;
 
 public class UIXYInput : UIElement
 {
+    private enum Axis { x, y };
+
     private bool _isSliding = false;
     private bool _hasBeenPreset = false;
     private GameObject _interactor;
 
-    public UIButton Button;
+    public UIButton Knob;
     public Image Outline;
     public TMP_Text Label;
     public Transform Bottom;
     public Transform Top;
+    public Transform Left;
+    public Transform Right;
+
     public RectTransform Cover;
-    public float MaxValue = 10;
-    public float MinValue = -10;
-    public float StartValue = 0;
+    public float xStart = 0;
+    public float yStart = 0;
     public float Limit = 1;
     public string LabelText = "";
 
-    public delegate void OnSetLevel(float level);
+    public delegate void OnSetLevel(float x, float y);
     public event OnSetLevel OnLevelSet;
 
+    private void OnEnable()
+    {
+        Knob.onButtonPress += StartSlide;
+        Knob.onButtonExit += ExitSlide;
+    }
     void Start()
     {
-        Button.onButtonPress += StartSlide;
-        Button.onButtonExit += ExitSlide;
-        if (!_hasBeenPreset) SlideTo(StartValue);
+        if (!_hasBeenPreset) SlideTo(xStart, yStart);
     }
     void Update()
     {
         if (_isSliding)
         {
-            Slide();
+            float x = GetOutputAlongAxis(Axis.x);
+            float y = GetOutputAlongAxis(Axis.y);
+            OnLevelSet(x, y);
+            SlideTo(x, y);
         }
     }
-    void Slide()
+    private float GetOutputAlongAxis(Axis axis)
     {
-        // Get vector from bottom of slider to hand
-        Vector3 pointer = _interactor.transform.position - Bottom.transform.position;
-        // Get vector along slider
-        Vector3 trackVector = Top.position - Bottom.position;
-        // Get projection of hand along slider
+        Vector3 start = axis == Axis.x ? Left.position : Bottom.position;
+        Vector3 end = axis == Axis.x ? Right.position : Top.position;
+
+        Vector3 pointer = _interactor.transform.position - start;
+        Vector3 trackVector = end - start;
         Vector3 projection = Vector3.Project(pointer, trackVector);
-        // Determine output value
+
         float output = projection.magnitude / trackVector.magnitude;
-        // Determine if negative (since magnitudes are irrespective of direction)
-        if (Vector3.Dot(trackVector, projection) < 0) output = 0;
-        OnLevelSet(output);
-        SlideTo(output);
+        // Limit to range
+        return output < 0 ? 0 : output > Limit ? Limit : output;
     }
-    public void SlideTo(float output)
+    public void SlideTo(float x, float y)
     {
-        // Limit between 0 and Limit
-        if (output >= Limit)
-            output = Limit;
-        else if (output <= 0)
-            output = 0;
-
-        Vector3 trackVector = Top.position - Bottom.position;
-        Vector3 projection = trackVector * output;
-        Button.transform.position = Bottom.position + projection;
-
-        SetCover(output);
+        Vector3 xAxis = Right.position - Left.position;
+        Vector3 yAxis = Top.position - Bottom.position;
+        Vector3 xProjection = xAxis * x + Right.position;
+        Vector3 yProjection = yAxis * y + Bottom.position;
+        Knob.transform.position = xProjection + yProjection;
 
         _hasBeenPreset = true;
     }
@@ -79,16 +81,10 @@ public class UIXYInput : UIElement
     {
         _isSliding = false;
     }
-    void SetCover(float level)
-    {
-        Cover.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 21 * (1 - level));
-        Cover.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 3);
-        Cover.localPosition = new Vector2(0, level * 10.5f);
-    }
     public override void SetColor(Color color)
     {
         Outline.color = color;
         Label.color = color;
-        Button.SetColor(color);
+        Knob.SetColor(color);
     }
 }

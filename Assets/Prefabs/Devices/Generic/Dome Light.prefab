@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Light: {fileID: 5731772498738199353}
-  Fixture: {fileID: 3103633185298443549}
+  Bulb: {fileID: 5731772499088142412}
   MaxIntensity: 1
 --- !u!1 &5731772498289371007
 GameObject:

@@ -2,6 +2,7 @@ using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,7 @@ public class UIXYInput : UIElement
     private GameObject _interactor;
 
     public UIButton Knob;
+    public Image KnobCenter;
     public Image Outline;
     public TMP_Text Label;
     public Transform Bottom;
@@ -82,6 +84,10 @@ public class UIXYInput : UIElement
     void ExitSlide(string source, string name, GameObject interactor)
     {
         _isSliding = false;
+    }
+    public void SetKnobColor(Color color)
+    {
+        KnobCenter.color = color;
     }
     public override void SetColor(Color color)
     {

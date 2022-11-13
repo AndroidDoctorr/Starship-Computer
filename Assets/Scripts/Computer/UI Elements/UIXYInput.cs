@@ -22,9 +22,10 @@ public class UIXYInput : UIElement
     public Transform Right;
 
     public RectTransform Cover;
-    public float xStart = 0;
-    public float yStart = 0;
-    public float Limit = 1;
+    public float StartX = 0;
+    public float StartY = 0;
+    public float LimitX = 1;
+    public float LimitY = 1;
     public string LabelText = "";
 
     public delegate void OnSetLevel(float x, float y);
@@ -37,7 +38,7 @@ public class UIXYInput : UIElement
     }
     void Start()
     {
-        if (!_hasBeenPreset) SlideTo(xStart, yStart);
+        if (!_hasBeenPreset) SlideTo(StartX, StartY);
     }
     void Update()
     {
@@ -60,7 +61,8 @@ public class UIXYInput : UIElement
 
         float output = projection.magnitude / trackVector.magnitude;
         // Limit to range
-        return output < 0 ? 0 : output > Limit ? Limit : output;
+        float limit = axis == Axis.x ? LimitX : LimitY;
+        return output < 0 ? 0 : output > limit ? limit : output;
     }
     public void SlideTo(float x, float y)
     {

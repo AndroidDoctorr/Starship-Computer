@@ -17,8 +17,6 @@ public class UISlider : UIElement
     public Transform Bottom;
     public Transform Top;
     public RectTransform Cover;
-    public float MaxValue = 10;
-    public float MinValue = -10;
     public float StartValue = 0;
     public float Limit = 1;
     public string LabelText = "";
@@ -36,32 +34,25 @@ public class UISlider : UIElement
     {
         if (_isSliding)
         {
-            Slide();
+            float v = GetOutputAlongAxis();
+            SlideTo(v);
         }
     }
-    void Slide()
+    private float GetOutputAlongAxis()
     {
-        // Get vector from bottom of slider to hand
-        Vector3 pointer = _interactor.transform.position - Bottom.transform.position;
-        // Get vector along slider
-        Vector3 trackVector = Top.position - Bottom.position;
-        // Get projection of hand along slider
+        Vector3 start = Bottom.position;
+        Vector3 end = Top.position;
+
+        Vector3 pointer = _interactor.transform.position - start;
+        Vector3 trackVector = end - start;
         Vector3 projection = Vector3.Project(pointer, trackVector);
-        // Determine output value
+
         float output = projection.magnitude / trackVector.magnitude;
-        // Determine if negative (since magnitudes are irrespective of direction)
-        if (Vector3.Dot(trackVector, projection) < 0) output = 0;
-        OnLevelSet(output);
-        SlideTo(output);
+        // Limit to range
+        return output < 0 ? 0 : output > Limit ? Limit : output;
     }
     public void SlideTo(float output)
-    {
-        // Limit between 0 and Limit
-        if (output >= Limit)
-            output = Limit;
-        else if (output <= 0)
-            output = 0;
-        
+    {        
         Vector3 trackVector = Top.position - Bottom.position;
         Vector3 projection = trackVector * output;
         Button.transform.position = Bottom.position + projection;

@@ -23,11 +23,13 @@ public class UISlider : UIElement
 
     public delegate void OnSetLevel(float level);
     public event OnSetLevel OnLevelSet;
-
-    void Start()
+    private void OnEnable()
     {
         Button.onButtonPress += StartSlide;
         Button.onButtonExit += ExitSlide;
+    }
+    void Start()
+    {
         if (!_hasBeenPreset) SlideTo(StartValue);
     }
     void Update()

@@ -12,6 +12,11 @@ public class LightingGroupUI : PadUI
     public UIXYInput ColorInput;
     public UISlider BrightnessSlider;
     public UIToggle Toggle;
+    private void Start()
+    {
+        if (LightingGroup.BeginOn)
+            Toggle.SetToOn(true);
+    }
 
     private void OnEnable()
     {
@@ -25,9 +30,11 @@ public class LightingGroupUI : PadUI
         BrightnessSlider.OnLevelSet -= SetBrightness;
         Toggle.onToggle -= ToggleGroup;
     }
-    private void SetColor(float hue, float value)
+    private void SetColor(float unSaturation, float hue)
     {
-        LightingGroup.SetGroupColor(hue, value);
+        float saturation = 1 - unSaturation;
+        LightingGroup.SetGroupColor(hue, saturation);
+        ColorInput.SetKnobColor(Color.HSVToRGB(hue, saturation, 1));
     }
     private void SetBrightness(float brightness)
     {

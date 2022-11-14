@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
 {
@@ -38,10 +39,10 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
             foreach (LightFixture fixture in LightFixtures)
                 fixture.TurnOff();
         }
-        public void SetGroupColor(float hue, float value)
+        public void SetGroupColor(float hue, float saturation)
         {
             foreach (LightFixture fixture in LightFixtures)
-                fixture.SetColor(hue, value);
+                fixture.SetColor(hue, saturation);
         }
         public void SetGroupBrightness(float brightness)
         {

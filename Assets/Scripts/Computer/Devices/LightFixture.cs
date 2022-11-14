@@ -7,6 +7,7 @@ public class LightFixture : Device
 {
     private bool _isOn = false;
     private float _intensity;
+    private Color _color;
 
     public Light Light;
     public GameObject Bulb;
@@ -26,16 +27,28 @@ public class LightFixture : Device
     public void TurnOn()
     {
         _isOn = true;
+        // Apply settings
         Light.intensity = _intensity;
+        Light.color = _color;
+        Material material = Bulb.GetComponentInChildren<Renderer>().material;
+        material.color = _color;
     }
     public void TurnOff()
     {
         _isOn = false;
+        // Reset color/intensity
         Light.intensity = 0;
+        Light.color = Color.white;
+        Material material = Bulb.GetComponentInChildren<Renderer>().material;
+        material.color = Color.white;
     }
-    public void SetColor(float hue, float value)
+    public void SetColor(float hue, float saturation)
     {
-        Color color = Color.HSVToRGB(hue, 1, value);
+        Color color = Color.HSVToRGB(hue, saturation, 1);
+        _color = color;
+
+        if (!_isOn) return;
+
         Light.color = color;
 
         Material material = Bulb.GetComponentInChildren<Renderer>().material;
@@ -43,7 +56,10 @@ public class LightFixture : Device
     }
     public void SetBrightness(float brightness)
     {
-        Light.intensity = brightness * MaxIntensity;
         _intensity = brightness;
+
+        if (!_isOn) return;
+        
+        Light.intensity = brightness * MaxIntensity;
     }
 }

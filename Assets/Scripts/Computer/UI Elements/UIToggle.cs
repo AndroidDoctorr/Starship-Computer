@@ -34,7 +34,6 @@ public class UIToggle : UIElement
     {
         if (_isMoving)
         {
-            Debug.Log("Moving to next position");
             MoveTowardsPosition(Time.deltaTime * 0.5f);
             if (IsKnobClose())
                 SnapToPosition();
@@ -50,7 +49,6 @@ public class UIToggle : UIElement
     }
     private void ToggleButton(GameObject hand)
     {
-        Debug.Log("Toggle activated: " + ActionName);
         onToggle(_sourceName, ActionName, hand);
 
         if (_isOn) SetToOff(); else SetToOn();
@@ -65,14 +63,14 @@ public class UIToggle : UIElement
     {
         SetToOn(false);
     }
-    private void SetToOn(bool doInstant)
+    public void SetToOn(bool doInstant)
     {
         _isOn = true;
         OffCover.SetActive(false);
         if (doInstant) SnapToPosition();
         else _isMoving = true;
     }
-    private void SetToOff()
+    public void SetToOff()
     {
         _isOn = false;
         OffCover.SetActive(true);

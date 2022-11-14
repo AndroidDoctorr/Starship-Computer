@@ -729,7 +729,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0, y: 0}
-  m_SizeDelta: {x: 0.09, y: 0.18}
+  m_SizeDelta: {x: 0.09, y: 0.19}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9109981593931589090
 CanvasRenderer:
@@ -1178,6 +1178,10 @@ PrefabInstance:
       propertyPath: LabelText
       value: Brightness
       objectReference: {fileID: 0}
+    - target: {fileID: 5909693831975796061, guid: 63d391545d350ee4298dda0ca074fbf2, type: 3}
+      propertyPath: StartValue
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7247046895961072534, guid: 63d391545d350ee4298dda0ca074fbf2, type: 3}
       propertyPath: m_Name
       value: Slider - H
@@ -1330,6 +1334,14 @@ PrefabInstance:
     - target: {fileID: 4933009396391776063, guid: f7da01a8a7fab4040b7dae019ce696fd, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5051622180171214436, guid: f7da01a8a7fab4040b7dae019ce696fd, type: 3}
+      propertyPath: StartX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5051622180171214436, guid: f7da01a8a7fab4040b7dae019ce696fd, type: 3}
+      propertyPath: StartY
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5527287197478560822, guid: f7da01a8a7fab4040b7dae019ce696fd, type: 3}
       propertyPath: m_AnchoredPosition.x

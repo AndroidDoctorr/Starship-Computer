@@ -5,11 +5,14 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum Orientation { Horizontal, Vertical }
 public class UISlider : UIElement
 {
     private bool _isSliding = false;
     private bool _hasBeenPreset = false;
     private GameObject _interactor;
+    private float _startWidth;
+    private float _startHeight;
 
     public UIButton Button;
     public Image Outline;
@@ -20,6 +23,7 @@ public class UISlider : UIElement
     public float StartValue = 0;
     public float Limit = 1;
     public string LabelText = "";
+    public Orientation Orientation;
 
     public delegate void OnSetLevel(float level);
     public event OnSetLevel OnLevelSet;
@@ -31,6 +35,8 @@ public class UISlider : UIElement
     void Start()
     {
         if (!_hasBeenPreset) SlideTo(StartValue);
+        _startWidth = Cover.rect.width;
+        _startHeight = Cover.rect.height;
     }
     void Update()
     {
@@ -74,9 +80,23 @@ public class UISlider : UIElement
     }
     void SetCover(float level)
     {
-        Cover.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 21 * (1-level));
-        Cover.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 3);
-        Cover.localPosition = new Vector2(0, level * 10.5f);
+        if (Orientation == Orientation.Horizontal)
+            SetCoverHorizontal(level);
+        else
+            SetCoverVertical(level);
+        
+    }
+    private void SetCoverHorizontal(float level)
+    {
+        Cover.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, _startHeight * (1 - level));
+        Cover.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, _startWidth);
+        Cover.localPosition = new Vector2(level * _startHeight / 2, 0);
+    }
+    private void SetCoverVertical(float level)
+    {
+        Cover.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, _startWidth * (1 - level));
+        Cover.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, _startHeight);
+        Cover.localPosition = new Vector2(0, level * _startWidth / 2);
     }
     public override void SetColor(Color color)
     {

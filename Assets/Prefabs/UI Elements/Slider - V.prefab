@@ -465,11 +465,10 @@ MonoBehaviour:
   Bottom: {fileID: 8789964667593525925}
   Top: {fileID: 1415339200319359987}
   Cover: {fileID: 7625517211943785133}
-  MaxValue: 10
-  MinValue: -10
   StartValue: 0
   Limit: 1
   LabelText: 
+  Orientation: 1
 --- !u!1 &7137669789252131689
 GameObject:
   m_ObjectHideFlags: 0

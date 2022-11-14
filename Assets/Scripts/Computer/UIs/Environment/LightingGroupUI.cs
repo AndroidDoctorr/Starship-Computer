@@ -15,7 +15,10 @@ public class LightingGroupUI : PadUI
     private void Start()
     {
         if (LightingGroup.BeginOn)
+        {
             Toggle.SetToOn(true);
+            ColorInput.SetKnobColor(LightingGroup.DefaultColor);
+        }
     }
 
     private void OnEnable()

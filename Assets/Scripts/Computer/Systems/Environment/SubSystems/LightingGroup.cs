@@ -11,6 +11,7 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
     {
         public LightFixture[] LightFixtures;
         public bool BeginOn = false;
+        public Color DefaultColor = Color.white;
         public bool IsOn { get; private set; }
 
         private void Start()

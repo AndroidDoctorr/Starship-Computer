@@ -18,12 +18,10 @@ public class UIXYInput : UIElement
     public Image KnobCenter;
     public Image Outline;
     public TMP_Text Label;
-    public Transform Bottom;
     public Transform Top;
-    public Transform Left;
     public Transform Right;
+    public Transform Origin;
 
-    public RectTransform Cover;
     public float StartX = 0;
     public float StartY = 0;
     public float LimitX = 1;
@@ -37,6 +35,11 @@ public class UIXYInput : UIElement
     {
         Knob.onButtonPress += StartSlide;
         Knob.onButtonExit += ExitSlide;
+    }
+    private void OnDestroy()
+    {
+        Knob.onButtonPress -= StartSlide;
+        Knob.onButtonExit -= ExitSlide;
     }
     void Start()
     {
@@ -54,7 +57,7 @@ public class UIXYInput : UIElement
     }
     private float GetOutputAlongAxis(Axis axis)
     {
-        Vector3 start = axis == Axis.x ? Left.position : Bottom.position;
+        Vector3 start = Origin.position;
         Vector3 end = axis == Axis.x ? Right.position : Top.position;
 
         Vector3 pointer = _interactor.transform.position - start;
@@ -64,15 +67,18 @@ public class UIXYInput : UIElement
         float output = projection.magnitude / trackVector.magnitude;
         // Limit to range
         float limit = axis == Axis.x ? LimitX : LimitY;
-        return output < 0 ? 0 : output > limit ? limit : output;
+        bool isNegative = Vector3.Dot(trackVector, projection) < 0;
+        return isNegative ? 0 : output > limit ? limit : output;
     }
     public void SlideTo(float x, float y)
     {
-        Vector3 xAxis = Right.position - Left.position;
-        Vector3 yAxis = Top.position - Bottom.position;
-        Vector3 xProjection = xAxis * x + Right.position;
-        Vector3 yProjection = yAxis * y + Bottom.position;
-        Knob.transform.position = xProjection + yProjection;
+        Vector3 xAxis = Right.localPosition - Origin.localPosition;
+        Vector3 yAxis = Top.localPosition - Origin.localPosition;
+        Vector3 xProjection = x * xAxis;
+        Vector3 yProjection = y * yAxis;
+        xProjection.y = 0;
+        yProjection.x = 0;
+        Knob.transform.localPosition = Origin.localPosition + xProjection + yProjection;
 
         _hasBeenPreset = true;
     }

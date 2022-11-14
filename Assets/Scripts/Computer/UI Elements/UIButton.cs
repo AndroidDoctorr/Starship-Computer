@@ -47,7 +47,7 @@ public class UIButton : UIElement
     }
     private void ActivateButton(GameObject hand)
     {
-        Debug.Log("Button activated: " + ActionName);
+        // Debug.Log("Button activated: " + ActionName);
         onButtonPress(_sourceName, ActionName, hand);
         // var image = GetComponent<Image>();
         // image.color = Color.white;

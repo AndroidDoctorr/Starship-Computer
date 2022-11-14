@@ -57,13 +57,16 @@ public class UISlider : UIElement
 
         float output = projection.magnitude / trackVector.magnitude;
         // Limit to range
-        return output < 0 ? 0 : output > Limit ? Limit : output;
+        bool isNegative = Vector3.Dot(trackVector, projection) < 0;
+        return isNegative ? 0 : output > Limit ? Limit : output;
     }
     public void SlideTo(float output)
-    {        
+    {
         Vector3 trackVector = Top.position - Bottom.position;
-        Vector3 projection = trackVector * output;
+        Vector3 projection = output * trackVector;
         Button.transform.position = Bottom.position + projection;
+
+        OnLevelSet(output);
 
         SetCover(output);
 
@@ -88,8 +91,8 @@ public class UISlider : UIElement
     }
     private void SetCoverHorizontal(float level)
     {
-        Cover.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, _startHeight * (1 - level));
-        Cover.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, _startWidth);
+        Cover.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, _startHeight * (1 - level));
+        Cover.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, _startWidth);
         Cover.localPosition = new Vector2(level * _startHeight / 2, 0);
     }
     private void SetCoverVertical(float level)

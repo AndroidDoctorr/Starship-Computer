@@ -9,9 +9,13 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
 {
     public class LightingGroup : SubSystem
     {
+        // Built in to Unity
+        public readonly static float MaxIntensity = 8;
+
         public LightFixture[] LightFixtures;
         public bool BeginOn = false;
         public Color DefaultColor = Color.white;
+        public float DefaultIntensity = 5;
         public bool IsOn { get; private set; }
 
         private void Start()

@@ -1,4 +1,5 @@
 using Assets.Scripts.Computer;
+using Assets.Scripts.Computer.Systems.Environment.SubSystems;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,8 +12,8 @@ public class LightFixture : Device
 
     public Light Light;
     public GameObject Bulb;
-    // Maximum value of 8
-    public float MaxIntensity = 1;
+    // This can limit a light fixture's intensity below the built-in limit of 8
+    public float MaxIntensity = LightingGroup.MaxIntensity;
 
     private void OnEnable()
     {
@@ -21,8 +22,9 @@ public class LightFixture : Device
     }
     private void Start()
     {
-        if (MaxIntensity > 8)
-            MaxIntensity = 8;
+        // Limit must be equal to or lower than Unity limit
+        if (MaxIntensity > LightingGroup.MaxIntensity)
+            MaxIntensity = LightingGroup.MaxIntensity;
     }
     public void TurnOn()
     {
@@ -56,10 +58,13 @@ public class LightFixture : Device
     }
     public void SetBrightness(float brightness)
     {
-        _intensity = brightness;
+        // Brightness is a float between 0 and 1
+        // Intensity is a float between 0 and MaxIntensity
+        float intensity = brightness * MaxIntensity;
+        _intensity = intensity;
 
         if (!_isOn) return;
         
-        Light.intensity = brightness * MaxIntensity;
+        Light.intensity = intensity;
     }
 }

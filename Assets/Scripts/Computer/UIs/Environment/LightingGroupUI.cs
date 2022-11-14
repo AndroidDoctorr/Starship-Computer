@@ -18,6 +18,7 @@ public class LightingGroupUI : PadUI
         {
             Toggle.SetToOn(true);
             ColorInput.SetKnobColor(LightingGroup.DefaultColor);
+            BrightnessSlider.SlideTo(LightingGroup.DefaultIntensity / LightingGroup.MaxIntensity);
         }
     }
 

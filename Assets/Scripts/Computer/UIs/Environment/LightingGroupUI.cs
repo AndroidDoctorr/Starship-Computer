@@ -14,7 +14,7 @@ public class LightingGroupUI : PadUI
     public UIToggle Toggle;
     public UIButton CandleMode;
     public UIButton Random;
-    public UIButton MultipleRandom;
+    public UIButton Multiple;
     private void Start()
     {
         if (LightingGroup.BeginOn)
@@ -30,12 +30,18 @@ public class LightingGroupUI : PadUI
         ColorInput.OnLevelSet += SetColor;
         BrightnessSlider.OnLevelSet += SetBrightness;
         Toggle.onToggle += ToggleGroup;
+        CandleMode.onButtonPress += SetCandleMode;
+        Random.onButtonPress += SetRandomMode;
+        Multiple.onButtonPress += SetMultipleMode;
     }
     private void OnDestroy()
     {
         ColorInput.OnLevelSet -= SetColor;
         BrightnessSlider.OnLevelSet -= SetBrightness;
         Toggle.onToggle -= ToggleGroup;
+        CandleMode.onButtonPress -= SetCandleMode;
+        Random.onButtonPress -= SetRandomMode;
+        Multiple.onButtonPress -= SetMultipleMode;
     }
     private void SetColor(float unSaturation, float hue)
     {
@@ -51,5 +57,17 @@ public class LightingGroupUI : PadUI
     {
         if (LightingGroup.IsOn) LightingGroup.TurnOffAllLights();
         else LightingGroup.TurnOnAllLights();
+    }
+    private void SetCandleMode(string sourceName, string actionName, GameObject hand)
+    {
+
+    }
+    private void SetRandomMode(string sourceName, string actionName, GameObject hand)
+    {
+
+    }
+    private void SetMultipleMode(string sourceName, string actionName, GameObject hand)
+    {
+
     }
 }

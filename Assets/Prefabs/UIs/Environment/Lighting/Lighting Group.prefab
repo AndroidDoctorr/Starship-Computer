@@ -1161,7 +1161,7 @@ MonoBehaviour:
   ColorInput: {fileID: 3536698085429154203}
   BrightnessSlider: {fileID: 202549679732882664}
   Toggle: {fileID: 8172253076865798878}
-  FlameMode: {fileID: 572977110365712885}
+  CandleMode: {fileID: 572977110365712885}
   Random: {fileID: 7909928179678005412}
   MultipleRandom: {fileID: 1408186127131355674}
 --- !u!1001 &2091465695454149194

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,6 +52,20 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
         {
             foreach (LightFixture fixture in LightFixtures)
                 fixture.SetBrightness(brightness);
+        }
+        public void SetCandleMode()
+        {
+            if (!IsOn) TurnOnAllLights();
+            foreach (LightFixture fixture in LightFixtures)
+                fixture.SetCandleMode();
+        }
+        public void SetRandomColor()
+        {
+            
+        }
+        public void SetMultipleColors()
+        {
+
         }
     }
 }

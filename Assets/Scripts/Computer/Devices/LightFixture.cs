@@ -2,11 +2,14 @@ using Assets.Scripts.Computer;
 using Assets.Scripts.Computer.Systems.Environment.SubSystems;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class LightFixture : Device
 {
     private bool _isOn = false;
+    private bool _isCandleMode = false;
+    private float _candleSeed = 0;
     private float _intensity;
     private Color _color;
 
@@ -26,31 +29,40 @@ public class LightFixture : Device
         if (MaxIntensity > LightingGroup.MaxIntensity)
             MaxIntensity = LightingGroup.MaxIntensity;
     }
+    private void Update()
+    {
+        if (_isCandleMode)
+        {
+            float z = Mathf.PerlinNoise(_candleSeed, Time.time);
+            float brightness = (z / 4f) + 0.25f;
+            Light.intensity = brightness * MaxIntensity;
+        }
+    }
     public void TurnOn()
     {
         _isOn = true;
         // Apply settings
         Light.intensity = _intensity;
-        Light.color = _color;
-        Material material = Bulb.GetComponentInChildren<Renderer>().material;
-        material.color = _color;
+        ApplyColor(_color);
     }
     public void TurnOff()
     {
         _isOn = false;
         // Reset color/intensity
         Light.intensity = 0;
-        Light.color = Color.white;
-        Material material = Bulb.GetComponentInChildren<Renderer>().material;
-        material.color = Color.white;
+        ApplyColor(Color.white);
     }
     public void SetColor(float hue, float saturation)
     {
+        if (_isCandleMode) _isCandleMode = false;
+
         Color color = Color.HSVToRGB(hue, saturation, 1);
         _color = color;
 
-        if (!_isOn) return;
-
+        if (_isOn) ApplyColor(color);
+    }
+    private void ApplyColor(Color color)
+    {
         Light.color = color;
 
         Material material = Bulb.GetComponentInChildren<Renderer>().material;
@@ -58,6 +70,7 @@ public class LightFixture : Device
     }
     public void SetBrightness(float brightness)
     {
+        if (_isCandleMode) _isCandleMode = false;
         // Brightness is a float between 0 and 1
         // Intensity is a float between 0 and MaxIntensity
         float intensity = brightness * MaxIntensity;
@@ -66,5 +79,14 @@ public class LightFixture : Device
         if (!_isOn) return;
         
         Light.intensity = intensity;
+    }
+    public void SetCandleMode()
+    {
+        _candleSeed = Random.Range(0, 1f);
+
+        Color flameColor = new Color(1, 0.75f, 0.3f);
+        ApplyColor(flameColor);
+
+        _isCandleMode = true;
     }
 }

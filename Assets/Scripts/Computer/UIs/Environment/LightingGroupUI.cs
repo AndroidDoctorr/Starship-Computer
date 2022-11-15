@@ -60,14 +60,14 @@ public class LightingGroupUI : PadUI
     }
     private void SetCandleMode(string sourceName, string actionName, GameObject hand)
     {
-
+        LightingGroup.SetCandleMode();
     }
     private void SetRandomMode(string sourceName, string actionName, GameObject hand)
     {
-
+        LightingGroup.SetRandomColor();
     }
     private void SetMultipleMode(string sourceName, string actionName, GameObject hand)
     {
-
+        LightingGroup.SetMultipleColors();
     }
 }

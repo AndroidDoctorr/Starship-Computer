@@ -14,12 +14,12 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
         public LightFixture[] LightFixtures;
         public bool BeginOn = false;
         public Color DefaultColor = Color.white;
-        public float DefaultIntensity = 5;
+        public float DefaultBrightness = 0.6f;
         public bool IsOn { get; private set; }
 
         private void Start()
         {
-            if (BeginOn) TurnOnAllLights();
+            if (BeginOn) TurnOnAllLights(true);
         }
         public bool DisconnectLightFixture()
         {
@@ -31,11 +31,19 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
         {
             return true;
         }
-        public void TurnOnAllLights()
+        public void TurnOnAllLights(bool doReset)
         {
             IsOn = true;
             foreach (LightFixture fixture in LightFixtures)
+            {
+                Color.RGBToHSV(DefaultColor, out float h, out float s, out float v);
+                if (doReset)
+                {
+                    fixture.SetColor(h, s);
+                    fixture.SetBrightness(DefaultBrightness);
+                }
                 fixture.TurnOn();
+            }
         }
         public void TurnOffAllLights()
         {
@@ -55,7 +63,7 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
         }
         public void SetCandleMode()
         {
-            if (!IsOn) TurnOnAllLights();
+            if (!IsOn) TurnOnAllLights(false);
             foreach (LightFixture fixture in LightFixtures)
                 fixture.SetCandleMode();
         }

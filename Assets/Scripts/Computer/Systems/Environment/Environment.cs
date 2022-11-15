@@ -24,7 +24,7 @@ namespace Assets.Scripts.Computer.Systems.Environment
                 
             }
 
-            lightingGroup.TurnOnAllLights();
+            lightingGroup.TurnOnAllLights(false);
             return true;
         }
         public bool TurnOffLightingGroup(string name)

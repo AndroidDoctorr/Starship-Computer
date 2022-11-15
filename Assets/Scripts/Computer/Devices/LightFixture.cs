@@ -10,8 +10,8 @@ public class LightFixture : Device
     private bool _isOn = false;
     private bool _isCandleMode = false;
     private float _candleSeed = 0;
-    private float _intensity;
-    private Color _color;
+    private float _intensity = 0.5f;
+    private Color _color = Color.white;
 
     public Light Light;
     public GameObject Bulb;
@@ -33,8 +33,8 @@ public class LightFixture : Device
     {
         if (_isCandleMode)
         {
-            float z = Mathf.PerlinNoise(_candleSeed, Time.time);
-            float brightness = (Mathf.Pow(z, 4) / 4f) + 0.25f;
+            float z = Mathf.PerlinNoise(_candleSeed, Time.time * 5);
+            float brightness = (Mathf.Pow(z, 4) / 10f) + 0.25f;
             Light.intensity = brightness * MaxIntensity;
         }
     }
@@ -65,7 +65,7 @@ public class LightFixture : Device
     {
         Light.color = color;
 
-        Material material = Bulb.GetComponentInChildren<Renderer>().material;
+        Material material = Bulb.GetComponent<Renderer>().material;
         material.color = color;
     }
     public void SetBrightness(float brightness)
@@ -84,7 +84,7 @@ public class LightFixture : Device
     {
         _candleSeed = Random.Range(0, 10f);
 
-        Color flameColor = new Color(1, 0.75f, 0.3f);
+        Color flameColor = new Color(1, 0.6f, 0.25f);
         ApplyColor(flameColor);
 
         _isCandleMode = true;

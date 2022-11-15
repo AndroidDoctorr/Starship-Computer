@@ -21,7 +21,7 @@ public class LightingGroupUI : PadUI
         {
             Toggle.SetToOn(true);
             ColorInput.SetKnobColor(LightingGroup.DefaultColor);
-            BrightnessSlider.SlideTo(LightingGroup.DefaultIntensity / LightingGroup.MaxIntensity);
+            BrightnessSlider.SlideTo(LightingGroup.DefaultBrightness);
         }
     }
 
@@ -56,7 +56,7 @@ public class LightingGroupUI : PadUI
     private void ToggleGroup(string sourceName, string actionName, GameObject hand)
     {
         if (LightingGroup.IsOn) LightingGroup.TurnOffAllLights();
-        else LightingGroup.TurnOnAllLights();
+        else LightingGroup.TurnOnAllLights(false);
     }
     private void SetCandleMode(string sourceName, string actionName, GameObject hand)
     {

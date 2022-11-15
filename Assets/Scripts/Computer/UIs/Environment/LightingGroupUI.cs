@@ -12,6 +12,9 @@ public class LightingGroupUI : PadUI
     public UIXYInput ColorInput;
     public UISlider BrightnessSlider;
     public UIToggle Toggle;
+    public UIButton CandleMode;
+    public UIButton Random;
+    public UIButton MultipleRandom;
     private void Start()
     {
         if (LightingGroup.BeginOn)

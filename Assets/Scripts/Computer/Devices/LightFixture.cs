@@ -33,7 +33,7 @@ public class LightFixture : Device
     {
         if (_isCandleMode)
         {
-            float z = Mathf.PerlinNoise(_candleSeed, Time.time);
+            float z = Mathf.PerlinNoise(_candleSeed, Time.time * 2);
             float brightness = (z / 4f) + 0.25f;
             Light.intensity = brightness * MaxIntensity;
         }
@@ -82,7 +82,7 @@ public class LightFixture : Device
     }
     public void SetCandleMode()
     {
-        _candleSeed = Random.Range(0, 1f);
+        _candleSeed = Random.Range(0, 10f);
 
         Color flameColor = new Color(1, 0.75f, 0.3f);
         ApplyColor(flameColor);

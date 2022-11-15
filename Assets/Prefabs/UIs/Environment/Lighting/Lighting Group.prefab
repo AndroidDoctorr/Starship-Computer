@@ -1163,7 +1163,7 @@ MonoBehaviour:
   Toggle: {fileID: 8172253076865798878}
   CandleMode: {fileID: 572977110365712885}
   Random: {fileID: 7909928179678005412}
-  MultipleRandom: {fileID: 1408186127131355674}
+  Multiple: {fileID: 1408186127131355674}
 --- !u!1001 &2091465695454149194
 PrefabInstance:
   m_ObjectHideFlags: 0

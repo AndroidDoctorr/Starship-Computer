@@ -61,11 +61,21 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
         }
         public void SetRandomColor()
         {
-            
+            float hue = Random.Range(0f, 1f);
+            float saturation = Random.Range(0.5f, 1f);
+
+            foreach (LightFixture fixture in LightFixtures)
+                fixture.SetColor(hue, saturation);
         }
         public void SetMultipleColors()
         {
+            foreach (LightFixture fixture in LightFixtures)
+            {
+                float hue = Random.Range(0f, 1f);
+                float saturation = Random.Range(0.5f, 1f);
 
+                fixture.SetColor(hue, saturation);
+            }
         }
     }
 }

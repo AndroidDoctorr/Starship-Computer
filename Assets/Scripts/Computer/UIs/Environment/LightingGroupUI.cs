@@ -43,7 +43,7 @@ public class LightingGroupUI : PadUI
         Random.onButtonPress -= SetRandomMode;
         Multiple.onButtonPress -= SetMultipleMode;
     }
-    private void SetColor(float unSaturation, float hue)
+    private void SetColor(string action, GameObject interactor, float unSaturation, float hue)
     {
         float saturation = 1 - unSaturation;
         LightingGroup.SetGroupColor(hue, saturation);
@@ -53,20 +53,20 @@ public class LightingGroupUI : PadUI
     {
         LightingGroup.SetGroupBrightness(brightness);
     }
-    private void ToggleGroup(string sourceName, string actionName, GameObject hand)
+    private void ToggleGroup(string actionName, GameObject hand)
     {
         if (LightingGroup.IsOn) LightingGroup.TurnOffAllLights();
         else LightingGroup.TurnOnAllLights(false);
     }
-    private void SetCandleMode(string sourceName, string actionName, GameObject hand)
+    private void SetCandleMode(string actionName, GameObject hand)
     {
         LightingGroup.SetCandleMode();
     }
-    private void SetRandomMode(string sourceName, string actionName, GameObject hand)
+    private void SetRandomMode(string actionName, GameObject hand)
     {
         LightingGroup.SetRandomColor();
     }
-    private void SetMultipleMode(string sourceName, string actionName, GameObject hand)
+    private void SetMultipleMode(string actionName, GameObject hand)
     {
         LightingGroup.SetMultipleColors();
     }

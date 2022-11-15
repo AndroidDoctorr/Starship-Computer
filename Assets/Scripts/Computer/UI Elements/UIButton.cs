@@ -6,20 +6,19 @@ using UnityEngine.UI;
 
 public class UIButton : UIElement
 {
-    private string _sourceName;
     private bool _glowing = false;
 
     public bool IsActive = true;
     public bool KeepColor = false;
     public string ActionName;
 
-    public delegate void OnButtonAction(string sourceName, string actionName, GameObject hand);
+    public delegate void OnButtonAction(string actionName, GameObject hand);
     public event OnButtonAction onButtonPress;
     public event OnButtonAction onButtonExit;
 
     void Start()
     {
-        _sourceName = transform.parent.gameObject.name;
+
     }
     void Update()
     {
@@ -43,12 +42,12 @@ public class UIButton : UIElement
     {
         if (!IsActive) return;
         if (other.name.ToLower().Contains("finger") && onButtonExit != null)
-            onButtonExit(_sourceName, ActionName, other.gameObject);
+            onButtonExit(ActionName, other.gameObject);
     }
     private void ActivateButton(GameObject hand)
     {
         // Debug.Log("Button activated: " + ActionName);
-        onButtonPress(_sourceName, ActionName, hand);
+        onButtonPress(ActionName, hand);
         // var image = GetComponent<Image>();
         // image.color = Color.white;
         _glowing = true;

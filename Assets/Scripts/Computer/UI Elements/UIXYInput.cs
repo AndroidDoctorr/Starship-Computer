@@ -8,19 +8,18 @@ using UnityEngine.UI;
 
 public class UIXYInput : UIElement
 {
-    private enum Axis { x, y };
-
-    private bool _isSliding = false;
+    // A wrapper for UITouchpad - Adds a knob, an outline and a label
+    // Also scales output to some defined maxima (LimitX and LimitY)
     private bool _hasBeenPreset = false;
     private GameObject _interactor;
 
-    public UIButton Knob;
+    public Transform Knob;
+    public UITouchpad Touchpad;
+    public Image KnobOutline;
     public Image KnobCenter;
     public Image Outline;
     public TMP_Text Label;
-    public Transform Top;
-    public Transform Right;
-    public Transform Origin;
+    public string ActionName;
 
     public float StartX = 0;
     public float StartY = 0;
@@ -28,68 +27,46 @@ public class UIXYInput : UIElement
     public float LimitY = 1;
     public string LabelText = "";
 
-    public delegate void OnSetLevel(float x, float y);
+    public delegate void OnSetLevel(string actionName, GameObject interactor, float x, float y);
     public event OnSetLevel OnLevelSet;
 
     private void OnEnable()
     {
-        Knob.onButtonPress += StartSlide;
-        Knob.onButtonExit += ExitSlide;
+        Touchpad.ActionName = ActionName;
+        Touchpad.OnTouch += Slide;
     }
     private void OnDestroy()
     {
-        Knob.onButtonPress -= StartSlide;
-        Knob.onButtonExit -= ExitSlide;
+        Touchpad.OnTouch -= Slide;
     }
     void Start()
     {
-        if (!_hasBeenPreset) SlideTo(StartX, StartY);
+        if (!_hasBeenPreset) PresetTo(StartX, StartY);
     }
     void Update()
     {
-        if (_isSliding)
-        {
-            float x = GetOutputAlongAxis(Axis.x);
-            float y = GetOutputAlongAxis(Axis.y);
-            OnLevelSet(x, y);
-            SlideTo(x, y);
-        }
+
     }
-    private float GetOutputAlongAxis(Axis axis)
+    public void PresetTo(float x, float y)
     {
-        Vector3 start = Origin.position;
-        Vector3 end = axis == Axis.x ? Right.position : Top.position;
-
-        Vector3 pointer = _interactor.transform.position - start;
-        Vector3 trackVector = end - start;
-        Vector3 projection = Vector3.Project(pointer, trackVector);
-
-        float output = projection.magnitude / trackVector.magnitude;
-        // Limit to range
-        float limit = axis == Axis.x ? LimitX : LimitY;
-        bool isNegative = Vector3.Dot(trackVector, projection) < 0;
-        return isNegative ? 0 : output > limit ? limit : output;
+        _hasBeenPreset = true;
+        SlideTo(x, y);
     }
     public void SlideTo(float x, float y)
     {
-        Vector3 xAxis = Right.localPosition - Origin.localPosition;
-        Vector3 yAxis = Top.localPosition - Origin.localPosition;
+        Vector3 xAxis = Touchpad.Right.localPosition - Touchpad.Origin.localPosition;
+        Vector3 yAxis = Touchpad.Top.localPosition - Touchpad.Origin.localPosition;
         Vector3 xProjection = x * xAxis;
         Vector3 yProjection = y * yAxis;
         xProjection.y = 0;
         yProjection.x = 0;
-        Knob.transform.localPosition = Origin.localPosition + xProjection + yProjection;
-
-        _hasBeenPreset = true;
+        Knob.transform.localPosition = Touchpad.Origin.localPosition + xProjection + yProjection;        
     }
-    void StartSlide(string source, string name, GameObject interactor)
+    void Slide(string actionName, GameObject interactor, float x, float y)
     {
-        _isSliding = true;
         _interactor = interactor;
-    }
-    void ExitSlide(string source, string name, GameObject interactor)
-    {
-        _isSliding = false;
+        SlideTo(x, y);
+        OnLevelSet(actionName, interactor, x * LimitX, y * LimitY);
     }
     public void SetKnobColor(Color color)
     {
@@ -99,6 +76,6 @@ public class UIXYInput : UIElement
     {
         Outline.color = color;
         Label.color = color;
-        Knob.SetColor(color);
+        KnobOutline.color = color;
     }
 }

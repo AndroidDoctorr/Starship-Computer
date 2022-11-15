@@ -21,7 +21,7 @@ public class UIToggle : UIElement
     public Transform OnPosition;
     public Transform OffPosition;
 
-    public delegate void OnToggleAction(string sourceName, string actionName, GameObject hand);
+    public delegate void OnToggleAction(string actionName, GameObject hand);
     public event OnToggleAction onToggle;
 
     void Start()
@@ -49,7 +49,7 @@ public class UIToggle : UIElement
     }
     private void ToggleButton(GameObject hand)
     {
-        onToggle(_sourceName, ActionName, hand);
+        onToggle(ActionName, hand);
 
         if (_isOn) SetToOff(); else SetToOn();
     }

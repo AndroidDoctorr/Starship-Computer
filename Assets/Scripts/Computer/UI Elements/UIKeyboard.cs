@@ -82,7 +82,7 @@ public class UIKeyboard : UIElement
         _as.Stop();
         PlaySound(4);
     }
-    private void KeyPress(string sourceName, string actionName, GameObject hand)
+    private void KeyPress(string actionName, GameObject hand)
     {
         if (!actionName.StartsWith("Key"))
         {
@@ -146,7 +146,7 @@ public class UIKeyboard : UIElement
                 break;
         }
     }
-    private void ExitPress(string sourceName, string actionName, GameObject hand)
+    private void ExitPress(string actionName, GameObject hand)
     {
         if (actionName == "KeyShift")
             _shiftPressed = false;

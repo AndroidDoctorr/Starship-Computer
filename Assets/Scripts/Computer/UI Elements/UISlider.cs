@@ -72,12 +72,12 @@ public class UISlider : UIElement
 
         _hasBeenPreset = true;
     }
-    void StartSlide(string source, string name, GameObject interactor)
+    void StartSlide(string name, GameObject interactor)
     {
         _isSliding = true;
         _interactor = interactor;
     }
-    void ExitSlide(string source, string name, GameObject interactor)
+    void ExitSlide(string name, GameObject interactor)
     {
         _isSliding = false;
     }

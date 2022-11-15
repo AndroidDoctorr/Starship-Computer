@@ -26,7 +26,7 @@ public class UIMenu : UIElement
     {
 
     }
-    private void SelectMenuItem(string source, string action, GameObject hand)
+    private void SelectMenuItem(string action, GameObject hand)
     {
         int index;
         bool isValid = int.TryParse(action, out index);
@@ -42,9 +42,8 @@ public class UIMenu : UIElement
             GenericUI ui = MenuScreens[i];
             ui.gameObject.SetActive(i == index);
         }
-
     }
-    private void ToggleRedAlert(string source, string action, GameObject hand)
+    private void ToggleRedAlert(string action, GameObject hand)
     {
         // MainComputer.ToggleRedAlert();
     }

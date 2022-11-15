@@ -33,8 +33,8 @@ public class LightFixture : Device
     {
         if (_isCandleMode)
         {
-            float z = Mathf.PerlinNoise(_candleSeed, Time.time * 2);
-            float brightness = (z / 4f) + 0.25f;
+            float z = Mathf.PerlinNoise(_candleSeed, Time.time);
+            float brightness = (Mathf.Pow(z, 4) / 4f) + 0.25f;
             Light.intensity = brightness * MaxIntensity;
         }
     }

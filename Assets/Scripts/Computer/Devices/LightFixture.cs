@@ -14,7 +14,7 @@ public class LightFixture : Device
     private Color _color = Color.white;
 
     public Light Light;
-    public GameObject Bulb;
+    public MeshRenderer Bulb;
     // This can limit a light fixture's intensity below the built-in limit of 8
     public float MaxIntensity = LightingGroup.MaxIntensity;
 
@@ -65,8 +65,8 @@ public class LightFixture : Device
     {
         Light.color = color;
 
-        Material material = Bulb.GetComponent<Renderer>().material;
-        material.color = color;
+        Material material = Bulb.material;
+        material.SetColor("_Color", color);
     }
     public void SetBrightness(float brightness)
     {

@@ -8,24 +8,14 @@ using UnityEngine;
 
 namespace Assets.Scripts.Computer
 {
-    public class ShipSystem : MonoBehaviour, ISystem
+    public class ShipSystem : SystemBase
     {
         protected bool _isActive;
-
-        public event ISystem.PropertyChangeDelegate OnPropertyChange;
-
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-        public int Priority { get; set; }
-        public byte[] Address { get; set; }
-        public UsageProfile UsageProfile { get; set; }
-        public Dictionary<string, GenericUI> UIs { get; set; } = new Dictionary<string, GenericUI>();
-        public Dictionary<byte, SubSystem> SubSystems { get; set; } = new Dictionary<byte, SubSystem>();
+        public Dictionary<byte, SubSystem> SubSystems = new Dictionary<byte, SubSystem>();
 
         public ShipSystem()
         {
             Id = Guid.NewGuid();
-
         }
 
         public virtual void ShutDown()

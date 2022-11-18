@@ -10,6 +10,5 @@ namespace Assets.Scripts.Computer
     {
         public delegate void PropertyChangeDelegate(string propertyName, object newValue);
         event PropertyChangeDelegate OnPropertyChange;
-        string Name { get; }
     }
 }

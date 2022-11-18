@@ -1156,7 +1156,7 @@ MonoBehaviour:
   EnabledObject: {fileID: 4495849664333108083}
   DisabledObject: {fileID: 3274721309548899958}
   RedAlertObject: {fileID: 6863190297311388376}
-  Type: 201
+  Type: 202
   LightingGroup: {fileID: 0}
   ColorInput: {fileID: 3536698085429154203}
   BrightnessSlider: {fileID: 202549679732882664}

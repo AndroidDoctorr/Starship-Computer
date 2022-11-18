@@ -16,7 +16,7 @@ namespace Assets.Scripts.Computer
         public byte Address;
         public UsageProfile UsageProfile;
         public PowerProfile PowerProfile;
-        public Dictionary<string, GenericUI> UIs = new Dictionary<string, GenericUI>();
+        public GenericUI[] UIs;
 
         public virtual event ISystem.PropertyChangeDelegate OnPropertyChange;
     }

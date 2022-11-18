@@ -860,6 +860,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41df26777357b5145b2189d64991fe8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: 
+  Priority: 99
+  Address: 0
+  UIs:
+  - {fileID: 8981738899287966596, guid: 070010dbfeca2ca459f78c6d6f1f0e0a, type: 3}
   LightFixtures:
   - {fileID: 153595405}
   - {fileID: 1941169821}
@@ -913,6 +918,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a52e2092391b80147a437f761a76dd06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: 
+  Priority: 0
+  Address: 0
+  UIs: []
   LightingGroups:
   - {fileID: 1168938933}
 --- !u!1 &1185166288 stripped
@@ -1577,8 +1586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00ed9726de8ad6d498babc1d54cf1d72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Systems:
-  - {fileID: 1169444334}
+  Systems: []
 --- !u!4 &1587966643 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 475244, guid: 7a135b1a2cb9c8f488d4dd00c55ab283, type: 3}

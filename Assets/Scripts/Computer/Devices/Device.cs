@@ -27,14 +27,14 @@ namespace Assets.Scripts.Computer
         }
         public void PowerDown(int priority)
         {
-            Debug.Log($"Power Down UI: {GetType().Name}");
+            Debug.Log($"Power Down Device: {GetType().Name}");
 
             HasPower = false;
             PowerProfile.SetPowerDraw(priority, 0);
         }
         public void PowerUp(int priority)
         {
-            Debug.Log($"Power Up UI: {GetType().Name}");
+            Debug.Log($"Power Up Device: {GetType().Name}");
 
             HasPower = true;
             PowerProfile.SetPowerDraw(priority, PowerProfile.MinPowerDraw);

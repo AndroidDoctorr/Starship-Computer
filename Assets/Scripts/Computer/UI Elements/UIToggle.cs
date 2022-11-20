@@ -95,4 +95,12 @@ public class UIToggle : UIElement
         Knob.transform.position = pos;
         _isMoving = false;
     }
+    public void Disable()
+    {
+        IsActive = false;
+    }
+    public void Enable()
+    {
+        IsActive = true;
+    }
 }

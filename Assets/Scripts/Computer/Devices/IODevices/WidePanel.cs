@@ -8,6 +8,11 @@ public class WidePanel : IODevice
 {
     public WidePanel()
     {
-        UITypes = new ConsoleType[] { ConsoleType.WidePanel };
+        UITypes = new ConsoleType[] {
+            ConsoleType.WidePanel,
+            ConsoleType.Panel,
+            ConsoleType.SmallPanel,
+            ConsoleType.Display
+        };
     }
 }

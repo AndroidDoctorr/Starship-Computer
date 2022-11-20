@@ -8,6 +8,9 @@ public class Pad : IODevice
 {
     public Pad()
     {
-        UITypes = new ConsoleType[] { ConsoleType.Pad };
+        UITypes = new ConsoleType[] {
+            ConsoleType.Pad,
+            ConsoleType.Tricorder
+        };
     }
 }

@@ -8,6 +8,9 @@ public class Display : IODevice
 {
     public Display()
     {
-        UITypes = new ConsoleType[] { ConsoleType.Display };
+        UITypes = new ConsoleType[] {
+            ConsoleType.Display,
+            ConsoleType.LargeDisplay
+        };
     }
 }

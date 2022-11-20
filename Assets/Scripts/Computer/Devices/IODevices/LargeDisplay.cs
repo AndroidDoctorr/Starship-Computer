@@ -8,6 +8,10 @@ public class LargeDisplay : IODevice
 {
     public LargeDisplay()
     {
-        UITypes = new ConsoleType[] { ConsoleType.LargeDisplay };
+        UITypes = new ConsoleType[] {
+            ConsoleType.LargeDisplay,
+            ConsoleType.Display,
+            ConsoleType.WidePanel
+        };
     }
 }

@@ -8,6 +8,10 @@ public class WideConsole : IODevice
 {
     public WideConsole()
     {
-        UITypes = new ConsoleType[] { ConsoleType.WideConsole, ConsoleType.StandardConsole };
+        UITypes = new ConsoleType[] {
+            ConsoleType.WideConsole,
+            ConsoleType.StandardConsole,
+            ConsoleType.SmallConsole
+        };
     }
 }

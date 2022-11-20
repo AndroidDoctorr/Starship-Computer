@@ -8,6 +8,10 @@ public class TallConsole : IODevice
 {
     public TallConsole()
     {
-        UITypes = new ConsoleType[] { ConsoleType.TallConsole };
+        UITypes = new ConsoleType[] {
+            ConsoleType.TallConsole,
+            ConsoleType.Display,
+            ConsoleType.SmallConsole
+        };
     }
 }

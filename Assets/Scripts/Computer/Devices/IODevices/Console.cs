@@ -8,6 +8,9 @@ public class Console : IODevice
 {
     public Console()
     {
-        UITypes = new ConsoleType[] { ConsoleType.StandardConsole };
+        UITypes = new ConsoleType[] {
+            ConsoleType.StandardConsole,
+            ConsoleType.SmallConsole
+        };
     }
 }

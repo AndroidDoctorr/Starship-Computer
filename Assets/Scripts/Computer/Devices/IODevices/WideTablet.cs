@@ -8,6 +8,11 @@ public class WideTablet : IODevice
 {
     public WideTablet()
     {
-        UITypes = new ConsoleType[] { ConsoleType.WideTablet };
+        UITypes = new ConsoleType[] {
+            ConsoleType.WideTablet,
+            ConsoleType.Tablet,
+            ConsoleType.Pad,
+            ConsoleType.Tricorder
+        };
     }
 }

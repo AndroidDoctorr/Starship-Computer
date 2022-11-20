@@ -8,6 +8,11 @@ public class Tablet : IODevice
 {
     public Tablet()
     {
-        UITypes = new ConsoleType[] { ConsoleType.Tablet };
+        UITypes = new ConsoleType[] {
+            ConsoleType.Tablet,
+            ConsoleType.WideTablet,
+            ConsoleType.Pad,
+            ConsoleType.Tricorder
+        };
     }
 }

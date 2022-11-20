@@ -8,6 +8,10 @@ public class SmallPanel : IODevice
 {
     public SmallPanel()
     {
-        UITypes = new ConsoleType[] { ConsoleType.SmallPanel };
+        UITypes = new ConsoleType[] {
+            ConsoleType.SmallPanel,
+            ConsoleType.Pad,
+            ConsoleType.Panel
+        };
     }
 }

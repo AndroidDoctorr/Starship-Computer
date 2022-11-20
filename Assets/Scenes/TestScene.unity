@@ -152,8 +152,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 225563441}
-  - {fileID: 1792573006}
   - {fileID: 1539981602}
+  - {fileID: 1792573006}
   m_Father: {fileID: 1104869675}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1491,7 +1491,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 403567751942989247, guid: 97edbc50b6af7e24ebc5c4975a806b15, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 403567751942989247, guid: 97edbc50b6af7e24ebc5c4975a806b15, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1669,7 +1669,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 124869699}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1883754543
 PrefabInstance:

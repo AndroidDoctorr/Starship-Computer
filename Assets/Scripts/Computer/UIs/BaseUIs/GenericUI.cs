@@ -21,7 +21,7 @@ namespace Assets.Scripts
         LargeDisplay,    // 2m x 1m
         WidePanel = 200, // 0.5m x 0.4m
         Panel,           // 0.25m x 0.4m
-        SmallPanel,      // 0.1m x 0.25m
+        SmallPanel,      // 0.1m x 0.2m
         // Mobile
         Pad = 300,       // 0.1m x 0.2m
         Tablet,          // 0.3m x 0.2m

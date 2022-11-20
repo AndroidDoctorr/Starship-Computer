@@ -9,6 +9,7 @@ namespace Assets.Scripts.Computer
     public class IODevice : Device
     {
         private GenericUI _ui;
+        public ConsoleType[] UITypes = { };
         public void SendMessage()
         {
 

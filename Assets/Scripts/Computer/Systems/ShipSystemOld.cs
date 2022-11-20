@@ -61,8 +61,6 @@ namespace Assets.Scripts
             IsLowPowerMode = false;
             IsEnabled = false;
             HasPower = false;
-
-            if (UI != null) UI.PowerDown();
         }
         public virtual void PowerUp()
         {
@@ -70,8 +68,6 @@ namespace Assets.Scripts
             HasPower = true;
             if (IsEnabled) Enable();
             else Disable();
-
-            if (UI != null) UI.PowerUp();
         }
         public void SetRedAlert(bool isRedAlert)
         {

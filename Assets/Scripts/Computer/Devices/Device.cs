@@ -29,15 +29,25 @@ namespace Assets.Scripts.Computer
         {
             Debug.Log($"Power Down Device: {GetType().Name}");
 
+            bool canSetPower = PowerProfile.SetPowerDraw(priority, 0);
+            if (!canSetPower)
+            {
+                Debug.LogError($"Permission denied - cannot deactivate: {GetType().Name}");
+                return;
+            }
             HasPower = false;
-            PowerProfile.SetPowerDraw(priority, 0);
         }
         public void PowerUp(int priority)
         {
             Debug.Log($"Power Up Device: {GetType().Name}");
 
+            bool canSetPower = PowerProfile.SetPowerDraw(priority, PowerProfile.MinPowerDraw);
+            if (!canSetPower)
+            {
+                Debug.LogError($"Permission denied - cannot power: {GetType().Name}");
+                return;
+            }
             HasPower = true;
-            PowerProfile.SetPowerDraw(priority, PowerProfile.MinPowerDraw);
         }
     }
 }

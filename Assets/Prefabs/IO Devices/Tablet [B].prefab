@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2254892602800515553}
+  - component: {fileID: 3104747839696951494}
   m_Layer: 0
   m_Name: Tablet [B]
   m_TagString: Untagged
@@ -32,6 +33,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3104747839696951494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2254892602800515554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f3e12033540e74dbc48fc000417377, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UITypes: 2d010000
 --- !u!1 &2254892603937003987
 GameObject:
   m_ObjectHideFlags: 0

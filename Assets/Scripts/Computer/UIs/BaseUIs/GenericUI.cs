@@ -95,24 +95,6 @@ namespace Assets.Scripts
             EnabledObject.SetActive(true);
             DisabledObject.SetActive(false);
         }
-        public void PowerDown()
-        {
-            Debug.Log($"Power Down UI: {GetType().Name}");
-            Disable();
-
-            HasPower = false;
-
-            DisabledObject.SetActive(false);
-        }
-        public void PowerUp()
-        {
-            Debug.Log($"Power Up UI: {GetType().Name}");
-            HasPower = true;
-
-            if (IsEnabled) Enable();
-
-            else Disable();
-        }
         public void SetRedAlert(bool isRedAlert)
         {
             Debug.Log($"Set Red Alert in UI: {GetType().Name}");

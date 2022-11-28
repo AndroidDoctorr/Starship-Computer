@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class AtmosphereUI : PadUI
 {
+    public ACUnit ACUnit;
+
     public UIPopupMenu Menu;
     public UISlider TempSlider;
     public UISlider HumidSlider;

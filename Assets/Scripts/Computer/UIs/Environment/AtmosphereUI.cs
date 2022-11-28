@@ -8,6 +8,10 @@ using UnityEngine;
 public class AtmosphereUI : PadUI
 {
     public UIPopupMenu Menu;
+    public UISlider TempSlider;
+    public UISlider HumidSlider;
+    public UIProperty TempProp;
+    public UIProperty HumidProp;
     
     private void OnEnable()
     {

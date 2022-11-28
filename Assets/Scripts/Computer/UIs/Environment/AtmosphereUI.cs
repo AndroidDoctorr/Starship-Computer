@@ -18,12 +18,26 @@ public class AtmosphereUI : PadUI
     private void OnEnable()
     {
         Menu.OnToggle += MenuToggle;
+
+        TempSlider.OnLevelSet += SetTemp;
+        HumidSlider.OnLevelSet += SetHumidity;
     }
     private void OnDestroy()
     {
         Menu.OnToggle -= MenuToggle;
+
+        TempSlider.OnLevelSet -= SetTemp;
+        HumidSlider.OnLevelSet -= SetHumidity;
     }
 
+    private void SetTemp(float temp)
+    {
+        ACUnit.SetTemperature(temp);
+    }
+    private void SetHumidity(float humid)
+    {
+        ACUnit.SetHumidity(humid);
+    }
     private void MenuToggle(bool isOpen)
     {
 

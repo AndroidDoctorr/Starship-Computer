@@ -10,6 +10,7 @@ namespace Assets.Scripts.Computer
 {
     public abstract class SubSystem : SystemBase
     {
+        public GenericUI[] UIs;
         public SubSystem ()
         {
             Id = Guid.NewGuid();

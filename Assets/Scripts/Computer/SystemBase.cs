@@ -16,7 +16,6 @@ namespace Assets.Scripts.Computer
         public byte Address;
         public UsageProfile UsageProfile;
         public PowerProfile PowerProfile;
-        public GenericUI[] UIs;
 
         public virtual event ISystem.PropertyChangeDelegate OnPropertyChange;
     }

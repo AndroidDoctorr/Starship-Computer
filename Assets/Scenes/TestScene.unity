@@ -987,7 +987,6 @@ MonoBehaviour:
   Name: 
   Priority: 0
   Address: 0
-  UIs: []
   LightingGroups:
   - {fileID: 1168938933}
 --- !u!1 &1185166288 stripped

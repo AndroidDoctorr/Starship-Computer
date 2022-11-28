@@ -45,6 +45,8 @@ public class LightingGroupUI : PadUI
         CandleMode.onButtonPress -= SetCandleMode;
         Random.onButtonPress -= SetRandomMode;
         Multiple.onButtonPress -= SetMultipleMode;
+
+        Menu.OnToggle -= MenuToggle;
     }
     private void SetColor(string action, GameObject interactor, float unSaturation, float hue)
     {
@@ -81,6 +83,9 @@ public class LightingGroupUI : PadUI
     }
     private void MenuToggle(bool isOpen)
     {
-
+        if (isOpen)
+        {
+            Toggle.Disable();
+        }
     }
 }

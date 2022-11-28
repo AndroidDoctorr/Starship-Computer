@@ -323,6 +323,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1104869675}
     m_Modifications:
+    - target: {fileID: 1329063968600981273, guid: 802a2680a74acaf4eb9ff62f0c60eec7, type: 3}
+      propertyPath: ThermalProcess
+      value: 
+      objectReference: {fileID: 7929825}
     - target: {fileID: 3577343382268538412, guid: 802a2680a74acaf4eb9ff62f0c60eec7, type: 3}
       propertyPath: m_Name
       value: Temperature Sensor

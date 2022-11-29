@@ -6,4 +6,5 @@ public class Atmosphere : ThermalProcess
 {
     public ACUnit ACUnit;
     public override double Temperature => ACUnit.Temperature;
+    public double Humidity;
 }

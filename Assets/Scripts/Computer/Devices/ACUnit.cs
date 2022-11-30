@@ -61,9 +61,7 @@ public class ACUnit : Device
         if (diff == 0) return;
         // Remaining heat needed to meet target temp
         double qToGo = Atmosphere.GetHeatDifference(targetTemp);
-        // TODO: Divide HeatRate by number of AC Units in Atmosphere Group
-        //   - they'll all be working simultaneously
-        if (Mathf.Abs((float)qToGo) < HeatRate)
+        if (Mathf.Abs((float) qToGo) < HeatRate)
             Atmosphere.AddHeat(qToGo);
         else if (targetTemp < currentTemp) 
             Atmosphere.AddHeat(-HeatRate);
@@ -76,8 +74,6 @@ public class ACUnit : Device
         if (diff == 0) return;
         // Remaining water mass needed to meet target humidity
         double massToGo = Atmosphere.GetMoistureDifference(HumiditySetting);
-        // TODO: Divide HumidifyRate by number of AC Units in Atmosphere Group
-        //   - they'll all be working simultaneously
         if (Mathf.Abs((float)massToGo) < HumidifyRate)
             Atmosphere.AddHumidity (massToGo);
         else if (HumiditySetting < currentHumidity)

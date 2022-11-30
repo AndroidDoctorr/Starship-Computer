@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,13 +9,36 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
 {
     public class AtmosphereGroup : SubSystem
     {
+        // public Atmosphere Atmosphere;
         public ACUnit[] ACUnits;
         public TemperatureSensor[] TemperatureSensors;
         public HumiditySensor[] HumiditySensors;
+        // Get the actual values (measured by sensors)
+        public double Humidity => GetHumidity();
+        public double Temperature => GetTemperature();
+        public override event ISystem.PropertyChangeDelegate OnPropertyChange;
 
-        private void Start()
+        private void OnEnable()
         {
-            
+            foreach (TemperatureSensor tempSensor in TemperatureSensors)
+                tempSensor.OnTemperatureChange += UpdateTemperature;
+            foreach (HumiditySensor humidSensor in HumiditySensors)
+                humidSensor.OnHumidityChange += UpdateHumidity;
+        }
+        private void OnDestroy()
+        {
+            foreach (TemperatureSensor tempSensor in TemperatureSensors)
+                tempSensor.OnTemperatureChange -= UpdateTemperature;
+            foreach (HumiditySensor humidSensor in HumiditySensors)
+                humidSensor.OnHumidityChange -= UpdateHumidity;
+        }
+        private void UpdateTemperature(double temp)
+        {
+            OnPropertyChange(nameof(Temperature), Math.Round(temp, 1));
+        }
+        private void UpdateHumidity(double humid)
+        {
+            OnPropertyChange(nameof(Humidity), humid);
         }
         public void SetTemperature(double temp)
         {

@@ -2446,6 +2446,10 @@ PrefabInstance:
       value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 1533118196517862407, guid: 66ac523b81cf2a7458be5185d70738c6, type: 3}
+      propertyPath: AtmosphereGroup
+      value: 
+      objectReference: {fileID: 2088897033}
+    - target: {fileID: 1533118196517862407, guid: 66ac523b81cf2a7458be5185d70738c6, type: 3}
       propertyPath: HumiditySensors.Array.size
       value: 1
       objectReference: {fileID: 0}

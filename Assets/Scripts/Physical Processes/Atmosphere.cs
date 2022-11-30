@@ -37,6 +37,8 @@ public class Atmosphere : ThermalProcess
             Humidity = 0;
         else
             Humidity = currentMoisture / totalMoisture;
+
+        OnHumidityChange(Humidity);
     }
     public double GetTotalMoisture()
     {

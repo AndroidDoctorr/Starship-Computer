@@ -21,6 +21,9 @@ public class AtmosphereUI : PadUI
 
         TempSlider.OnLevelSet += SetTemp;
         HumidSlider.OnLevelSet += SetHumidity;
+
+        TempProp.SetSystem(AtmosphereGroup);
+        HumidProp.SetSystem(AtmosphereGroup);
     }
     private void OnDestroy()
     {
@@ -29,7 +32,6 @@ public class AtmosphereUI : PadUI
         TempSlider.OnLevelSet -= SetTemp;
         HumidSlider.OnLevelSet -= SetHumidity;
     }
-
     private void SetTemp(float temp)
     {
         AtmosphereGroup.SetTemperature(temp);

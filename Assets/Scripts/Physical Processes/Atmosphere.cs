@@ -8,6 +8,7 @@ public class Atmosphere : ThermalProcess
     public double StartTemp = 295; // Room temperature
     public double StartHumidity = 0.1;
     public double Volume = 1000; // m3
+    // Linear approximation of density as function of temp
     public double Density { get => 2.42 - 0.00413 * Temperature; } // kg / m3
     public override double Mass { get => Volume * Density; }
     public double Humidity { get; protected set; } // % maximum humidity
@@ -21,13 +22,9 @@ public class Atmosphere : ThermalProcess
     }
     public void AddHumidity(double mass) // g
     {
-        // 3rd degree polynomial approximation of maximum water capacity of
-        //   Nitrogen/Oxygen mix in g / m3
-        double capacity = -6613
-            + 74.3 * Temperature
-            + -0.279 * Math.Pow(Temperature, 2)
-            + .00035 * Math.Pow(Temperature, 3);
-        double totalMoisture = capacity * Volume; // g
+        // 3rd poly approximation of maximum water capacity of
+        //   N2/O2 mix in g / m3
+        double totalMoisture = GetTotalMoisture();
         double currentMoisture = totalMoisture * Humidity;
         // Add moisture to total humidity
         currentMoisture += mass;
@@ -40,5 +37,17 @@ public class Atmosphere : ThermalProcess
             Humidity = 0;
         else
             Humidity = currentMoisture / totalMoisture;
+    }
+    public double GetTotalMoisture()
+    {
+        double capacity = -6613
+            + 74.3 * Temperature
+            + -0.279 * Math.Pow(Temperature, 2)
+            + .00035 * Math.Pow(Temperature, 3);
+        return capacity * Volume; // g
+    }
+    public double GetMoistureDifference(double targetHumidity)
+    {
+        return (targetHumidity - Humidity) * GetTotalMoisture(); // g
     }
 }

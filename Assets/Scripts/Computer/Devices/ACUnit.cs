@@ -79,13 +79,16 @@ public class ACUnit : Device
     }
     private void HumidifyToSetting()
     {
-        double diff = HumiditySetting - Atmosphere.Humidity;
+        double currentHumidity = GetHumidity();
+        double diff = HumiditySetting - currentHumidity;
         if (diff == 0) return;
-        // if (Mathf.Abs(diff) < humidChange)
-        //     Atmosphere.Humidity = HumiditySetting;
-        // else if (diff > 0)
-        //     Atmosphere.Humidity += humidChange;
-        // else Atmosphere.Humidity -= humidChange;
+        // Remaining water mass needed to meet target humidity
+        double massToGo = Atmosphere.GetMoistureDifference(HumiditySetting);
+        if (Mathf.Abs((float)massToGo) < HumidifyRate)
+            Atmosphere.AddHumidity (massToGo);
+        else if (HumiditySetting < currentHumidity)
+            Atmosphere.AddHumidity(-HumidifyRate);
+        else Atmosphere.AddHumidity(HumidifyRate);
     }
     private double GetTempFromSetting()
     {

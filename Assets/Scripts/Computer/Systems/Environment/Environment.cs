@@ -11,6 +11,20 @@ namespace Assets.Scripts.Computer.Systems.Environment
     public class Environment : ShipSystem
     {
         public LightingGroup[] LightingGroups;
+        public ACUnit[] ACUnits;
+        public TemperatureSensor[] TemperatureSensors;
+        public HumiditySensor[] HumiditySensors;
+
+        public double GetTemperature()
+        {
+            return TemperatureSensors.Select(s => s.GetTemperature()).Sum() /
+                TemperatureSensors.Length;
+        }
+        public double GetHumidity()
+        {
+            return HumiditySensors.Select(s => s.GetHumidity()).Sum() /
+                HumiditySensors.Length;
+        }
 
         public bool TurnOnLightingGroup(string name)
         {
@@ -36,7 +50,6 @@ namespace Assets.Scripts.Computer.Systems.Environment
             {
                 Debug.LogWarning($"Lighting Group \"{name}\" not found");
                 return false;
-
             }
 
             lightingGroup.TurnOffAllLights();

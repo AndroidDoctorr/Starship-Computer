@@ -1,4 +1,5 @@
 using Assets.Scripts.Computer;
+using Assets.Scripts.Computer.Systems.Environment;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +8,7 @@ using UnityEngine;
 public class ACUnit : Device
 {
     public Atmosphere Atmosphere;
-    public TemperatureSensor[] TemperatureSensors;
-    public HumiditySensor[] HumiditySensors;
+    public Environment Environment;
 
     public static float MaximumTemperature = 310;
     public static float MinimumTemperature = 280;
@@ -24,8 +24,8 @@ public class ACUnit : Device
     {
         // TODO: Schedule on/off periods with a minimum delay between
         double targetTemp = GetTempFromSetting();
-        double currentTemp = GetTemperature();
-        double currentHumidity = GetHumidity();
+        double currentTemp = Environment.GetTemperature();
+        double currentHumidity = Environment.GetHumidity();
 
         if (targetTemp != currentTemp)
             HeatOrCoolToSetting();
@@ -52,21 +52,10 @@ public class ACUnit : Device
             TempSetting = 0;
         else TempSetting = temp;
     }
-
-    private double GetTemperature()
-    {
-        return TemperatureSensors.Select(s => s.GetTemperature()).Sum() /
-            TemperatureSensors.Length;
-    }
-    private double GetHumidity()
-    {
-        return HumiditySensors.Select(s => s.GetHumidity()).Sum() /
-            HumiditySensors.Length;
-    }
     private void HeatOrCoolToSetting()
     {
         double targetTemp = GetTempFromSetting();
-        double currentTemp = GetTemperature();
+        double currentTemp = Environment.GetTemperature();
         double diff = targetTemp - currentTemp;
         if (diff == 0) return;
         // Remaining heat needed to meet target temp
@@ -79,7 +68,7 @@ public class ACUnit : Device
     }
     private void HumidifyToSetting()
     {
-        double currentHumidity = GetHumidity();
+        double currentHumidity = Environment.GetHumidity();
         double diff = HumiditySetting - currentHumidity;
         if (diff == 0) return;
         // Remaining water mass needed to meet target humidity

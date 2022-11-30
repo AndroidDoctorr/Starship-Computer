@@ -17,7 +17,7 @@ public class Atmosphere : ThermalProcess
     {
         HeatCapacity = 700; // Air at STP
         Temperature = StartTemp;
-        Humidity = StartHumidity; // Room temperature
+        Humidity = StartHumidity;
     }
     public void AddHumidity(double mass) // g
     {

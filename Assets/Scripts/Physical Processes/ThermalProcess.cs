@@ -10,12 +10,12 @@ public class ThermalProcess : MonoBehaviour
     public delegate void TemperatureChangeDelegate(double newTemp);
     public virtual event TemperatureChangeDelegate OnTemperatureChange;
 
-    public void AddHeat(double q)
+    public void AddHeat(double q) // in J
     {
         Temperature += q / Mass / HeatCapacity;
         OnTemperatureChange(Temperature);
     }
-    public double GetHeatDifference(double temp)
+    public double GetHeatDifference(double temp) // in K
     {
         // This calculates the energy in J needed to raise/lower temp to T
         return HeatCapacity * Mass * (temp - Temperature);

@@ -66,18 +66,19 @@ public class ACUnit : Device
     private void HeatOrCoolToSetting()
     {
         double targetTemp = GetTempFromSetting();
-        double tempChange = HeatRate / Atmosphere.Volume;
-        double diff = targetTemp - Atmosphere.Temperature;
+        double currentTemp = GetTemperature();
+        double diff = targetTemp - currentTemp;
         if (diff == 0) return;
-        // if (Mathf.Abs((float) diff) < tempChange)
-            // Atmosphere.Temperature = targetTemp;
-        // else if (diff > 0)
-            // Atmosphere.Temperature += tempChange;
-        // else Atmosphere.Temperature -= tempChange;
+        // Remaining heat needed to meet target temp
+        double qToGo = Atmosphere.GetHeatDifference(targetTemp);
+        if (Mathf.Abs((float)qToGo) < HeatRate)
+            Atmosphere.AddHeat(qToGo);
+        else if (targetTemp < currentTemp) 
+            Atmosphere.AddHeat(-HeatRate);
+        else Atmosphere.AddHeat(HeatRate);
     }
     private void HumidifyToSetting()
     {
-        double humidChange = HumidifyRate / Atmosphere.Volume;
         double diff = HumiditySetting - Atmosphere.Humidity;
         if (diff == 0) return;
         // if (Mathf.Abs(diff) < humidChange)

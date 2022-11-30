@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7163618377335616811}
-  - component: {fileID: 1329063968600981273}
+  - component: {fileID: 48381378267431349}
   m_Layer: 0
   m_Name: Humidity Sensor
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1329063968600981273
+--- !u!114 &48381378267431349
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,10 +42,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3577343382268538412}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4eecec1bff86b074484805bea4d49279, type: 3}
+  m_Script: {fileID: 11500000, guid: 61c01c49f95defa4b8326d4e22e75ca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThermalProcess: {fileID: 0}
+  Atmosphere: {fileID: 0}
 --- !u!1 &6827721498198939462
 GameObject:
   m_ObjectHideFlags: 0

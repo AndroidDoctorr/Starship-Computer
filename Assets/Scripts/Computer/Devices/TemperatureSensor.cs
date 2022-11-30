@@ -19,4 +19,8 @@ public class TemperatureSensor : MonoBehaviour
     {
         OnTemperatureChange(newTemp);
     }
+    public double GetTemperature()
+    {
+        return ThermalProcess.Temperature;
+    }
 }

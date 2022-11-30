@@ -15,4 +15,9 @@ public class ThermalProcess : MonoBehaviour
         Temperature += q / Mass / HeatCapacity;
         OnTemperatureChange(Temperature);
     }
+    public double GetHeatDifference(double temp)
+    {
+        // This calculates the energy needed to raise/lower temp to T
+        return HeatCapacity * Mass * (temp - Temperature);
+    }
 }

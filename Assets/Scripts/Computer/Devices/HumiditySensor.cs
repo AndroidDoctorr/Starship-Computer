@@ -20,4 +20,8 @@ public class HumiditySensor : MonoBehaviour
     {
         OnHumidityChange(newHumidity);
     }
+    public double GetHumidity()
+    {
+        return Atmosphere.Humidity;
+    }
 }

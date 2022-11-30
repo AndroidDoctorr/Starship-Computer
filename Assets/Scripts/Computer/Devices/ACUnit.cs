@@ -1,11 +1,14 @@
 using Assets.Scripts.Computer;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ACUnit : Device
 {
     public Atmosphere Atmosphere;
+    public TemperatureSensor[] TemperatureSensors;
+    public HumiditySensor[] HumiditySensors;
 
     public static float MaximumTemperature = 310;
     public static float MinimumTemperature = 280;
@@ -21,10 +24,13 @@ public class ACUnit : Device
     {
         // TODO: Schedule on/off periods with a minimum delay between
         double targetTemp = GetTempFromSetting();
-        if (targetTemp != Atmosphere.Temperature)
+        double currentTemp = GetTemperature();
+        double currentHumidity = GetHumidity();
+
+        if (targetTemp != currentTemp)
             HeatOrCoolToSetting();
 
-        if (Atmosphere.Humidity != HumiditySetting)
+        if (Atmosphere.Humidity != currentHumidity)
             HumidifyToSetting();
     }
 
@@ -47,6 +53,16 @@ public class ACUnit : Device
         else TempSetting = temp;
     }
 
+    private double GetTemperature()
+    {
+        return TemperatureSensors.Select(s => s.GetTemperature()).Sum() /
+            TemperatureSensors.Length;
+    }
+    private double GetHumidity()
+    {
+        return HumiditySensors.Select(s => s.GetHumidity()).Sum() /
+            HumiditySensors.Length;
+    }
     private void HeatOrCoolToSetting()
     {
         double targetTemp = GetTempFromSetting();

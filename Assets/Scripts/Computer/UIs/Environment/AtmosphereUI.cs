@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class AtmosphereUI : PadUI
 {
-    public ACUnit ACUnit;
+    public AtmosphereGroup AtmosphereGroup;
 
     public UIPopupMenu Menu;
     public UISlider TempSlider;
@@ -32,11 +32,11 @@ public class AtmosphereUI : PadUI
 
     private void SetTemp(float temp)
     {
-        ACUnit.SetTemperature(temp);
+        AtmosphereGroup.SetTemperature(temp);
     }
     private void SetHumidity(float humid)
     {
-        ACUnit.SetHumidity(humid);
+        AtmosphereGroup.SetHumidity(humid);
     }
     private void MenuToggle(bool isOpen)
     {

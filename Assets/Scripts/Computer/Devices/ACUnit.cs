@@ -1,5 +1,6 @@
 using Assets.Scripts.Computer;
 using Assets.Scripts.Computer.Systems.Environment;
+using Assets.Scripts.Computer.Systems.Environment.SubSystems;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,24 +9,24 @@ using UnityEngine;
 public class ACUnit : Device
 {
     public Atmosphere Atmosphere;
-    public Environment Environment;
+    public AtmosphereGroup AtmosphereGroup;
 
-    public static float MaximumTemperature = 310;
-    public static float MinimumTemperature = 280;
+    public static double MaximumTemperature = 310;
+    public static double MinimumTemperature = 280;
 
-    public float HeatRate = 1;
-    public float HumidifyRate = 0.01f;
+    public double HeatRate = 1;
+    public double HumidifyRate = 0.01f;
 
-    public float HumiditySetting { get; private set; } = 0.1f;
-    public float TempSetting { get; private set; } = 0.5f;
+    public double HumiditySetting { get; private set; } = 0.1f;
+    public double TempSetting { get; private set; } = 0.5f;
     public bool StartAtSettings = true;
 
     void Update()
     {
         // TODO: Schedule on/off periods with a minimum delay between
         double targetTemp = GetTempFromSetting();
-        double currentTemp = Environment.GetTemperature();
-        double currentHumidity = Environment.GetHumidity();
+        double currentTemp = AtmosphereGroup.GetTemperature();
+        double currentHumidity = AtmosphereGroup.GetHumidity();
 
         if (targetTemp != currentTemp)
             HeatOrCoolToSetting();
@@ -34,7 +35,7 @@ public class ACUnit : Device
             HumidifyToSetting();
     }
 
-    public void SetHumidity(float humidity)
+    public void SetHumidity(double humidity)
     {
         // TODO: Return error message or something if out of range
         if (humidity > 1)
@@ -43,7 +44,7 @@ public class ACUnit : Device
             HumiditySetting = 0;
         else HumiditySetting = humidity;
     }
-    public void SetTemperature(float temp)
+    public void SetTemperature(double temp)
     {
         // TODO: Return error message or something if out of range
         if (temp > 1)
@@ -55,11 +56,13 @@ public class ACUnit : Device
     private void HeatOrCoolToSetting()
     {
         double targetTemp = GetTempFromSetting();
-        double currentTemp = Environment.GetTemperature();
+        double currentTemp = AtmosphereGroup.GetTemperature();
         double diff = targetTemp - currentTemp;
         if (diff == 0) return;
         // Remaining heat needed to meet target temp
         double qToGo = Atmosphere.GetHeatDifference(targetTemp);
+        // TODO: Divide HeatRate by number of AC Units in Atmosphere Group
+        //   - they'll all be working simultaneously
         if (Mathf.Abs((float)qToGo) < HeatRate)
             Atmosphere.AddHeat(qToGo);
         else if (targetTemp < currentTemp) 
@@ -68,11 +71,13 @@ public class ACUnit : Device
     }
     private void HumidifyToSetting()
     {
-        double currentHumidity = Environment.GetHumidity();
+        double currentHumidity = AtmosphereGroup.GetHumidity();
         double diff = HumiditySetting - currentHumidity;
         if (diff == 0) return;
         // Remaining water mass needed to meet target humidity
         double massToGo = Atmosphere.GetMoistureDifference(HumiditySetting);
+        // TODO: Divide HumidifyRate by number of AC Units in Atmosphere Group
+        //   - they'll all be working simultaneously
         if (Mathf.Abs((float)massToGo) < HumidifyRate)
             Atmosphere.AddHumidity (massToGo);
         else if (HumiditySetting < currentHumidity)
@@ -81,7 +86,7 @@ public class ACUnit : Device
     }
     private double GetTempFromSetting()
     {
-        float tempRange = MaximumTemperature - MinimumTemperature;
+        double tempRange = MaximumTemperature - MinimumTemperature;
         return TempSetting * tempRange + MinimumTemperature;
     }
 }

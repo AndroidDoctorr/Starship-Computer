@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ThermalProcess : MonoBehaviour
 {
-    public double Mass { get; protected set; }
-    public double HeatCapacity { get; protected set; }
-    public virtual double Temperature { get; protected set; }
+    public virtual double Mass { get; protected set; } // Kg
+    public double HeatCapacity { get; protected set; } // J / Kg / K
+    public virtual double Temperature { get; protected set; } // K
     public delegate void TemperatureChangeDelegate(double newTemp);
     public virtual event TemperatureChangeDelegate OnTemperatureChange;
 
@@ -17,7 +17,7 @@ public class ThermalProcess : MonoBehaviour
     }
     public double GetHeatDifference(double temp)
     {
-        // This calculates the energy needed to raise/lower temp to T
+        // This calculates the energy in J needed to raise/lower temp to T
         return HeatCapacity * Mass * (temp - Temperature);
     }
 }

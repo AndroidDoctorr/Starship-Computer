@@ -14,7 +14,7 @@ public class ACUnit : Device
     public static double MaximumTemperature = 310;
     public static double MinimumTemperature = 280;
 
-    public double HeatRate = 1;
+    public double HeatRate = 50;
     public double HumidifyRate = 0.01f;
 
     public double HumiditySetting { get; private set; } = 0.1f;

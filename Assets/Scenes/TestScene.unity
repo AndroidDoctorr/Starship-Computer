@@ -486,6 +486,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eecec1bff86b074484805bea4d49279, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &372678903
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 372678904}
+  m_Layer: 0
+  m_Name: Other Devices
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &372678904
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372678903}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3090220674500377250}
+  m_Father: {fileID: 1104869675}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &406947721
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1029,8 +1061,8 @@ Transform:
   m_Children:
   - {fileID: 1349185347}
   - {fileID: 124869699}
-  - {fileID: 3090220674500377250}
   - {fileID: 1498865436}
+  - {fileID: 372678904}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1175,7 +1207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41df26777357b5145b2189d64991fe8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
+  Name: Lighting Group A
   Priority: 99
   Address: 0
   UIs:
@@ -1218,6 +1250,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1168938932}
+  - {fileID: 2088897032}
   m_Father: {fileID: 1057590115}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1238,6 +1271,8 @@ MonoBehaviour:
   Address: 0
   LightingGroups:
   - {fileID: 1168938933}
+  AtmosphereGroups:
+  - {fileID: 2088897033}
 --- !u!1 &1185166288 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 133480, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
@@ -1623,6 +1658,10 @@ PrefabInstance:
       propertyPath: ACUnit
       value: 
       objectReference: {fileID: 3090220674500377251}
+    - target: {fileID: 4545538823449315432, guid: b7bd6a134d2c173468f9c2190cae5849, type: 3}
+      propertyPath: AtmosphereGroup
+      value: 
+      objectReference: {fileID: 2088897033}
     - target: {fileID: 9109981595229720248, guid: b7bd6a134d2c173468f9c2190cae5849, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1889,7 +1928,7 @@ Transform:
   - {fileID: 269763720}
   - {fileID: 55365231}
   m_Father: {fileID: 1104869675}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1539981601
 PrefabInstance:
@@ -2332,12 +2371,67 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2088897031
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2088897032}
+  - component: {fileID: 2088897033}
+  m_Layer: 0
+  m_Name: Atmosphere Group - Main
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2088897032
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088897031}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1169444333}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2088897033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088897031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49132205706f0134fb4f3d6c73b28118, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Atmosphere Group A
+  Priority: 99
+  Address: 1
+  UIs:
+  - {fileID: 4545538823449315432, guid: b7bd6a134d2c173468f9c2190cae5849, type: 3}
+  ACUnits:
+  - {fileID: 3090220674500377251}
+  TemperatureSensors:
+  - {fileID: 269763721}
+  HumiditySensors:
+  - {fileID: 55365232}
 --- !u!1001 &3090220674500377249
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1104869675}
+    m_TransformParent: {fileID: 372678904}
     m_Modifications:
     - target: {fileID: 1533118196517862407, guid: 66ac523b81cf2a7458be5185d70738c6, type: 3}
       propertyPath: HasPower
@@ -2347,6 +2441,10 @@ PrefabInstance:
       propertyPath: Atmosphere
       value: 
       objectReference: {fileID: 7929825}
+    - target: {fileID: 1533118196517862407, guid: 66ac523b81cf2a7458be5185d70738c6, type: 3}
+      propertyPath: HumidifyRate
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 1533118196517862407, guid: 66ac523b81cf2a7458be5185d70738c6, type: 3}
       propertyPath: HumiditySensors.Array.size
       value: 1
@@ -2365,7 +2463,7 @@ PrefabInstance:
       objectReference: {fileID: 269763721}
     - target: {fileID: 5543566662620143811, guid: 66ac523b81cf2a7458be5185d70738c6, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5543566662620143811, guid: 66ac523b81cf2a7458be5185d70738c6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2385,15 +2483,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5543566662620143811, guid: 66ac523b81cf2a7458be5185d70738c6, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5543566662620143811, guid: 66ac523b81cf2a7458be5185d70738c6, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5543566662620143811, guid: 66ac523b81cf2a7458be5185d70738c6, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5543566662620143811, guid: 66ac523b81cf2a7458be5185d70738c6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

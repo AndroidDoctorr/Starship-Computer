@@ -11,7 +11,7 @@ namespace Assets.Scripts.Computer.Systems.Environment
     public class Environment : ShipSystem
     {
         public LightingGroup[] LightingGroups;
-        public Atmosphere[] AtmosphereGroups;
+        public AtmosphereGroup[] AtmosphereGroups;
 
         public bool TurnOnLightingGroup(string name)
         {

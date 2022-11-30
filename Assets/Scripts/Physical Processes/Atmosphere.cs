@@ -5,17 +5,19 @@ using UnityEngine;
 public class Atmosphere : ThermalProcess
 {
     public ACUnit[] ACUnits;
+    public double StartTemp = 295; // Room temperature
+    public double StartHumidity = 0.1;
     public double Volume = 1000; // m3
     public double Density { get => 2.42 - 0.00413 * Temperature; } // kg / m3
     public override double Mass { get => Volume * Density; }
-    public double Humidity { get; protected set; } = 0.1; // % maximum humidity
+    public double Humidity { get; protected set; } // % maximum humidity
     public delegate void HumidityChangeDelegate(double newHumid);
     public virtual event HumidityChangeDelegate OnHumidityChange;
     private void Start()
     {
         HeatCapacity = 700; // Air at STP
-        Temperature = 295; // Room temperature
-        // TODO: Set temp and humidity to AC Unit settings
+        Temperature = StartTemp;
+        Humidity = StartHumidity; // Room temperature
     }
     public void AddHumidity(double mass) // g
     {

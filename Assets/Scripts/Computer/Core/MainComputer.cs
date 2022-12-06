@@ -32,6 +32,9 @@ namespace Assets.Scripts.Computer
         public ShipSystem[] Systems;
         public MainComputer()
         {
+            // Startup
+            // Read config file, start up system
+
             var powerProfiles = new Dictionary<string, PowerProfile>();
             _powerAllocator = new PowerAllocator(PowerModules, powerProfiles);
         }

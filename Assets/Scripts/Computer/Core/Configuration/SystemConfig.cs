@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Computer.Core.Configuration
 {
-    public class NetworkConfig
+    public class SystemConfig
     {
         public string Name;
-        IEnumerable<KeyValuePair<string, NetworkConfig>> Systems;
     }
 }

@@ -9,6 +9,7 @@ namespace Assets.Scripts.Computer.Core.Configuration
     public class NetworkConfig
     {
         public string Name;
+        public int Priority;
         IEnumerable<KeyValuePair<string, SystemConfig>> Systems;
     }
 }

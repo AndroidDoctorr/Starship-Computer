@@ -9,5 +9,6 @@ namespace Assets.Scripts.Computer.Core.Configuration
     public class DeviceConfig
     {
         public string Name;
+        public int Priority;
     }
 }

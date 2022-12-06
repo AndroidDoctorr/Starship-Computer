@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Computer.Core.Configuration
 {
-    public class SubsystemConfig
+    public class DeviceConfig
     {
         public string Name;
-        IEnumerable<KeyValuePair<string, DeviceConfig>> Devices;
     }
 }

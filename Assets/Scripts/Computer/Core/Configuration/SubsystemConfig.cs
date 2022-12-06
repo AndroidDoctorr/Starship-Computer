@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Computer.Core.Configuration
 {
-    public class SystemConfig
+    public class SubsystemConfig
     {
         public string Name;
-        IEnumerable<KeyValuePair<string, SubsystemConfig>> Subsystems;
     }
 }

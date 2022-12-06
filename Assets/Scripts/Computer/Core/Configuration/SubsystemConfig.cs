@@ -11,6 +11,6 @@ namespace Assets.Scripts.Computer.Core.Configuration
         public string Name;
         public int Priority;
         public int Address;
-        IEnumerable<KeyValuePair<string, DeviceConfig>> Devices;
+        IEnumerable<DeviceConfig> Devices;
     }
 }

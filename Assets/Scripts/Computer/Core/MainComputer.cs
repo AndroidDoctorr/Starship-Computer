@@ -44,6 +44,13 @@ namespace Assets.Scripts.Computer
         private void Startup() {
             Config config = GetConfig();
 
+            // Startup procedure:
+            // Load physical resources
+            // Map networks, systems, and devices
+            // Assign resources
+            // Start systems
+            // Startup diagnostic sweep
+
             // Get total Processing capacity
             // For each unit
             // - Check if active. Alert if not

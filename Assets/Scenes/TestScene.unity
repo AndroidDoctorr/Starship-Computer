@@ -1207,7 +1207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41df26777357b5145b2189d64991fe8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Lighting Group A
+  Name: Test Room Lighting
   Priority: 99
   Address: 0
   UIs:
@@ -1266,7 +1266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a52e2092391b80147a437f761a76dd06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
+  Name: Test Room Environment
   Priority: 0
   Address: 0
   LightingGroups:
@@ -2415,7 +2415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49132205706f0134fb4f3d6c73b28118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Atmosphere Group A
+  Name: Test Room Atmosphere
   Priority: 99
   Address: 1
   UIs:

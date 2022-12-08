@@ -39,13 +39,10 @@ namespace Assets.Scripts.Computer
         public string CustomConfigPath;
         private void OnEnable()
         {
-            // Startup
-            // Read config file, start up system
-            // Find json file, parse as Config object
-            string configPath = !string.IsNullOrWhiteSpace(CustomConfigPath) ?
-                CustomConfigPath : DefaultConfigPath;
-            string configString = File.ReadAllText(configPath);
-            Config config = JsonConvert.DeserializeObject<Config>(configString);
+            Startup();
+        }
+        private void Startup() {
+            Config config = GetConfig();
 
             // Get total Processing capacity
             // For each unit
@@ -102,6 +99,14 @@ namespace Assets.Scripts.Computer
 
             var powerProfiles = new Dictionary<string, PowerProfile>();
             _powerAllocator = new PowerAllocator(PowerModules, powerProfiles);
+        }
+
+        private Config GetConfig()
+        {
+            string configPath = !string.IsNullOrWhiteSpace(CustomConfigPath) ?
+                CustomConfigPath : DefaultConfigPath;
+            string configString = File.ReadAllText(configPath);
+            return JsonConvert.DeserializeObject<Config>(configString);
         }
     }
 }

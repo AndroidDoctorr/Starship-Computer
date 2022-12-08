@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Scripts.Computer
@@ -36,7 +37,7 @@ namespace Assets.Scripts.Computer
 
         public ShipSystem[] Systems;
         public string CustomConfigPath;
-        public MainComputer()
+        private void OnEnable()
         {
             // Startup
             // Read config file, start up system

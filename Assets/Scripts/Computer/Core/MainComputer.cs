@@ -1,8 +1,10 @@
 ﻿using Assets.Scripts.Computer.Core;
 using Assets.Scripts.Computer.Core.Configuration;
 using Assets.Scripts.Computer.Core.CoreModules;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +14,8 @@ namespace Assets.Scripts.Computer
 {
     public class MainComputer : MonoBehaviour
     {
+        public static string DefaultConfigPath = "Assets/Resources/defaultconfig.json";
+
         private PowerAllocator _powerAllocator;
         // Computer Core
         public IComputerCore ComputerCore { get; private set; }
@@ -31,11 +35,16 @@ namespace Assets.Scripts.Computer
         // ICollection<INetwork>
 
         public ShipSystem[] Systems;
-        public Config Config;
+        public string CustomConfigPath;
         public MainComputer()
         {
             // Startup
             // Read config file, start up system
+            // Find json file, parse as Config object
+            string configPath = !string.IsNullOrWhiteSpace(CustomConfigPath) ?
+                CustomConfigPath : DefaultConfigPath;
+            string configString = File.ReadAllText(configPath);
+            Config config = JsonConvert.DeserializeObject<Config>(configString);
 
             // Get total Processing capacity
             // For each unit

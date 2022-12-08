@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Computer.Core.Configuration
 {
+    [Serializable]
     public class SystemConfig
     {
         public string Name;

@@ -12,5 +12,6 @@ namespace Assets.Scripts.Computer.Core.Configuration
         public string Name;
         public int Priority;
         public int Address;
+        public Guid Id;
     }
 }

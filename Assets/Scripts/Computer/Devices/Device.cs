@@ -14,7 +14,6 @@ namespace Assets.Scripts.Computer
         public string Name { get; protected set; }
         public int Priority { get; protected set; }
         public int Port { get; protected set; }
-        public string PhysicalAddress { get; protected set; }
         public UsageProfile UsageProfile { get; protected set; }
         public PowerProfile PowerProfile { get; protected set; }
         public bool HasPower;

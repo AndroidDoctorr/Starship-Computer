@@ -9,8 +9,9 @@ using UnityEngine;
 
 namespace Assets.Scripts.Computer.Core
 {
-    internal class PowerAllocator
+    public class PowerAllocator
     {
+        public double TotalCapacity;
         public Dictionary<Guid, IPowerModule> PowerModules { get; private set; }
         public Dictionary<Guid, PowerProfile> PowerProfiles { get; private set; }
         public PowerAllocator(
@@ -18,14 +19,42 @@ namespace Assets.Scripts.Computer.Core
             Dictionary<string, PowerProfile> powerProfiles
         )
         {
+            SetUpPowerModules(powerModules);
+            SetUpProfiles(powerProfiles);
+        }
+        private void SetUpPowerModules(ICollection<IPowerModule> powerModules)
+        {
+            TotalCapacity = 0;
             foreach (IPowerModule powerModule in powerModules)
-                PowerModules.Add(powerModule.Id, powerModule);
-
+            {
+                if (powerModule.PingAsync().Result)
+                {
+                    PowerModules.Add(powerModule.Id, powerModule);
+                    TotalCapacity += powerModule.MaxPower;
+                }
+                else
+                    Debug.LogError($"Startup: Power Module {powerModule.Id} inactive");
+            }
+        }
+        private void SetUpProfiles(Dictionary<string, PowerProfile> powerProfiles)
+        {
+            double minimumUsage = 0;
+            double maximumUsage = 0;
             foreach (KeyValuePair<string, PowerProfile> kvp in powerProfiles)
             {
                 PowerProfile profile = kvp.Value;
                 Guid id = Guid.Parse(kvp.Key);
                 PowerProfiles.Add(id, profile);
+                minimumUsage += profile.MinPowerDraw;
+                maximumUsage += profile.MaxPowerDraw;
+            }
+            if (maximumUsage > TotalCapacity)
+            {
+                Debug.LogWarning($"Power Allocation - Warning: System power does not meet minimum requirements for all sytems");
+            }
+            if (minimumUsage > TotalCapacity)
+            {
+                Debug.LogWarning("");
             }
         }
 

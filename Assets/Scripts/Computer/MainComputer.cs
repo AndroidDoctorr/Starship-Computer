@@ -30,7 +30,7 @@ namespace Assets.Scripts.Computer
         // IHeatManagement
 
         // Networks
-        // public Dictionary<byte, Network> Networks;
+        public Dictionary<byte, Network> Networks;
 
         public ShipSystem[] Systems;
         public string CustomConfigPath;

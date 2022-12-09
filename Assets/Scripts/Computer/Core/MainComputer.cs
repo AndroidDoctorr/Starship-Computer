@@ -29,11 +29,8 @@ namespace Assets.Scripts.Computer
         // Thermal Management
         // IHeatManagement
 
-        // Systems
-        // ICollection<ISystem>
-
         // Networks
-        // ICollection<INetwork>
+        // public Dictionary<byte, Network> Networks;
 
         public ShipSystem[] Systems;
         public string CustomConfigPath;

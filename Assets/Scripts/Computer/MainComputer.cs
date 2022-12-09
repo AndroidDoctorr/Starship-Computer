@@ -39,15 +39,26 @@ namespace Assets.Scripts.Computer
             Startup();
         }
         private void Startup() {
-            Config config = GetConfig();
-
             // Startup procedure:
-            // Load physical resources
-            // Map networks, systems, and devices
-            // Assign resources
-            // Start systems
-            // Startup diagnostic sweep
-
+            LoadResources();    // Load physical resources
+            MapNetwork();       // Map networks, systems, and devices
+            AssignResources();  // Assign resources
+            SystemsStart();     // Start systems
+            // Type 0 Diagnostic = Startup
+            // DiagnosticSweep(0); // Startup diagnostic sweep
+        }
+        private void LoadResources()
+        {
+            LoadPowerModules();
+            LoadComputingModules();
+        }
+        private void LoadPowerModules()
+        {
+            var powerProfiles = new Dictionary<string, PowerProfile>();
+            _powerAllocator = new PowerAllocator(PowerModules, powerProfiles);
+        }
+        private void LoadComputingModules()
+        {
             // Get total Processing capacity
             // For each unit
             // - Check if active. Alert if not
@@ -60,7 +71,13 @@ namespace Assets.Scripts.Computer
             // For each unit
             // - Check if active. Alert if not
             // - Get device properties, add to repo here for control
-
+        }
+        private void MapNetwork()
+        {
+            Config config = GetConfig();
+        }
+        private void AssignResources()
+        {
             // For each Network in config - { networks: [], ... }
             // - Give each Network an address
             // - Add Network to some repo here???
@@ -99,12 +116,11 @@ namespace Assets.Scripts.Computer
             // - Set default UI settings???
 
             // Check Master Systems List - any unused? Error message
-            // What else???
-
-            var powerProfiles = new Dictionary<string, PowerProfile>();
-            _powerAllocator = new PowerAllocator(PowerModules, powerProfiles);
         }
+        private void SystemsStart()
+        {
 
+        }
         private Config GetConfig()
         {
             string configPath = !string.IsNullOrWhiteSpace(CustomConfigPath) ?

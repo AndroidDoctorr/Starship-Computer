@@ -9,7 +9,7 @@ namespace Assets.Scripts.Computer.Systems.Warp_Core
     public class MainPower : ShipSystem
     {
         // Subsystems
-        public MainReactorControl reactorControl;
+        public ReactorControl reactorControl;
 
         // Properties
         

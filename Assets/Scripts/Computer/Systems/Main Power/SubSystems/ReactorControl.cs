@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Computer.Systems.Warp_Core
 {
-    public class MainReactorControl : SubSystem
+    public class ReactorControl : SubSystem
     {
         private double _output;
 

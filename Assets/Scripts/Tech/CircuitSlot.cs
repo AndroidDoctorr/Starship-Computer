@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR.InteractionSystem;
 
 public class CircuitSlot : MonoBehaviour
 {
     private bool _initialCheck = false;
     private bool _oneConnected = false;
     private Circuit _connectedCircuit;
+    private AudioSource _as;
 
     public delegate void OnConnectDelegate(bool isConnected, CircuitType circuitType, Circuit circuit);
     public event OnConnectDelegate OnConnect;
@@ -20,6 +22,8 @@ public class CircuitSlot : MonoBehaviour
     public GameObject Invalid;
     public Renderer Indicator;
     public Transform AttachmentPoint;
+    public AudioClip Connect;
+    public AudioClip Disconnect;
 
     void OnEnable()
     {
@@ -33,6 +37,8 @@ public class CircuitSlot : MonoBehaviour
     }
     private void Start()
     {
+        _as = GetComponent<AudioSource>();
+
         SetIndicatorColor();
     }
     void Update()
@@ -84,6 +90,8 @@ public class CircuitSlot : MonoBehaviour
         _connectedCircuit = null;
         IsOccupied = false;
         SetValidCircuit(false);
+
+        PlaySound(Disconnect);
     }
     private void SetValidCircuit(bool isValid)
     {
@@ -91,6 +99,8 @@ public class CircuitSlot : MonoBehaviour
         Invalid.SetActive(!isValid);
         Valid.SetActive(isValid);
         // OnConnect(isValid, Type, _connectedCircuit);
+
+        if (isValid) PlaySound(Connect);
     }
     private void SetIndicatorColor()
     {
@@ -103,5 +113,12 @@ public class CircuitSlot : MonoBehaviour
         };
 
         Indicator.material = mat;
+    }
+    private void PlaySound(AudioClip clip)
+    {
+        if (_as == null) return;
+        _as.clip = clip;
+        _as.PlayDelayed(0);
+        
     }
 }

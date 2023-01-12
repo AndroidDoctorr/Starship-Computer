@@ -16,7 +16,6 @@ public class Circuit : MonoBehaviour
     public GameObject Intact;
     public GameObject Broken;
     public CircuitConnector Connector;
-    public AudioClip[] SoundEffects;
     void OnEnable()
     {
         _as = GetComponent<AudioSource>();
@@ -58,12 +57,6 @@ public class Circuit : MonoBehaviour
         // Parent the circuit to the slot (is this necessary?)
         transform.parent = slot.AttachmentPoint;
         transform.localRotation = new Quaternion();
-        // Play sound effect
-        if (_as != null)
-        {
-            _as.clip = SoundEffects[0];
-            _as.PlayDelayed(0);
-        }
         // Disconnect the circuit from the player hand
         DisconnectFromHand();
     }
@@ -82,9 +75,6 @@ public class Circuit : MonoBehaviour
     }
     public void Disconnect()
     {
-        // Play sound effect
-        _as.clip = SoundEffects[1];
-        _as.PlayDelayed(0);
         _slot = null;
     }
     public void Break()

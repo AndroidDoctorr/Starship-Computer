@@ -23,7 +23,11 @@ public class CircuitSlot : MonoBehaviour
         Connector1.OnConnect += ConnectCircuit;
         Connector2.OnConnect += ConnectCircuit;
     }
-
+    private void OnDestroy()
+    {
+        Connector1.OnConnect -= ConnectCircuit;
+        Connector2.OnConnect -= ConnectCircuit;
+    }
     void Update()
     {
         if (!_initialCheck)
@@ -44,13 +48,9 @@ public class CircuitSlot : MonoBehaviour
         {
             if (IsOccupied) return;
             if (_oneConnected)
-            {
                 SetConnectedCircuit(circuit);
-            }
             else
-            {
                 _oneConnected = true;
-            }
         }
         else if (_connectedCircuit != null)
             DisconnectCircuit();

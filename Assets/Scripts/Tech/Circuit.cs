@@ -54,9 +54,9 @@ public class Circuit : MonoBehaviour
         // Set the circuit's slot
         _slot = slot;
         // Snap to the slot position
-        transform.position = slot.transform.position;
+        transform.position = slot.AttachmentPoint.position;
         // Parent the circuit to the slot (is this necessary?)
-        transform.parent = slot.transform;
+        transform.parent = slot.AttachmentPoint;
         transform.localRotation = new Quaternion();
         // Play sound effect
         if (_as != null)

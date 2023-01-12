@@ -18,6 +18,9 @@ public class CircuitSlot : MonoBehaviour
     public SlotConnector Connector2;
     public GameObject Valid;
     public GameObject Invalid;
+    public Renderer Indicator;
+    public Transform AttachmentPoint;
+
     void OnEnable()
     {
         Connector1.OnConnect += ConnectCircuit;
@@ -27,6 +30,10 @@ public class CircuitSlot : MonoBehaviour
     {
         Connector1.OnConnect -= ConnectCircuit;
         Connector2.OnConnect -= ConnectCircuit;
+    }
+    private void Start()
+    {
+        SetIndicatorColor();
     }
     void Update()
     {
@@ -83,6 +90,18 @@ public class CircuitSlot : MonoBehaviour
         HasValidCircuit = isValid;
         Invalid.SetActive(!isValid);
         Valid.SetActive(isValid);
-        OnConnect(isValid, Type, _connectedCircuit);
+        // OnConnect(isValid, Type, _connectedCircuit);
+    }
+    private void SetIndicatorColor()
+    {
+        Material mat = Indicator.material;
+        mat.color = Type switch {
+            CircuitType.Logic => new Color(1, 0.5f, 0),
+            CircuitType.Memory => new Color(0, 1, 1),
+            CircuitType.Learning => new Color(0.5f, 0, 1),
+            _ => Color.cyan,
+        };
+
+        Indicator.material = mat;
     }
 }

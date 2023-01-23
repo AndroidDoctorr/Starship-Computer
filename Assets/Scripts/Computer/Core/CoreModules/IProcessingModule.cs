@@ -13,11 +13,11 @@ namespace Assets.Scripts.Computer.Core.CoreModules
         public ProcessingSocketType SocketType { get; }
         // Number of processing threads
         public int Threads { get; }
-        // Calculations per second
+        // Calculations per second (GHz)
         public decimal ClockSpeed { get; }
-        // Data transfer rate between processor and socket (B/s)
+        // Data transfer rate between processor and socket (GHz)
         public decimal BusSpeed { get; }
-        // Transfer buffer size (B)
+        // Transfer buffer size (GB)
         public decimal CacheSize { get; }
         // Coefficients used to calculate the thermal profile
         public decimal[] ThermalCoefficients { get; }

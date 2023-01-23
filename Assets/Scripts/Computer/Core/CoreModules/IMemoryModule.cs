@@ -11,9 +11,9 @@ namespace Assets.Scripts.Computer.Core.CoreModules
     {
         // Physical socket compatibility
         public MemorySocketType Type { get; }
-        // Maximum storage capacity (B)
+        // Maximum storage capacity (TB/kQ)
         public decimal DataCapacity { get; }
-        // Maximum transfer speed (B/s)
+        // Maximum transfer speed (TB/s)
         public decimal IOCapacity { get; }
         // Coefficients used to calculate the thermal profile
         public decimal[] ThermalCoefficients { get; }

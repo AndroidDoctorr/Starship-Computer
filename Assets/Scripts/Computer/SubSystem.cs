@@ -11,9 +11,22 @@ namespace Assets.Scripts.Computer
     public abstract class SubSystem : SystemBase
     {
         public GenericUI[] UIs;
+        public IODevice[] IODevices;
         public SubSystem ()
         {
             Id = Guid.NewGuid();
+        }
+        public Device[] GetDevices()
+        {
+            return GetIODevices().Concat(GetSystemDevices()).ToArray();
+        }
+        public Device[] GetIODevices()
+        {
+            return IODevices;
+        }
+        public virtual Device[] GetSystemDevices()
+        {
+            return new Device[] { };
         }
     }
 }

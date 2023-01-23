@@ -6845,6 +6845,8 @@ MonoBehaviour:
   Address: 0
   LightingGroups:
   - {fileID: 1168938933}
+  - {fileID: 1944313638}
+  - {fileID: 491170158}
   AtmosphereGroups:
   - {fileID: 2088897033}
 --- !u!1 &1185166288 stripped

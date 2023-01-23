@@ -85,5 +85,11 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
                 fixture.SetColor(hue, saturation);
             }
         }
+        public override Device[] GetSystemDevices()
+        {
+            List<Device> devices = new List<Device>();
+            devices.AddRange(LightFixtures);
+            return devices.ToArray();
+        }
     }
 }

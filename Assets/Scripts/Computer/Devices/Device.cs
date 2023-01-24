@@ -11,7 +11,7 @@ namespace Assets.Scripts.Computer
     public class Device : MonoBehaviour
     {
         public Guid Id { get; protected set; }
-        public string Name { get; protected set; }
+        public string Name;
         public int Priority { get; protected set; }
         public int Port { get; protected set; }
         public UsageProfile UsageProfile { get; protected set; }

@@ -8550,6 +8550,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1073498196529806347, guid: 17e9f71dd8af4ee42827836965fdf627, type: 3}
+      propertyPath: Data.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1359136824468668105, guid: 17e9f71dd8af4ee42827836965fdf627, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25

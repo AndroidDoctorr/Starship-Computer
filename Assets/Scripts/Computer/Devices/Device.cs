@@ -8,6 +8,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Computer
 {
+    public enum DeviceStatus { Unresponsive, Disabled, Offline, Online, Maintenance }
     public class Device : MonoBehaviour
     {
         public Guid Id { get; protected set; }
@@ -17,6 +18,9 @@ namespace Assets.Scripts.Computer
         public UsageProfile UsageProfile { get; protected set; }
         public PowerProfile PowerProfile { get; protected set; }
         public bool HasPower;
+        public bool IsBroken = false;
+        public bool IsInMaintenance = false;
+        public Sprite Icon;
         protected bool SetPowerDraw(int priority, double level)
         {
             bool canSetPower = PowerProfile.SetPowerDraw(priority, level);

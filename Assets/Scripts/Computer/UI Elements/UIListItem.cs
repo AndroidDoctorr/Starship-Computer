@@ -7,6 +7,14 @@ using UnityEngine;
 public class UIListItem : UIElement
 {
     public float Height = 0.625f;
+    public delegate void SelectDelegate();
+    public event SelectDelegate OnSelect;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (OnSelect != null) OnSelect();
+    }
+
     public virtual void Populate(ListItemData data)
     {
 
@@ -20,8 +28,5 @@ public class UIListItem : UIElement
 [Serializable]
 public class ListItemData
 {
-    public string[] Strings;
-    public string[] Labels;
-    public float[] Numbers;
-    public GameObject[] GameObjects;
+    
 }

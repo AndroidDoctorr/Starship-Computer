@@ -1,13 +1,18 @@
+using Assets.Scripts;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal.VersionControl;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class UIScrollView : MonoBehaviour
+public class UIScrollView : UIElement
 {
     private int _scrollDirection = 0;
+    private List<UIListItem> _listItems = new List<UIListItem>();
 
-    public GameObject ListItemModel;
+    public UIListItem ListItemModel;
+    public Image Border;
     public UIButton ScrollUp;
     public UIButton ScrollDown;
     public Transform ScrollOffset;
@@ -29,10 +34,6 @@ public class UIScrollView : MonoBehaviour
         ScrollDown.onButtonPress -= StartScrollDown;
         ScrollDown.onButtonExit -= EndScrollDown;
     }
-    private void Start()
-    {
-        PopulateList();
-    }
     private void Update()
     {
         if (_scrollDirection != 0)
@@ -41,11 +42,16 @@ public class UIScrollView : MonoBehaviour
 
 
 
-    private void PopulateList()
+    private void PopulateList(ListItemData[] data)
     {
-        // Loop through data items
-        //   Instantiate ListItemModel prefab
-        //   Populate with item details
+        float offset = 0;
+        foreach (ListItemData item in data)
+        {
+            UIListItem model = Instantiate(ListItemModel);
+            model.Populate(item);
+            _listItems.Add(model);
+            offset -= ListItemModel.Height;
+        }
     }
     private void Scroll(float amount)
     {
@@ -73,5 +79,14 @@ public class UIScrollView : MonoBehaviour
     private void EndScrollDown(string actionName, GameObject hand)
     {
         _scrollDirection = 0;
+    }
+    public override void SetColor(Color color)
+    {
+        Border.color = color;
+        ScrollUp.SetColor(color);
+        ScrollDown.SetColor(color);
+
+        foreach (UIListItem listItem in _listItems)
+            listItem.SetColor(color);
     }
 }

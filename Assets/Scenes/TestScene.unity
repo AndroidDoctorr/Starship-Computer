@@ -2017,6 +2017,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 124869699}
     m_Modifications:
+    - target: {fileID: 1279718180192834568, guid: 432bfd40355c97b46a20e4753a7c6932, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1279718180192834805, guid: 432bfd40355c97b46a20e4753a7c6932, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25

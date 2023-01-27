@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,8 +12,13 @@ namespace Assets.Scripts.Computer.UI_Elements.ListItems
 {
     public class SubsystemListItem : UIListItem
     {
-        public Text Id;
-        public Text Name;
+        public TMP_Text Type;
+        public TMP_Text Stat1Label;
+        public TMP_Text Stat2Label;
+        public TMP_Text Stat3Label;
+        public TMP_Text Stat1Value;
+        public TMP_Text Stat2Value;
+        public TMP_Text Stat3Value;
         public override void Populate(ListItemData data)
         {
             if (data is not SubsystemData)
@@ -23,22 +29,22 @@ namespace Assets.Scripts.Computer.UI_Elements.ListItems
 
             SubsystemData systemData = data as SubsystemData;
 
-            Id.text = systemData.Id.ToString();
             Name.text = systemData.Name;
+            Type.text = systemData.Type;
         }
     }
     public class SubsystemData : ListItemData
     {
-        public Guid Id;
         public string Name;
+        public string Type;
 
         public SubsystemData(SubSystem subsystem)
         {
             if (subsystem == null)
                 return;
 
-            Id = subsystem.Id;
             Name = subsystem.Name;
+            Type = subsystem.GetType().Name;
         }
     }
 }

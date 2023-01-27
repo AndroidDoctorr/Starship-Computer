@@ -42,16 +42,18 @@ public class UIScrollView : UIElement
 
 
 
-    private void PopulateList(ListItemData[] data)
+    public void PopulateList(ListItemData[] data)
     {
-        float offset = 0;
+        float offset = -0.125f;
         foreach (ListItemData item in data)
         {
-            UIListItem model = Instantiate(ListItemModel);
+            UIListItem model = Instantiate(ListItemModel, ScrollOffset);
             model.Populate(item);
             _listItems.Add(model);
-            float spacing = ListItemModel.Spacing + ListItemModel.Border.rectTransform.rect.height;
+            Vector3 pos = model.transform.localPosition;
+            pos.y = offset;
             offset -= ListItemModel.Spacing;
+            model.transform.localPosition = pos;
         }
     }
     private void Scroll(float amount)

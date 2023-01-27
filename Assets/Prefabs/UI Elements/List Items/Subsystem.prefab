@@ -984,7 +984,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5973642853355973637, guid: 0e7051d75f46dd74e8c1f827a2c6b64f, type: 3}
       propertyPath: m_Name
-      value: ListItem - Subsystem
+      value: Subsystem
       objectReference: {fileID: 0}
     - target: {fileID: 8655804613772521057, guid: 0e7051d75f46dd74e8c1f827a2c6b64f, type: 3}
       propertyPath: m_Pivot.x
@@ -1077,6 +1077,28 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 3991202264541519121, guid: 0e7051d75f46dd74e8c1f827a2c6b64f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0e7051d75f46dd74e8c1f827a2c6b64f, type: 3}
+--- !u!114 &344196657968896980 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 846480884204924588, guid: 0e7051d75f46dd74e8c1f827a2c6b64f, type: 3}
+  m_PrefabInstance: {fileID: 1115090506950227320}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1085426504514001098 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 29745431000149426, guid: 0e7051d75f46dd74e8c1f827a2c6b64f, type: 3}
+  m_PrefabInstance: {fileID: 1115090506950227320}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6746177214103476605 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5973642853355973637, guid: 0e7051d75f46dd74e8c1f827a2c6b64f, type: 3}
@@ -1094,11 +1116,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47071dce0095c8d45837856c7a3520b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: {fileID: 0}
-  Border: {fileID: 0}
-  Spacing: 0.125
-  Id: {fileID: 0}
-  Name: {fileID: 0}
+  Name: {fileID: 1085426504514001098}
+  Border: {fileID: 344196657968896980}
+  Spacing: 0.9
+  Type: {fileID: 4689168605172769182}
+  Stat1Label: {fileID: 3694417540643208736}
+  Stat2Label: {fileID: 4398940910287604406}
+  Stat3Label: {fileID: 749992154825312519}
+  Stat1Value: {fileID: 4910574037548885042}
+  Stat2Value: {fileID: 7706922028956039667}
+  Stat3Value: {fileID: 5175886173580680011}
 --- !u!224 &8603564721820703513 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8655804613772521057, guid: 0e7051d75f46dd74e8c1f827a2c6b64f, type: 3}

@@ -1198,7 +1198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: {fileID: 1085426504514001098}
   Border: {fileID: 344196657968896980}
-  Spacing: 0.125
+  Spacing: 0.9
   Type: {fileID: 4689168605172769182}
   Mode: {fileID: 4910574037548885042}
   Brightness: {fileID: 5175886173580680011}

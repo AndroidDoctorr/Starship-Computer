@@ -50,7 +50,8 @@ public class UIScrollView : UIElement
             UIListItem model = Instantiate(ListItemModel);
             model.Populate(item);
             _listItems.Add(model);
-            offset -= ListItemModel.Height;
+            float spacing = ListItemModel.Spacing + ListItemModel.Border.rectTransform.rect.height;
+            offset -= ListItemModel.Spacing;
         }
     }
     private void Scroll(float amount)

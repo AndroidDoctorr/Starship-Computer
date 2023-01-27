@@ -4,11 +4,13 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIListItem : UIElement
 {
     public TMP_Text Name;
-    public float Height = 0.625f;
+    public Image Border;
+    public float Spacing = 0.125f;
 
     public delegate void SelectDelegate();
     public event SelectDelegate OnSelect;

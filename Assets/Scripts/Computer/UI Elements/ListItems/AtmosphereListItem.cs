@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.UI;
+using static UnityEditor.PlayerSettings;
 
 namespace Assets.Scripts.Computer.UI_Elements.ListItems
 {
@@ -29,14 +31,17 @@ namespace Assets.Scripts.Computer.UI_Elements.ListItems
 
             Name.text = atmosData.Name;
             Type.text = atmosData.Type;
+            Temperature.text = $"{atmosData.Temperature:0.##}";
+            Humidity.text = $"{atmosData.Humidity:0.##}";
+            Count.text = atmosData.Count.ToString();
         }
     }
     public class AtmosphereData : ListItemData
     {
         public string Name;
         public string Type;
-        public float Temperature;
-        public float Humidity;
+        public double Temperature;
+        public double Humidity;
         public int Count;
 
         public AtmosphereData(AtmosphereGroup atmos)
@@ -46,6 +51,9 @@ namespace Assets.Scripts.Computer.UI_Elements.ListItems
 
             Name = atmos.Name;
             Type = atmos.GetType().Name;
+            Temperature = atmos.Temperature;
+            Humidity = atmos.Humidity;
+            Count = atmos.GetDevices().Count();
         }
     }
 }

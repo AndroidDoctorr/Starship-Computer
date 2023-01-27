@@ -26,7 +26,7 @@ namespace Assets.Scripts.Computer.UI_Elements.ListItems
         {
             if (data is not DeviceData)
             {
-                Debug.LogError($"Data not formatted for Device List: {data.GetType().Name}");
+                Debug.LogError($"Data not formatted for Device item: {data.GetType().Name}");
                 return;
             }
 

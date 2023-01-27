@@ -23,7 +23,7 @@ namespace Assets.Scripts.Computer.UI_Elements.ListItems
         {
             if (data is not SubsystemData)
             {
-                Debug.LogError($"Data not formatted for SubSystem List: {data.GetType().Name}");
+                Debug.LogError($"Data not formatted for SubSystem item: {data.GetType().Name}");
                 return;
             }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,10 +12,15 @@ namespace Assets.Scripts.Computer.UI_Elements.ListItems
 {
     public class DeviceListItem : UIListItem
     {
-        public Text Name;
-        public Text Id;
-        public Text Priority;
-        public Text Status;
+        public TMP_Text Id;
+        public TMP_Text Type;
+        public TMP_Text Priority;
+        public TMP_Text Status;
+        public TMP_Text Stat1Label;
+        public TMP_Text Stat2Label;
+        public TMP_Text Stat1Value;
+        public TMP_Text Stat2Value;
+        public Image IconImage;
         public Sprite Icon;
         public override void Populate(ListItemData data)
         {

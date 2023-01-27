@@ -84,7 +84,7 @@ public class LightFixture : Device
     {
         _candleSeed = Random.Range(0, 10f);
 
-        Color flameColor = new Color(1, 0.6f, 0.25f);
+        Color flameColor = LightingGroup.CandleColor;
         ApplyColor(flameColor);
 
         _isCandleMode = true;

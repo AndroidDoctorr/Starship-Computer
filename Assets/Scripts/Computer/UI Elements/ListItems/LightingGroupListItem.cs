@@ -30,20 +30,36 @@ namespace Assets.Scripts.Computer.UI_Elements.ListItems
 
             Name.text = lightData.Name;
             Type.text = lightData.Type;
+            Mode.text = lightData.Mode;
+            Brightness.text = $"{lightData.Brightness:0.##}";
+            Count.text = $"{lightData.Count:0.##}";
+            Color.color = new Color(lightData.R, lightData.G, lightData.B);
         }
     }
     public class LightingGroupData : ListItemData
     {
         public string Name;
         public string Type;
+        public string Mode;
+        public int Count;
+        public float Brightness;
+        public float R;
+        public float G;
+        public float B;
 
-        public LightingGroupData(LightingGroup subsystem)
+        public LightingGroupData(LightingGroup lights)
         {
-            if (subsystem == null)
+            if (lights == null)
                 return;
 
-            Name = subsystem.Name;
-            Type = subsystem.GetType().Name;
+            Name = lights.Name;
+            Type = lights.GetType().Name;
+            Mode = lights.LightingMode.ToString();
+            Count = lights.LightFixtures.Count();
+            Brightness = lights.Brightness;
+            R = lights.Color.r;
+            G = lights.Color.g;
+            B = lights.Color.b;
         }
     }
 }

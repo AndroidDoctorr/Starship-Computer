@@ -6,8 +6,10 @@ using UnityEngine;
 
 namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
 {
+    public enum LightingMode { Solid, Candle, Various }
     public class LightingGroup : SubSystem
     {
+        public readonly static Color CandleColor = new Color(1, 0.6f, 0.25f);
         // Built in to Unity
         public readonly static float MaxIntensity = 8;
 
@@ -15,6 +17,9 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
         public bool BeginOn = false;
         public Color DefaultColor = Color.white;
         public float DefaultBrightness = 0.6f;
+        public LightingMode LightingMode { get; private set; } = LightingMode.Solid;
+        public float Brightness { get; private set; }
+        public Color Color { get; private set; }
         public bool IsOn { get; private set; }
 
         private void Start()
@@ -41,42 +46,56 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
                 {
                     fixture.SetColor(h, s);
                     fixture.SetBrightness(DefaultBrightness);
+                    LightingMode = LightingMode.Solid;
                 }
                 fixture.TurnOn();
             }
+            Brightness = DefaultBrightness;
+            Color = DefaultColor;
         }
         public void TurnOffAllLights()
         {
             IsOn = false;
             foreach (LightFixture fixture in LightFixtures)
                 fixture.TurnOff();
+            Brightness = 0;
+            Color = Color.black;
         }
         public void SetGroupColor(float hue, float saturation)
         {
+            LightingMode = LightingMode.Solid;
             foreach (LightFixture fixture in LightFixtures)
                 fixture.SetColor(hue, saturation);
+            Color = Color.HSVToRGB(hue, saturation, 1);
         }
         public void SetGroupBrightness(float brightness)
         {
             foreach (LightFixture fixture in LightFixtures)
                 fixture.SetBrightness(brightness);
+            Brightness = brightness;
         }
         public void SetCandleMode()
         {
+            LightingMode = LightingMode.Candle;
             if (!IsOn) TurnOnAllLights(false);
             foreach (LightFixture fixture in LightFixtures)
                 fixture.SetCandleMode();
+            Brightness = 1;
+            Color = CandleColor;
         }
         public void SetRandomColor()
         {
+            LightingMode = LightingMode.Solid;
             float hue = Random.Range(0f, 1f);
             float saturation = Random.Range(0.5f, 1f);
 
             foreach (LightFixture fixture in LightFixtures)
                 fixture.SetColor(hue, saturation);
+            Color = Color.HSVToRGB(hue, saturation, 1);
         }
         public void SetMultipleColors()
         {
+            LightingMode = LightingMode.Various;
             foreach (LightFixture fixture in LightFixtures)
             {
                 float hue = Random.Range(0f, 1f);
@@ -84,6 +103,7 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
 
                 fixture.SetColor(hue, saturation);
             }
+            Color = Color.white;
         }
         public override Device[] GetSystemDevices()
         {

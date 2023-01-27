@@ -35,6 +35,9 @@ namespace Assets.Scripts.Computer.UI_Elements.ListItems
     {
         public string Name;
         public string Type;
+        public float Temperature;
+        public float Humidity;
+        public int Count;
 
         public AtmosphereData(AtmosphereGroup atmos)
         {

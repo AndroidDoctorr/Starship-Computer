@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Computer.Core.CoreModules
 {
-    public enum LearningSocketType { N1, D1, Q1, N2, D2, Q2 }
+    public enum LearningSocketType { N1, D1, N2, D2, }
     public interface ILearningModule
     {
         public Guid Id { get; }

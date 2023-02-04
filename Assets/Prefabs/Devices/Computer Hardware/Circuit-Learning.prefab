@@ -251,10 +251,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4506393468871766497}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d695ee321359494490d9ff83fe22464, type: 3}
+  m_Script: {fileID: 11500000, guid: 986696c522003f9428e52999a21d95fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Circuit: {fileID: 35712612605226711}
+  Circuit: {fileID: 6060964712219426801}
 --- !u!1 &6246058173375223360
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,7 +516,7 @@ GameObject:
   - component: {fileID: 1679093423009413197}
   - component: {fileID: 2817967344016536210}
   - component: {fileID: 9026794608425614315}
-  - component: {fileID: 35712612605226711}
+  - component: {fileID: 6060964712219426801}
   m_Layer: 0
   m_Name: Circuit-Learning
   m_TagString: Untagged
@@ -664,7 +664,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   interactable: {fileID: 0}
---- !u!114 &35712612605226711
+--- !u!114 &6060964712219426801
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -673,14 +673,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 7483387633916543475}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e0f81399a124cb44982b90e1c6b2125, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cfee197412870345817244d89cac747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
+  Name: SN 32 Learning Module
+  HasPower: 0
   IsBroken: 0
+  IsInMaintenance: 0
+  Icon: {fileID: 0}
+  Type: 1
   Intact: {fileID: 7206735053778703087}
   Broken: {fileID: 6246058173375223360}
   Connector: {fileID: 673114970260853656}
+  SocketType: 0
 --- !u!1 &9177505511449264206
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,10 +741,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 9177505511449264206}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d695ee321359494490d9ff83fe22464, type: 3}
+  m_Script: {fileID: 11500000, guid: 986696c522003f9428e52999a21d95fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Circuit: {fileID: 35712612605226711}
+  Circuit: {fileID: 6060964712219426801}
 --- !u!1001 &1428996518892731659
 PrefabInstance:
   m_ObjectHideFlags: 0

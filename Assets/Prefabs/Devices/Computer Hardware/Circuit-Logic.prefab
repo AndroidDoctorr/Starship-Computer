@@ -153,10 +153,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1992587486122306277}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d695ee321359494490d9ff83fe22464, type: 3}
+  m_Script: {fileID: 11500000, guid: 986696c522003f9428e52999a21d95fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Circuit: {fileID: 7076580249220515060}
+  Circuit: {fileID: 5502548578191066246}
 --- !u!1 &2348396693078374462
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 2675847582793475221}
   - component: {fileID: 6407882949269288583}
   - component: {fileID: 4089393285421768839}
-  - component: {fileID: 7076580249220515060}
+  - component: {fileID: 5502548578191066246}
   m_Layer: 0
   m_Name: Circuit-Logic
   m_TagString: Untagged
@@ -415,7 +415,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   interactable: {fileID: 0}
---- !u!114 &7076580249220515060
+--- !u!114 &5502548578191066246
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -424,14 +424,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 2871647314067093259}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e0f81399a124cb44982b90e1c6b2125, type: 3}
+  m_Script: {fileID: 11500000, guid: beeeb4e91a1ddc74ea51b9ac0f160fae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 2
+  Name: 
+  HasPower: 0
   IsBroken: 0
+  IsInMaintenance: 0
+  Icon: {fileID: 0}
+  Type: 2
   Intact: {fileID: 6082038249471191247}
   Broken: {fileID: 6852894814419735418}
   Connector: {fileID: 6983262908657901720}
+  SocketType: 0
+  Threads: 0
 --- !u!1 &6038551203333671498
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,10 +659,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8082971621981561362}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d695ee321359494490d9ff83fe22464, type: 3}
+  m_Script: {fileID: 11500000, guid: 986696c522003f9428e52999a21d95fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Circuit: {fileID: 7076580249220515060}
+  Circuit: {fileID: 5502548578191066246}
 --- !u!1 &8880656228710529118
 GameObject:
   m_ObjectHideFlags: 0

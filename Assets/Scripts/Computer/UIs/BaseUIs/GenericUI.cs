@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Computer;
+using Assets.Scripts.Computer.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;

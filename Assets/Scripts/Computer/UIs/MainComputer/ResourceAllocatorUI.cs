@@ -1,5 +1,6 @@
 using Assets.Scripts;
 using Assets.Scripts.Computer;
+using Assets.Scripts.Computer.Core;
 using Assets.Scripts.Computer.Systems.Environment;
 using Assets.Scripts.Computer.UI_Elements.ListItems;
 using System.Collections;
@@ -10,7 +11,8 @@ using UnityEngine;
 
 public class ResourceAllocatorUI : GenericUI
 {
-    // public ResourceAllocator ResourceAllocator;
+    public ResourceAllocator ResourceAllocator;
+
     public UIProperty DMemoryTotal;
     public UIProperty NMemoryTotal;
     public UIProperty MemoryDevices;
@@ -43,9 +45,15 @@ public class ResourceAllocatorUI : GenericUI
     public UIProperty LogicPower;
     public UIProperty LogicCache;
     public UIProperty LogicTemp;
-    void Start()
-    {
-        // Device[] devices = Environment.GetDevices();
 
+    private void OnEnable()
+    {
+        // Subscribe to RA property updates
+        // These happen whenever hardware is connected or disconnected
+
+        // if memory updated, do memory properties
+        // etc.
     }
+
+    
 }

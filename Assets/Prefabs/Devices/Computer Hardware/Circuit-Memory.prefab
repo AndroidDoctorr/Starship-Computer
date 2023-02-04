@@ -186,10 +186,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2721569111277866322}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d695ee321359494490d9ff83fe22464, type: 3}
+  m_Script: {fileID: 11500000, guid: 986696c522003f9428e52999a21d95fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Circuit: {fileID: 996986789488395322}
+  Circuit: {fileID: 6071355741239221725}
 --- !u!1 &4814822829107315053
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,10 +280,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4956482316632207835}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d695ee321359494490d9ff83fe22464, type: 3}
+  m_Script: {fileID: 11500000, guid: 986696c522003f9428e52999a21d95fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Circuit: {fileID: 996986789488395322}
+  Circuit: {fileID: 6071355741239221725}
 --- !u!1 &7113202256944766327
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,7 +379,7 @@ GameObject:
   - component: {fileID: 6447528504849688835}
   - component: {fileID: 2539163536789338989}
   - component: {fileID: 1497864492911789370}
-  - component: {fileID: 996986789488395322}
+  - component: {fileID: 6071355741239221725}
   m_Layer: 0
   m_Name: Circuit-Memory
   m_TagString: Untagged
@@ -527,7 +527,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   interactable: {fileID: 0}
---- !u!114 &996986789488395322
+--- !u!114 &6071355741239221725
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -536,14 +536,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 7612995331837193324}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e0f81399a124cb44982b90e1c6b2125, type: 3}
+  m_Script: {fileID: 11500000, guid: bbaeaf94a3b7ab24bbf862973819b091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 3
+  Name: 
+  HasPower: 0
   IsBroken: 0
+  IsInMaintenance: 0
+  Icon: {fileID: 0}
+  Type: 3
   Intact: {fileID: 91245804483883207}
   Broken: {fileID: 4814822829107315053}
   Connector: {fileID: 2194355464350009337}
+  SocketType: 0
 --- !u!1 &7992693855362474841
 GameObject:
   m_ObjectHideFlags: 0

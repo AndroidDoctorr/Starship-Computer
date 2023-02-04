@@ -11,13 +11,15 @@ namespace Assets.Scripts.Computer
     public enum DeviceStatus { Unresponsive, Disabled, Offline, Online, Maintenance }
     public class Device : MonoBehaviour
     {
+        protected AudioSource _as;
         public Guid Id { get; protected set; }
         public string Name;
         public int Priority { get; protected set; }
         public int Port { get; protected set; }
         public UsageProfile UsageProfile { get; protected set; }
         public PowerProfile PowerProfile { get; protected set; }
-        public bool HasPower;
+        public DeviceStatus Status = DeviceStatus.Offline;
+        public bool HasPower = false;
         public bool IsBroken = false;
         public bool IsInMaintenance = false;
         public Sprite Icon;
@@ -38,7 +40,7 @@ namespace Assets.Scripts.Computer
                 Debug.LogError($"Permission denied - cannot deactivate: {GetType().Name}");
                 return;
             }
-            HasPower = false;
+            Status = DeviceStatus.Offline;
         }
         public void PowerUp(int priority)
         {
@@ -50,7 +52,15 @@ namespace Assets.Scripts.Computer
                 Debug.LogError($"Permission denied - cannot power: {GetType().Name}");
                 return;
             }
-            HasPower = true;
+            Status = DeviceStatus.Online;
+        }
+        
+        protected void PlaySound(AudioClip clip)
+        {
+            if (clip == null) return;
+            if (_as == null) return;
+            _as.clip = clip;
+            _as.PlayDelayed(0);
         }
     }
 }

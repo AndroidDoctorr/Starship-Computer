@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Computer.Systems.Environment.SubSystems;
+﻿using Assets.Scripts.Computer.Core;
+using Assets.Scripts.Computer.Systems.Environment.SubSystems;
 using System;
 using System.Collections.Generic;
 using System.Linq;

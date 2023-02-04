@@ -1,5 +1,6 @@
 using Assets.Scripts;
 using Assets.Scripts.Computer;
+using Assets.Scripts.Computer.Core;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;

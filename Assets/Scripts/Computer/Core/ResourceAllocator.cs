@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Computer.Core
 {
-    public class ResourceAllocator : MonoBehaviour
+    public class ResourceAllocator : CoreSystem
     {
         // Module Panels
         public CircuitPanel<LogicModule>[] LogicPanels;

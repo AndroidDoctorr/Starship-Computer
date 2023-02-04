@@ -85,9 +85,12 @@ namespace Assets.Scripts.Computer.Core
             
         }
 
-        private void GetModules<T>()
+        private IEnumerable<T> GetModulesFromPanels<T>(CircuitPanel<T>[] panels) where T : Circuit
         {
-
+            return panels
+                .Where(p => p.Modules is IEnumerable<T>)
+                .Select(p => (IEnumerable<T>)p.Modules)
+                .SelectMany(m => m);
         }
     }
 }

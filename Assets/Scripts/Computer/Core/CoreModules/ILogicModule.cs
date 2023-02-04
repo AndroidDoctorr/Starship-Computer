@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Computer.Core.CoreModules
 {
-    public interface ILogicModule
+    public interface ILogicModule : IModule
     {
         // Number of processing threads
         public int Threads { get; }
@@ -16,7 +16,5 @@ namespace Assets.Scripts.Computer.Core.CoreModules
         public decimal BusSpeed { get; }
         // Transfer buffer size (GB)
         public decimal CacheSize { get; }
-        // Coefficients used to calculate the thermal profile
-        public decimal[] ThermalCoefficients { get; }
     }
 }

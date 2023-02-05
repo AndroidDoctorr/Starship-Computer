@@ -63,7 +63,7 @@ public class ResourceAllocatorUI : GenericUI
                 LogicDevices.ValueText.text = value.ToString();
                 break;
             case nameof(ResourceAllocator.LogicDCap):
-                DLogicTotal.ValueText.text = value.ToString();
+                DLogicTotal.ValueText.text = ((decimal) value).ToString("#.###");
                 break;
             default:
                 break;

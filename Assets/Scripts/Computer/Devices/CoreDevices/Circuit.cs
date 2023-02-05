@@ -15,6 +15,8 @@ public class Circuit : Device
     public GameObject Intact;
     public GameObject Broken;
     public CircuitConnector Connector;
+    public bool DoDebug = false;
+
     void OnEnable()
     {
         _as = GetComponent<AudioSource>();
@@ -34,7 +36,7 @@ public class Circuit : Device
     }
     private void LetGoCircuit(Hand hand)
     {
-        Debug.Log($"Let go circuit from hand: {hand.name}, slot: {_slot}");
+        if (DoDebug) Debug.Log($"Let go circuit from hand: {hand.name}, slot: {_slot}");
         _hand = null;
         if (_slot == null)
         {
@@ -78,6 +80,7 @@ public class Circuit : Device
     }
     public void Break()
     {
+        if (DoDebug) Debug.Log($"Circuit broke: {Type}");
         IsBroken = true;
         Intact.SetActive(false);
         Broken.SetActive(true);

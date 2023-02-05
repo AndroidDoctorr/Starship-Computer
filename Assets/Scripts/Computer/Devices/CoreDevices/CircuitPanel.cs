@@ -24,7 +24,7 @@ namespace Assets.Scripts.Computer.Core.CoreModules
         public delegate void ModuleChangeDelegate(CircuitType type);
         public event ModuleChangeDelegate OnModuleChange;
 
-        private void OnEnable()
+        public void Enable()
         {
             ConnectSlots();
         }
@@ -54,7 +54,10 @@ namespace Assets.Scripts.Computer.Core.CoreModules
         private void ConnectSlots()
         {
             foreach (CircuitSlot slot in Slots)
+            {
                 ConnectSlot(slot);
+                slot.Enable();
+            }
         }
         private void ConnectSlot(CircuitSlot slot)
         {
@@ -62,21 +65,23 @@ namespace Assets.Scripts.Computer.Core.CoreModules
             slot.OnConnect += UpdateModule;
             slot.OnDisconnect += DisconnectModule;
             // Add connected modules to dictionary
-            if (!_modules.ContainsKey(slot.Name))
+            if (!_modules.ContainsKey(slot.Name) && slot.ConnectedCircuit != null)
                 _modules.Add(slot.Name, slot.ConnectedCircuit.GetComponent<IModule>());
         }
         private void DisconnectSlot(CircuitSlot slot)
         {
             // Unubscribe from slot connection
             slot.OnConnect -= UpdateModule;
+            slot.OnDisconnect -= DisconnectModule;
             // Add connected modules to dictionary
             if (!_modules.ContainsKey(slot.Name))
                 _modules.Remove(slot.Name);
         }
         private void UpdateModule(bool isConnected, string slotName, Circuit circuit)
         {
+            if (circuit == null) return;
             // Add, update, or remove module from dictionary
-            if (!isConnected || circuit == default)
+            if (!isConnected)
                 DisconnectModule(slotName, circuit.Type);
             else
                 ConnectModule(slotName, circuit);

@@ -9,6 +9,7 @@ public class CircuitSlot : Device
     private bool _initialCheck = true;
     private bool _oneConnected = false;
     public Circuit ConnectedCircuit { get; private set; }
+    public bool DoDebug = false;
 
     public delegate void ConnectDelegate(bool isConnected, string slot, Circuit circuit);
     public event ConnectDelegate OnConnect;
@@ -27,7 +28,7 @@ public class CircuitSlot : Device
     public AudioClip Connect;
     public AudioClip Disconnect;
 
-    void OnEnable()
+    public void Enable()
     {
         Connector1.OnConnect += ConnectCircuit;
         Connector2.OnConnect += ConnectCircuit;
@@ -74,7 +75,7 @@ public class CircuitSlot : Device
     }
     public void SetConnectedCircuit(Circuit circuit)
     {
-        Debug.Log($"Set connected circuit in slot: {circuit.Type}, {(circuit.IsBroken ? "Broken" : "Ok")}");
+        if (DoDebug) Debug.Log($"Set connected circuit in slot: {circuit.Type}, {(circuit.IsBroken ? "Broken" : "Ok")}");
         ConnectedCircuit = circuit;
         _oneConnected = true;
         IsOccupied = true;

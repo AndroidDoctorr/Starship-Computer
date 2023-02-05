@@ -858,6 +858,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 342d19630c11b89419029339aa2dcff2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &203386492
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 203386493}
+  - component: {fileID: 203386494}
+  m_Layer: 0
+  m_Name: Resource Allocator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &203386493
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203386492}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2115676645}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &203386494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203386492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d97ede80c3fad489ed796eaf33fa57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Main Computer Hardware Allocation
+  Priority: 0
+  Address: 0
+  UIs:
+  - {fileID: 1754797993}
+  LogicPanels:
+  - {fileID: 2119782999}
+  LearningPanels:
+  - {fileID: 714862275}
+  MemoryPanels:
+  - {fileID: 983997166}
+  HybridPanels: []
+  DoDebug: 0
 --- !u!1001 &225235108
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1068,6 +1125,10 @@ PrefabInstance:
     - target: {fileID: 3196035384815648385, guid: d7fafdced9674e249839d0c5cff820fe, type: 3}
       propertyPath: Type
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3196035384815648385, guid: d7fafdced9674e249839d0c5cff820fe, type: 3}
+      propertyPath: DoDebug
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8728429354147579499, guid: d7fafdced9674e249839d0c5cff820fe, type: 3}
       propertyPath: m_Name
@@ -4227,7 +4288,7 @@ Transform:
   - {fileID: 1914096067}
   - {fileID: 1966554773}
   m_Father: {fileID: 2115676645}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &714862272
 BoxCollider:
@@ -5694,7 +5755,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CustomConfigPath: 
   Systems: []
-  ResourceAllocator: {fileID: 2115676649}
+  ResourceAllocator: {fileID: 0}
   BootOnEnable: 1
 --- !u!1001 &938065854
 PrefabInstance:
@@ -6041,7 +6102,7 @@ Transform:
   - {fileID: 1262733863}
   - {fileID: 122456006}
   m_Father: {fileID: 2115676645}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &983997163
 BoxCollider:
@@ -7492,6 +7553,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3420573113779300586, guid: ecc2d54f1b32d4647b8c120739af1148, type: 3}
+      propertyPath: ResourceAllocator
+      value: 
+      objectReference: {fileID: 203386494}
     - target: {fileID: 5891550194984879863, guid: ecc2d54f1b32d4647b8c120739af1148, type: 3}
       propertyPath: m_Name
       value: Hardware Allocator UI
@@ -10205,6 +10270,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 342d19630c11b89419029339aa2dcff2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1754797993 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3420573113779300586, guid: ecc2d54f1b32d4647b8c120739af1148, type: 3}
+  m_PrefabInstance: {fileID: 1115087245}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61fd108db27e5dd48ba703cbe911f927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1789408585
 GameObject:
   m_ObjectHideFlags: 0
@@ -12220,7 +12296,6 @@ GameObject:
   - component: {fileID: 2115676648}
   - component: {fileID: 2115676647}
   - component: {fileID: 2115676646}
-  - component: {fileID: 2115676649}
   m_Layer: 0
   m_Name: CPU
   m_TagString: Untagged
@@ -12240,6 +12315,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 203386493}
   - {fileID: 714862271}
   - {fileID: 2119782995}
   - {fileID: 983997162}
@@ -12309,30 +12385,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2115676644}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &2115676649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2115676644}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61d97ede80c3fad489ed796eaf33fa57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Main Computer Hardware Allocation
-  Priority: 0
-  Address: 0
-  UIs:
-  - {fileID: 3420573113779300586, guid: ecc2d54f1b32d4647b8c120739af1148, type: 3}
-  LogicPanels:
-  - {fileID: 2119782999}
-  LearningPanels:
-  - {fileID: 714862275}
-  MemoryPanels:
-  - {fileID: 983997166}
-  HybridPanels: []
 --- !u!1 &2119782994
 GameObject:
   m_ObjectHideFlags: 0
@@ -12369,7 +12421,7 @@ Transform:
   - {fileID: 890844457}
   - {fileID: 1587226544}
   m_Father: {fileID: 2115676645}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2119782996
 BoxCollider:

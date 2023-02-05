@@ -13,7 +13,7 @@ namespace Assets.Scripts.Computer.Devices.CoreDevices
         public SN86MemoryModule()
         {
             Id = new Guid();
-            SocketType = MemorySocketType.N1;
+            SocketType = DataSocketType.N1;
             DataCapacity = 1024;
             CacheSize = 64;
             PowerCap = 108;

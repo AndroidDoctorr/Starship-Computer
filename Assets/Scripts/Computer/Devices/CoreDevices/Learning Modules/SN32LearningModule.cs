@@ -13,7 +13,7 @@ namespace Assets.Scripts.Computer.Devices.CoreDevices
         public SN32LearningModule()
         {
             Id = new Guid();
-            SocketType = LearningSocketType.N1;
+            SocketType = DataSocketType.N1;
             DataCapacity = 4096;
             CacheSize = 64;
             PowerCap = 108;

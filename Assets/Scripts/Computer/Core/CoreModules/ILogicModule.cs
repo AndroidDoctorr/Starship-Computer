@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Computer.Core.CoreModules
 {
-    public enum ProcessingSocketType { D1, Q1, D2, Q2 }
+    public enum ProcessingSocketType { D1, Q1, D2, Q2, H }
     public interface ILogicModule : IModule
     {
         // Physical socket compatibility

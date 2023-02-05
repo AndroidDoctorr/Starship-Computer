@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Computer.Core.CoreModules
 {
-    public enum DataSocketType { D1, N1, D2, N2 }
+    public enum DataSocketType { D1, N1, D2, N2, H }
     public interface IDataModule : IModule
     {
         // Physical socket compatibility

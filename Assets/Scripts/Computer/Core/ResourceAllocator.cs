@@ -26,36 +26,27 @@ namespace Assets.Scripts.Computer.Core
         {
             get
             {
-                IEnumerable<ILogicModule> logicModules =
-                    LogicPanels.Select(p => p.Modules).SelectMany(m => m);
-                IEnumerable<ILogicModule> hybridModules =
-                    HybridPanels.Select(p => p.Modules).SelectMany(m => m);
-
-                return logicModules.Concat(hybridModules);
+                IEnumerable<ILogicModule> dedicatedModules = GetModulesFromPanels(LogicPanels);
+                IEnumerable<ILogicModule> hybridModules = GetModulesFromPanels(HybridPanels);
+                return dedicatedModules.Concat(hybridModules);
             }
         }
         public IEnumerable<IDataModule> LearningModules
         {
             get
             {
-                IEnumerable<IDataModule> learningModules =
-                    LearningPanels.Select(p => p.Modules).SelectMany(m => m);
-                IEnumerable<IDataModule> hybridModules =
-                    HybridPanels.Select(p => p.Modules).SelectMany(m => m);
-
-                return learningModules.Concat(hybridModules);
+                IEnumerable<IDataModule> dedicatedModules = GetModulesFromPanels(LearningPanels);
+                IEnumerable<IDataModule> hybridModules = GetModulesFromPanels(HybridPanels);
+                return dedicatedModules.Concat(hybridModules);
             }
         }
         public IEnumerable<IDataModule> MemoryModules
         {
             get
             {
-                IEnumerable<IDataModule> memoryModules =
-                    MemoryPanels.Select(p => p.Modules).SelectMany(m => m);
-                IEnumerable<IDataModule> hybridModules =
-                    HybridPanels.Select(p => p.Modules).SelectMany(m => m);
-
-                return memoryModules.Concat(hybridModules);
+                IEnumerable<IDataModule> dedicatedModules = GetModulesFromPanels(MemoryPanels);
+                IEnumerable<IDataModule> hybridModules = GetModulesFromPanels(HybridPanels);
+                return dedicatedModules.Concat(hybridModules);
             }
         }
 
@@ -89,7 +80,7 @@ namespace Assets.Scripts.Computer.Core
         {
             return panels
                 .Where(p => p.Modules is IEnumerable<T>)
-                .Select(p => (IEnumerable<T>)p.Modules)
+                .Select(p => p.Modules)
                 .SelectMany(m => m);
         }
     }

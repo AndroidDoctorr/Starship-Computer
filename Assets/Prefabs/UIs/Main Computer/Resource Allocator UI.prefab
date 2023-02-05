@@ -526,9 +526,10 @@ MonoBehaviour:
   DisabledObject: {fileID: 1383442275868354802}
   RedAlertObject: {fileID: 9080153376401698048}
   Type: 0
+  ResourceAllocator: {fileID: 0}
+  MemoryDevices: {fileID: 3251072202983978363}
   DMemoryTotal: {fileID: 1391416491703796161}
   NMemoryTotal: {fileID: 3320747585024753320}
-  MemoryDevices: {fileID: 3251072202983978363}
   MemoryUsage: {fileID: 2149452656747591146}
   MemoryBufferCap: {fileID: 423115196963022235}
   MemoryBuffer: {fileID: 2733484015397289449}
@@ -536,9 +537,9 @@ MonoBehaviour:
   MemoryPower: {fileID: 4000425779163692680}
   MemoryCache: {fileID: 8385499600407491668}
   MemoryTemp: {fileID: 4757846134121290058}
+  LearningDevices: {fileID: 5820537022387397114}
   DLearningTotal: {fileID: 166404408083430131}
   NLearningTotal: {fileID: 1064711142246177037}
-  LearningDevices: {fileID: 5820537022387397114}
   LearningUsage: {fileID: 7023455803555793057}
   LearningBufferCap: {fileID: 6527781760161509706}
   LearningBuffer: {fileID: 8102512377511617995}
@@ -546,9 +547,9 @@ MonoBehaviour:
   LearningPower: {fileID: 2611494648387997412}
   LearningCache: {fileID: 1014237594557291385}
   LearningTemp: {fileID: 3305783606684026720}
+  LogicDevices: {fileID: 5517801911685757268}
   DLogicTotal: {fileID: 3324429509184381072}
   QLogicTotal: {fileID: 933106845653455238}
-  LogicDevices: {fileID: 5517801911685757268}
   LogicUsage: {fileID: 6131269125764017701}
   LogicBufferCap: {fileID: 2559036160846668385}
   LogicBuffer: {fileID: 7612337267382377220}
@@ -5450,7 +5451,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3529474936781564961, guid: 3f9e3f169c82ad346b98dd8dc0a9535a, type: 3}
       propertyPath: Label
-      value: Power Usage
+      value: Power Cap.
       objectReference: {fileID: 0}
     - target: {fileID: 3529474936781564961, guid: 3f9e3f169c82ad346b98dd8dc0a9535a, type: 3}
       propertyPath: PropertyName
@@ -5627,7 +5628,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3529474936781564961, guid: 3f9e3f169c82ad346b98dd8dc0a9535a, type: 3}
       propertyPath: Label
-      value: Power Usage
+      value: Power Cap.
       objectReference: {fileID: 0}
     - target: {fileID: 3529474936781564961, guid: 3f9e3f169c82ad346b98dd8dc0a9535a, type: 3}
       propertyPath: PropertyName
@@ -6496,7 +6497,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3529474936781564961, guid: 3f9e3f169c82ad346b98dd8dc0a9535a, type: 3}
       propertyPath: Label
-      value: Power Usage
+      value: Power Cap.
       objectReference: {fileID: 0}
     - target: {fileID: 3529474936781564961, guid: 3f9e3f169c82ad346b98dd8dc0a9535a, type: 3}
       propertyPath: PropertyName

@@ -59,6 +59,7 @@ public class ResourceAllocatorUI : GenericUI
     {
         switch (name)
         {
+            // Logic properties
             case nameof(ResourceAllocator.LogicModuleCount):
                 LogicDevices.ValueText.text = value.ToString();
                 break;
@@ -83,6 +84,36 @@ public class ResourceAllocatorUI : GenericUI
             // LogicPower
             // LogicBuffer
             // LogicTemp
+
+            // Learning properties
+            case nameof(ResourceAllocator.LearningModuleCount):
+                LearningDevices.ValueText.text = value.ToString();
+                break;
+            case nameof(ResourceAllocator.LearningDCap):
+                DLearningTotal.ValueText.text = ((decimal)value).ToString("#.###");
+                break;
+            case nameof(ResourceAllocator.LearningNCap):
+                NLearningTotal.ValueText.text = ((decimal)value).ToString("#.###");
+                break;
+            case nameof(ResourceAllocator.LearningUsage):
+                LearningUsage.ValueText.text = ((decimal)value).ToString("#.###");
+                break;
+            case nameof(ResourceAllocator.LearningCache):
+                LearningCache.ValueText.text = ((decimal)value).ToString("#.###");
+                break;
+            case nameof(ResourceAllocator.LearningBufferCap):
+                LearningBufferCap.ValueText.text = ((decimal)value).ToString("#.###");
+                break;
+            case nameof(ResourceAllocator.LearningPowerCap):
+                LearningPowerCap.ValueText.text = ((decimal)value).ToString("#.###");
+                break;
+            // LearningBuffer
+            // LearningPower
+            // LearningTemp
+
+            // Memory properties
+
+
             default:
                 break;
         }

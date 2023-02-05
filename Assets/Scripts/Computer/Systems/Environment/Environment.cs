@@ -61,11 +61,11 @@ namespace Assets.Scripts.Computer.Systems.Environment
             return devices.ToArray();
         }
 
-        private void UpdateLighting(string name, object value)
+        private void UpdateLighting(string name, object value, params object[] parameters)
         {
 
         }
-        private void UpdateAtmosphere(string name, object value)
+        private void UpdateAtmosphere(string name, object value, params object[] parameters)
         {
 
         }

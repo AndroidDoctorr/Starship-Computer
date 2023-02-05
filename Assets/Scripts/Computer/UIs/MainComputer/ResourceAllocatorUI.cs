@@ -55,7 +55,7 @@ public class ResourceAllocatorUI : GenericUI
         ResourceAllocator.OnPropertyChange -= UpdateProp;
     }
 
-    private void UpdateProp(string name, object value)
+    private void UpdateProp(string name, object value, params object[] parameters)
     {
         switch (name)
         {

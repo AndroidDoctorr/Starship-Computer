@@ -42,7 +42,7 @@ public class UIProperty : UIElement
         }
         system.OnPropertyChange += UpdateProperty;
     }
-    private void UpdateProperty(string propertyName, object newValue)
+    private void UpdateProperty(string propertyName, object newValue, params object[] parameters)
     {
         if (propertyName != PropertyName) return;
         ValueText.text = newValue.ToString();

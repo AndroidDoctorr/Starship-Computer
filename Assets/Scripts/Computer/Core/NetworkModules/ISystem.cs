@@ -8,7 +8,7 @@ namespace Assets.Scripts.Computer.Core
 {
     public interface ISystem
     {
-        public delegate void PropertyChangeDelegate(string propertyName, object newValue);
+        public delegate void PropertyChangeDelegate(string propertyName, object newValue, params object[] parameters);
         event PropertyChangeDelegate OnPropertyChange;
     }
 }

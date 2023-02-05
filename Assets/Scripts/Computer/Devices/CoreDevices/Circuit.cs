@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 
-public enum CircuitType { None, Learning, Logic, Memory }
+public enum CircuitType { None, Learning, Logic, Memory, Hybrid }
 public class Circuit : Device
 {
     private Hand _hand;

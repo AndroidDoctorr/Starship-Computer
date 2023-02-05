@@ -18,11 +18,10 @@ namespace Assets.Scripts.Computer.Core.CoreModules
                 new KeyValuePair<string, DeviceStatus>(m.Key, ((Circuit) m.Value).Status));
 
         public bool DoDebug = false;
-
         public IEnumerable<IModule> Modules { get { return _modules.Select(m => m.Value); } }
 
         // Called whenever modules are added or removed
-        public delegate void ModuleChangeDelegate(bool isConnected, string slotName, Circuit circuit);
+        public delegate void ModuleChangeDelegate(CircuitType type);
         public event ModuleChangeDelegate OnModuleChange;
 
         private void OnEnable()
@@ -61,6 +60,7 @@ namespace Assets.Scripts.Computer.Core.CoreModules
         {
             // Subscribe to slot connection
             slot.OnConnect += UpdateModule;
+            slot.OnDisconnect += DisconnectModule;
             // Add connected modules to dictionary
             if (!_modules.ContainsKey(slot.Name))
                 _modules.Add(slot.Name, slot.ConnectedCircuit.GetComponent<IModule>());
@@ -69,32 +69,37 @@ namespace Assets.Scripts.Computer.Core.CoreModules
         {
             // Unubscribe from slot connection
             slot.OnConnect -= UpdateModule;
+            // Add connected modules to dictionary
+            if (!_modules.ContainsKey(slot.Name))
+                _modules.Remove(slot.Name);
         }
         private void UpdateModule(bool isConnected, string slotName, Circuit circuit)
         {
+            // Add, update, or remove module from dictionary
             if (!isConnected || circuit == default)
-                DisconnectModule(slotName);
+                DisconnectModule(slotName, circuit.Type);
             else
                 ConnectModule(slotName, circuit);
         }
-        private void DisconnectModule(string slotName)
+        private void DisconnectModule(string slotName, CircuitType type)
         {
+            // Remove module from dictionary, announce change
             if (_modules.ContainsKey(slotName))
                 _modules.Remove(slotName);
             else
                 Debug.LogWarning("Unregistered Module disconnected from Panel");
 
-            OnModuleChange(false, slotName, default);
+            OnModuleChange(type);
         }
         private void ConnectModule(string slotName, Circuit circuit)
         {
-            // Add or update
+            // Add or update module and announce
             IModule module = circuit.GetComponent<IModule>();
             if (_modules.ContainsKey(slotName))
                 _modules[slotName] = module;
             else _modules.Add(slotName, module);
 
-            OnModuleChange(true, slotName, circuit);
+            OnModuleChange(circuit.Type);
         }
     }
 }

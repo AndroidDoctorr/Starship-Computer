@@ -10,8 +10,10 @@ public class CircuitSlot : Device
     private bool _oneConnected = false;
     public Circuit ConnectedCircuit { get; private set; }
 
-    public delegate void OnConnectDelegate(bool isConnected, string slot, Circuit circuit);
-    public event OnConnectDelegate OnConnect;
+    public delegate void ConnectDelegate(bool isConnected, string slot, Circuit circuit);
+    public event ConnectDelegate OnConnect;
+    public delegate void DisconnectDelegate(string slot, CircuitType type);
+    public event DisconnectDelegate OnDisconnect;
 
     public bool IsOccupied { get; private set; }
     public bool HasValidCircuit { get; private set; }
@@ -85,10 +87,12 @@ public class CircuitSlot : Device
     private void DisconnectCircuit()
     {
         _oneConnected = false;
-        ConnectedCircuit.Disconnect();
-        ConnectedCircuit = null;
         IsOccupied = false;
+        ConnectedCircuit.Disconnect();
         SetValidCircuit(false);
+
+        OnDisconnect(Name, ConnectedCircuit.Type);
+        ConnectedCircuit = null;
 
         PlaySound(Disconnect);
     }

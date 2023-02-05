@@ -7,11 +7,17 @@ using System.Text;
 using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
+using Valve.VR.InteractionSystem;
 
 namespace Assets.Scripts.Computer.Core
 {
     public class ResourceAllocator : CoreSystem
     {
+        private IEnumerable<ILogicModule> _logicModules;
+        private IEnumerable<IDataModule> _learningModules;
+        private IEnumerable<IDataModule> _memoryModules;
+        private IEnumerable<IModule> _hybridModules;
+
         // Module Panels
         public CircuitPanel[] LogicPanels;
         public CircuitPanel[] LearningPanels;
@@ -19,42 +25,15 @@ namespace Assets.Scripts.Computer.Core
         public CircuitPanel[] HybridPanels;
 
         // Called whenever modules are added or removed
-        public delegate void ModuleChangeDelegate(Circuit circuit);
-        public event ModuleChangeDelegate OnModuleChange;
+        // public delegate void ModuleChangeDelegate(IModule module);
+        // public event ModuleChangeDelegate OnModuleChange;
 
-        public IEnumerable<ILogicModule> LogicModules
-        {
-            get
-            {
-                IEnumerable<ILogicModule> dedicatedModules =
-                    GetModulesFromPanels<ILogicModule>(LogicPanels);
-                IEnumerable<ILogicModule> hybridModules =
-                    GetModulesFromPanels<ILogicModule>(HybridPanels);
-                return dedicatedModules.Concat(hybridModules);
-            }
-        }
-        public IEnumerable<IDataModule> LearningModules
-        {
-            get
-            {
-                IEnumerable<IDataModule> dedicatedModules =
-                    GetModulesFromPanels<IDataModule>(LearningPanels);
-                IEnumerable<IDataModule> hybridModules =
-                    GetModulesFromPanels<IDataModule>(HybridPanels);
-                return dedicatedModules.Concat(hybridModules);
-            }
-        }
-        public IEnumerable<IDataModule> MemoryModules
-        {
-            get
-            {
-                IEnumerable<IDataModule> dedicatedModules =
-                    GetModulesFromPanels<IDataModule>(MemoryPanels);
-                IEnumerable<IDataModule> hybridModules =
-                    GetModulesFromPanels<IDataModule>(HybridPanels);
-                return dedicatedModules.Concat(hybridModules);
-            }
-        }
+        public IEnumerable<ILogicModule> LogicModules =>
+            _logicModules.Concat((IEnumerable<ILogicModule>) _hybridModules);
+        public IEnumerable<IDataModule> LearningModules =>
+            _learningModules.Concat((IEnumerable<IDataModule>) _hybridModules);
+        public IEnumerable<IDataModule> MemoryModules =>
+            _memoryModules.Concat((IEnumerable<IDataModule>) _hybridModules);
 
         // Logic properties
         public int LogicModuleCount => LogicModules.Count();
@@ -125,9 +104,59 @@ namespace Assets.Scripts.Computer.Core
 
         private void OnEnable()
         {
-            
+            GetLogicModules();
+            GetLearningModules();
+            GetMemoryModules();
+            GetHybridModules();
+
+            foreach (CircuitPanel panel in LogicPanels)
+                panel.OnModuleChange += UpdateModules;
+        }
+        private void OnDestroy()
+        {
+            foreach (CircuitPanel panel in LogicPanels)
+                panel.OnModuleChange -= UpdateModules;
         }
 
+        private void UpdateModules(CircuitType type)
+        {
+            if (type == CircuitType.Hybrid)
+            {
+                // Hybrid
+                GetHybridModules();
+            } else if (type == CircuitType.Logic)
+            {
+                // Logic
+                GetLogicModules();
+            } else if (type == CircuitType.Learning)
+            {
+                // Learning
+                GetLearningModules();
+            } else if (type == CircuitType.Memory)
+            {
+                // Memory
+                GetMemoryModules();
+            } else
+            {
+                // Not connected or not valid
+            }
+        }
+        private void GetHybridModules()
+        {
+            _hybridModules = GetModulesFromPanels<IModule>(HybridPanels);
+        }
+        private void GetLogicModules()
+        {
+            _logicModules = GetModulesFromPanels<ILogicModule>(LogicPanels);
+        }
+        private void GetLearningModules()
+        {
+            _learningModules = GetModulesFromPanels<IDataModule>(LearningPanels);
+        }
+        private void GetMemoryModules()
+        {
+            _memoryModules = GetModulesFromPanels<IDataModule>(MemoryPanels);
+        }
         private IEnumerable<T> GetModulesFromPanels<T>(CircuitPanel[] panels) where T : IModule
         {
             return panels

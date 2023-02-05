@@ -67,10 +67,16 @@ namespace Assets.Scripts.Computer.Core
         public decimal Threads => LogicModules.Sum(s => s.Threads);
         public decimal LogicPowerCap => LogicModules.Sum(s => s.PowerCap);
         public decimal LogicPowerAvg => LogicModules.Average(s => s.PowerCap);
-        public decimal LogicBufferUsage => 0;
-        public decimal LogicDCap => 0;
-        public decimal LogicNCap => 0;
+        public decimal LogicDCap => LogicModules
+            .Where(s => s.SocketType == ProcessingSocketType.D1 ||
+                s.SocketType == ProcessingSocketType.D2)
+            .Sum(s => s.ClockSpeed);
+        public decimal LogicQCap => LogicModules
+            .Where(s => s.SocketType == ProcessingSocketType.Q1 ||
+                s.SocketType == ProcessingSocketType.Q2)
+            .Sum(s => s.ClockSpeed);
         public decimal LogicUsage => 0;
+        public decimal LogicBufferUsage => 0;
         public decimal LogicPowerDraw => 0;
 
         // Learning properties
@@ -83,10 +89,16 @@ namespace Assets.Scripts.Computer.Core
         public decimal LearningCacheAvg => LearningModules.Average(s => s.CacheSize);
         public decimal LearningPowerCap => LearningModules.Sum(s => s.PowerCap);
         public decimal LearningPowerAvg => LearningModules.Average(s => s.PowerCap);
-        public decimal LearningBufferUsage => 0;
-        public decimal LearningDCap => 0;
-        public decimal LearningNCap => 0;
+        public decimal LearningDCap => LearningModules
+            .Where(s => s.SocketType == DataSocketType.D1 ||
+                s.SocketType == DataSocketType.D2)
+            .Sum(s => s.DataCapacity);
+        public decimal LearningNCap => LearningModules
+            .Where(s => s.SocketType == DataSocketType.N1 ||
+                s.SocketType == DataSocketType.N2)
+            .Sum(s => s.DataCapacity);
         public decimal LearningUsage => 0;
+        public decimal LearningBufferUsage => 0;
         public decimal LearningPowerDraw => 0;
 
         // Memory properties
@@ -99,10 +111,16 @@ namespace Assets.Scripts.Computer.Core
         public decimal MemoryCacheAvg => MemoryModules.Average(s => s.CacheSize);
         public decimal MemoryPowerCap => MemoryModules.Sum(s => s.PowerCap);
         public decimal MemoryPowerAvg => MemoryModules.Average(s => s.PowerCap);
-        public decimal MemoryBufferUsage => 0;
-        public decimal MemoryDCap => 0;
-        public decimal MemoryNCap => 0;
+        public decimal MemoryDCap => MemoryModules
+            .Where(s => s.SocketType == DataSocketType.D1 ||
+                s.SocketType == DataSocketType.D2)
+            .Sum(s => s.DataCapacity);
+        public decimal MemoryNCap => MemoryModules
+            .Where(s => s.SocketType == DataSocketType.N1 ||
+                s.SocketType == DataSocketType.N2)
+            .Sum(s => s.DataCapacity);
         public decimal MemoryUsage => 0;
+        public decimal MemoryBufferUsage => 0;
         public decimal MemoryPowerDraw => 0;
 
         private void OnEnable()

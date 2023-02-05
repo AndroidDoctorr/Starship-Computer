@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Computer.Core.CoreModules
 {
-    public enum MemorySocketType { D1, N1, D2, N2 }
     public class MemoryModule : Circuit, IDataModule
     {
         // Physical socket compatibility
-        public MemorySocketType SocketType;
+        public DataSocketType SocketType { get; protected set; }
         // Maximum storage capacity (TB/kQ)
         public decimal DataCapacity { get; protected set; }
         // Maximum transfer speed (TB/s)

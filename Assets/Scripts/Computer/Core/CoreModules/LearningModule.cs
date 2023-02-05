@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Computer.Core.CoreModules
 {
-    public enum LearningSocketType { N1, D1, N2, D2, }
     public class LearningModule : Circuit, IDataModule
     {
         // Physical socket compatibility
-        public LearningSocketType SocketType;
+        public DataSocketType SocketType { get; protected set; }
         // Maximum storage capacity (TB/kQ)
         public decimal DataCapacity { get; protected set; }
         // Maximum transfer speed (TB/s)

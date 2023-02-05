@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Computer.Core.CoreModules
 {
-    public enum ProcessingSocketType { D1, Q1, D2, Q2 }
     public class LogicModule : Circuit, ILogicModule
     {
         // Physical socket compatibility
-        public ProcessingSocketType SocketType;
+        public ProcessingSocketType SocketType { get; protected set; }
         // Number of processing threads
         public int Threads { get; protected set; }
         // Calculations per second (GHz)

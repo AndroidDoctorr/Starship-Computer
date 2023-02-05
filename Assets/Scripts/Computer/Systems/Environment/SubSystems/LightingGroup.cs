@@ -23,6 +23,8 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
         public Color Color { get; private set; }
         public bool IsOn { get; private set; }
 
+        public override event ISystem.PropertyChangeDelegate OnPropertyChange;
+
         private void Start()
         {
             if (BeginOn) TurnOnAllLights(true);
@@ -31,10 +33,12 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
         {
             // Generic method for subsystems - ConnectDevice?
             // Or this makes use of it/extends it?
+            OnPropertyChange("Devices", LightFixtures.Length, EnvironmentPropGroup.Lighting);
             return true;
         }
         public bool ConnectLightFixture()
         {
+            OnPropertyChange("Devices", LightFixtures.Length, EnvironmentPropGroup.Lighting);
             return true;
         }
         public void TurnOnAllLights(bool doReset)
@@ -53,6 +57,8 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
             }
             Brightness = DefaultBrightness;
             Color = DefaultColor;
+
+            UpdateProperties();
         }
         public void TurnOffAllLights()
         {
@@ -61,6 +67,8 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
                 fixture.TurnOff();
             Brightness = 0;
             Color = Color.black;
+
+            UpdateProperties();
         }
         public void SetGroupColor(float hue, float saturation)
         {
@@ -68,12 +76,16 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
             foreach (LightFixture fixture in LightFixtures)
                 fixture.SetColor(hue, saturation);
             Color = Color.HSVToRGB(hue, saturation, 1);
+
+            UpdateProperties();
         }
         public void SetGroupBrightness(float brightness)
         {
             foreach (LightFixture fixture in LightFixtures)
                 fixture.SetBrightness(brightness);
             Brightness = brightness;
+
+            UpdateProperties();
         }
         public void SetCandleMode()
         {
@@ -83,6 +95,8 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
                 fixture.SetCandleMode();
             Brightness = 1;
             Color = CandleColor;
+
+            UpdateProperties();
         }
         public void SetRandomColor()
         {
@@ -93,6 +107,8 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
             foreach (LightFixture fixture in LightFixtures)
                 fixture.SetColor(hue, saturation);
             Color = Color.HSVToRGB(hue, saturation, 1);
+
+            UpdateProperties();
         }
         public void SetMultipleColors()
         {
@@ -105,12 +121,21 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
                 fixture.SetColor(hue, saturation);
             }
             Color = Color.white;
+
+            UpdateProperties();
         }
         public override Device[] GetSystemDevices()
         {
             List<Device> devices = new List<Device>();
             devices.AddRange(LightFixtures);
             return devices.ToArray();
+        }
+
+        private void UpdateProperties()
+        {
+            OnPropertyChange(nameof(LightingMode), LightingMode, EnvironmentPropGroup.Lighting);
+            OnPropertyChange(nameof(Brightness), Brightness, EnvironmentPropGroup.Lighting);
+            OnPropertyChange(nameof(Color), Color, EnvironmentPropGroup.Lighting);
         }
     }
 }

@@ -10,6 +10,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Computer.Systems.Environment
 {
+    public enum EnvironmentPropGroup { Lighting, Atmosphere }
     public class Environment : ShipSystem
     {
         public LightingGroup[] LightingGroups;
@@ -63,11 +64,11 @@ namespace Assets.Scripts.Computer.Systems.Environment
 
         private void UpdateLighting(string name, object value, params object[] parameters)
         {
-
+            // OnPropertyChange(name, value, EnvironmentPropGroup.Lighting);
         }
         private void UpdateAtmosphere(string name, object value, params object[] parameters)
         {
-
+            // OnPropertyChange(name, value, EnvironmentPropGroup.Atmosphere);
         }
     }
 }

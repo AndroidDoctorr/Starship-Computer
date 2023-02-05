@@ -67,6 +67,11 @@ namespace Assets.Scripts.Computer.Core
         public decimal Threads => LogicModules.Sum(s => s.Threads);
         public decimal LogicPowerCap => LogicModules.Sum(s => s.PowerCap);
         public decimal LogicPowerAvg => LogicModules.Average(s => s.PowerCap);
+        public decimal LogicBufferUsage => 0;
+        public decimal LogicDCap => 0;
+        public decimal LogicNCap => 0;
+        public decimal LogicUsage => 0;
+        public decimal LogicPowerDraw => 0;
 
         // Learning properties
         public int LearningModuleCount => LearningModules.Count();
@@ -78,6 +83,11 @@ namespace Assets.Scripts.Computer.Core
         public decimal LearningCacheAvg => LearningModules.Average(s => s.CacheSize);
         public decimal LearningPowerCap => LearningModules.Sum(s => s.PowerCap);
         public decimal LearningPowerAvg => LearningModules.Average(s => s.PowerCap);
+        public decimal LearningBufferUsage => 0;
+        public decimal LearningDCap => 0;
+        public decimal LearningNCap => 0;
+        public decimal LearningUsage => 0;
+        public decimal LearningPowerDraw => 0;
 
         // Memory properties
         public int MemoryModuleCount => MemoryModules.Count();
@@ -89,6 +99,11 @@ namespace Assets.Scripts.Computer.Core
         public decimal MemoryCacheAvg => MemoryModules.Average(s => s.CacheSize);
         public decimal MemoryPowerCap => MemoryModules.Sum(s => s.PowerCap);
         public decimal MemoryPowerAvg => MemoryModules.Average(s => s.PowerCap);
+        public decimal MemoryBufferUsage => 0;
+        public decimal MemoryDCap => 0;
+        public decimal MemoryNCap => 0;
+        public decimal MemoryUsage => 0;
+        public decimal MemoryPowerDraw => 0;
 
         private void OnEnable()
         {

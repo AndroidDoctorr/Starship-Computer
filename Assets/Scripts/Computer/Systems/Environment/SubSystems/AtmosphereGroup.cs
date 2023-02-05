@@ -35,11 +35,11 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
         }
         private void UpdateTemperature(double temp)
         {
-            OnPropertyChange(nameof(Temperature), Math.Round(temp, 1), EnvironmentPropGroup.Atmosphere);
+            OnPropertyChange(nameof(Temperature), Math.Round(temp, 1));
         }
         private void UpdateHumidity(double humid)
         {
-            OnPropertyChange(nameof(Humidity), Math.Round(humid, 1), EnvironmentPropGroup.Atmosphere);
+            OnPropertyChange(nameof(Humidity), Math.Round(humid, 1));
         }
         public void SetTemperature(double temp)
         {

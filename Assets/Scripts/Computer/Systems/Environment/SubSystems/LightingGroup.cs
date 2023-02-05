@@ -33,12 +33,12 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
         {
             // Generic method for subsystems - ConnectDevice?
             // Or this makes use of it/extends it?
-            OnPropertyChange("Devices", LightFixtures.Length, EnvironmentPropGroup.Lighting);
+            OnPropertyChange("Devices", LightFixtures.Length);
             return true;
         }
         public bool ConnectLightFixture()
         {
-            OnPropertyChange("Devices", LightFixtures.Length, EnvironmentPropGroup.Lighting);
+            OnPropertyChange("Devices", LightFixtures.Length);
             return true;
         }
         public void TurnOnAllLights(bool doReset)
@@ -133,9 +133,9 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
 
         private void UpdateProperties()
         {
-            OnPropertyChange(nameof(LightingMode), LightingMode, EnvironmentPropGroup.Lighting);
-            OnPropertyChange(nameof(Brightness), Brightness, EnvironmentPropGroup.Lighting);
-            OnPropertyChange(nameof(Color), Color, EnvironmentPropGroup.Lighting);
+            OnPropertyChange(nameof(LightingMode), LightingMode);
+            OnPropertyChange(nameof(Brightness), Brightness);
+            OnPropertyChange(nameof(Color), Color);
         }
     }
 }

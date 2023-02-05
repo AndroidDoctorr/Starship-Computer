@@ -16,6 +16,8 @@ namespace Assets.Scripts.Computer.Systems.Environment
         public LightingGroup[] LightingGroups;
         public AtmosphereGroup[] AtmosphereGroups;
 
+        public override event ISystem.PropertyChangeDelegate OnPropertyChange;
+
         private void OnEnable()
         {
             foreach (LightingGroup group in LightingGroups)
@@ -64,11 +66,11 @@ namespace Assets.Scripts.Computer.Systems.Environment
 
         private void UpdateLighting(string name, object value, params object[] parameters)
         {
-            // OnPropertyChange(name, value, EnvironmentPropGroup.Lighting);
+            OnPropertyChange(name, value, EnvironmentPropGroup.Lighting);
         }
         private void UpdateAtmosphere(string name, object value, params object[] parameters)
         {
-            // OnPropertyChange(name, value, EnvironmentPropGroup.Atmosphere);
+            OnPropertyChange(name, value, EnvironmentPropGroup.Atmosphere);
         }
     }
 }

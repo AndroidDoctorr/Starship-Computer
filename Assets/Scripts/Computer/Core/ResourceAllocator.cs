@@ -79,7 +79,6 @@ namespace Assets.Scripts.Computer.Core
         private IEnumerable<T> GetModulesFromPanels<T>(CircuitPanel<T>[] panels) where T : Circuit
         {
             return panels
-                .Where(p => p.Modules is IEnumerable<T>)
                 .Select(p => p.Modules)
                 .SelectMany(m => m);
         }

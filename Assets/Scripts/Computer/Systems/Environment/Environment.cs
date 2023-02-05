@@ -15,6 +15,14 @@ namespace Assets.Scripts.Computer.Systems.Environment
         public LightingGroup[] LightingGroups;
         public AtmosphereGroup[] AtmosphereGroups;
 
+        private void OnEnable()
+        {
+            foreach (LightingGroup group in LightingGroups)
+                group.OnPropertyChange += UpdateLighting;
+            foreach (AtmosphereGroup group in AtmosphereGroups)
+                group.OnPropertyChange += UpdateAtmosphere;
+        }
+
         public bool TurnOnLightingGroup(string name)
         {
             string formattedName = name.ToLower().Trim();
@@ -51,6 +59,15 @@ namespace Assets.Scripts.Computer.Systems.Environment
             Array.ForEach(AtmosphereGroups, s => devices.AddRange(s.GetDevices()));
 
             return devices.ToArray();
+        }
+
+        private void UpdateLighting(string name, object value)
+        {
+
+        }
+        private void UpdateAtmosphere(string name, object value)
+        {
+
         }
     }
 }

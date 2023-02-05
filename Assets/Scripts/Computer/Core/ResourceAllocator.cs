@@ -57,25 +57,38 @@ namespace Assets.Scripts.Computer.Core
         }
 
         // Logic properties
+        public int LogicModuleCount => LogicModules.Count();
         public decimal ClockSpeedTotal => LogicModules.Sum(s => s.ClockSpeed);
         public decimal ClockSpeedAcg => LogicModules.Average(s => s.ClockSpeed);
-        public decimal BusSpeedTotal => LogicModules.Sum(s => s.BusSpeed);
-        public decimal BusSpeedAvg => LogicModules.Average(s => s.BusSpeed);
-        public decimal CacheSizeTotal => LogicModules.Sum(s => s.CacheSize);
-        public decimal CacheSizeAvg => LogicModules.Average(s => s.CacheSize);
+        public decimal LogicBusSpeedTotal => LogicModules.Sum(s => s.BusSpeed);
+        public decimal LogicBusSpeedAvg => LogicModules.Average(s => s.BusSpeed);
+        public decimal LogicCacheCap => LogicModules.Sum(s => s.CacheSize);
+        public decimal LogicCacheAvg => LogicModules.Average(s => s.CacheSize);
         public decimal Threads => LogicModules.Sum(s => s.Threads);
+        public decimal LogicPowerCap => LogicModules.Sum(s => s.PowerCap);
+        public decimal LogicPowerAvg => LogicModules.Average(s => s.PowerCap);
 
         // Learning properties
+        public int LearningModuleCount => LearningModules.Count();
         public decimal LearningTotal => LearningModules.Sum(s => s.DataCapacity);
         public decimal LearningDataAvg => LearningModules.Average(s => s.DataCapacity);
-        public decimal LearningIOCap => LearningModules.Sum(s => s.IOCapacity);
-        public decimal LearningIOAvg => LearningModules.Average(s => s.IOCapacity);
+        public decimal LearningIOCap => LearningModules.Sum(s => s.BusSpeed);
+        public decimal LearningIOAvg => LearningModules.Average(s => s.BusSpeed);
+        public decimal LearningCache => LearningModules.Sum(s => s.CacheSize);
+        public decimal LearningCacheAvg => LearningModules.Average(s => s.CacheSize);
+        public decimal LearningPowerCap => LearningModules.Sum(s => s.PowerCap);
+        public decimal LearningPowerAvg => LearningModules.Average(s => s.PowerCap);
 
         // Memory properties
+        public int MemoryModuleCount => MemoryModules.Count();
         public decimal MemoryTotal => MemoryModules.Sum(s => s.DataCapacity);
         public decimal MemoryDataAvg => MemoryModules.Average(s => s.DataCapacity);
-        public decimal MemoryIOCap => MemoryModules.Sum(s => s.IOCapacity);
-        public decimal MemoryIOAvg => MemoryModules.Average(s => s.IOCapacity);
+        public decimal MemoryBusCap => MemoryModules.Sum(s => s.BusSpeed);
+        public decimal MemoryBusAvg => MemoryModules.Average(s => s.BusSpeed);
+        public decimal MemoryCache => MemoryModules.Sum(s => s.CacheSize);
+        public decimal MemoryCacheAvg => MemoryModules.Average(s => s.CacheSize);
+        public decimal MemoryPowerCap => MemoryModules.Sum(s => s.PowerCap);
+        public decimal MemoryPowerAvg => MemoryModules.Average(s => s.PowerCap);
 
         private void OnEnable()
         {

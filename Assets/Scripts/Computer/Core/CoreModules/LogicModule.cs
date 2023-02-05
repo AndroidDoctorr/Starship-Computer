@@ -21,5 +21,7 @@ namespace Assets.Scripts.Computer.Core.CoreModules
         public decimal CacheSize { get; protected set; }
         // Coefficients used to calculate the thermal profile
         public decimal[] ThermalCoefficients { get; protected set; }
+
+        public decimal PowerCap { get; protected set; }
     }
 }

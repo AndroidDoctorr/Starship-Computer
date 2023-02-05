@@ -18,6 +18,7 @@ namespace Assets.Scripts.Computer.Devices.CoreDevices
             ClockSpeed = 16;
             BusSpeed = 8;
             CacheSize = 64;
+            PowerCap = 108;
             ThermalCoefficients = new decimal[] { 1 };
         }
     }

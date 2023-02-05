@@ -23,7 +23,7 @@ namespace Assets.Scripts.Computer.Core.CoreModules
         public decimal[] ThermalCoefficients { get; protected set; }
         // Maximum storage capacity (TB/kQ)
         public decimal DataCapacity { get; protected set; }
-        // Maximum transfer speed (TB/s)
-        public decimal IOCapacity { get; protected set; }
+
+        public decimal PowerCap { get; protected set; }
     }
 }

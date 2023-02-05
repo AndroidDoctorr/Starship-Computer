@@ -10,7 +10,7 @@ namespace Assets.Scripts.Computer.Core.CoreModules
     {
         // Maximum storage capacity (TB/kQ)
         public decimal DataCapacity { get; }
-        // Maximum transfer speed (TB/s)
-        public decimal IOCapacity { get; }
+        // Cache size (TB)
+        public decimal CacheSize { get; }
     }
 }

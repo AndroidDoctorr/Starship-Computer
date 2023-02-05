@@ -15,7 +15,9 @@ namespace Assets.Scripts.Computer.Devices.CoreDevices
             Id = new Guid();
             SocketType = LearningSocketType.N1;
             DataCapacity = 4096;
-            IOCapacity = 32;
+            CacheSize = 64;
+            PowerCap = 108;
+            BusSpeed = 32;
             ThermalCoefficients = new decimal[] { };
         }
     }

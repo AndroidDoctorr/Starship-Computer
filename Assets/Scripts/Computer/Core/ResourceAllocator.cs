@@ -45,6 +45,9 @@ namespace Assets.Scripts.Computer.Core
         public decimal LogicBusSpeedTotal => LogicModules.Sum(s => s.BusSpeed);
         public decimal LogicBusSpeedAvg => LogicModuleCount > 0 ?
             LogicModules.Average(s => s.BusSpeed) : 0;
+        public decimal LogicBufferCap => LogicModules.Sum(s => s.Buffer);
+        public decimal LogicBufferAvg => LogicModuleCount > 0 ?
+            LogicModules.Average(s => s.Buffer) : 0;
         public decimal LogicCacheCap => LogicModules.Sum(s => s.CacheSize);
         public decimal LogicCacheAvg => LogicModuleCount > 0 ?
             LogicModules.Average(s => s.CacheSize) : 0;
@@ -72,6 +75,9 @@ namespace Assets.Scripts.Computer.Core
         public decimal LearningBusSpeedCap => LearningModules.Sum(s => s.BusSpeed);
         public decimal LearningBusSpeedAvg => LearningModuleCount > 0 ?
             LearningModules.Average(s => s.BusSpeed) : 0;
+        public decimal LearningBufferCap => LearningModules.Sum(s => s.Buffer);
+        public decimal LearningBufferAvg => LearningModuleCount > 0 ?
+            LearningModules.Average(s => s.Buffer) : 0;
         public decimal LearningCache => LearningModules.Sum(s => s.CacheSize);
         public decimal LearningCacheAvg => LearningModuleCount > 0 ?
             LearningModules.Average(s => s.CacheSize) : 0;
@@ -98,6 +104,9 @@ namespace Assets.Scripts.Computer.Core
         public decimal MemoryBusSpeedCap => MemoryModules.Sum(s => s.BusSpeed);
         public decimal MemoryBusSpeedAvg => MemoryModuleCount > 0 ?
             MemoryModules.Average(s => s.BusSpeed) : 0;
+        public decimal MemoryBufferCap => MemoryModules.Sum(s => s.Buffer);
+        public decimal MemoryBufferAvg => MemoryModuleCount > 0 ?
+            MemoryModules.Average(s => s.Buffer) : 0;
         public decimal MemoryCache => MemoryModules.Sum(s => s.CacheSize);
         public decimal MemoryCacheAvg => MemoryModuleCount > 0 ?
             MemoryModules.Average(s => s.CacheSize) : 0;

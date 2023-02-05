@@ -16,6 +16,8 @@ namespace Assets.Scripts.Computer.Core.CoreModules
         public decimal ClockSpeed { get; protected set; }
         // Data transfer rate between processor and socket (GHz)
         public decimal BusSpeed { get; protected set; }
+        // Temprorary transfer storage (TB/kQ)
+        public decimal Buffer { get; protected set; }
         // Transfer buffer size (GB)
         public decimal CacheSize { get; protected set; }
         // Coefficients used to calculate the thermal profile

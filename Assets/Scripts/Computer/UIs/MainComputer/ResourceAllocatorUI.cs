@@ -65,6 +65,24 @@ public class ResourceAllocatorUI : GenericUI
             case nameof(ResourceAllocator.LogicDCap):
                 DLogicTotal.ValueText.text = ((decimal) value).ToString("#.###");
                 break;
+            case nameof(ResourceAllocator.LogicQCap):
+                QLogicTotal.ValueText.text = ((decimal)value).ToString("#.###");
+                break;
+            case nameof(ResourceAllocator.LogicUsage):
+                LogicUsage.ValueText.text = ((decimal)value).ToString("#.###");
+                break;
+            case nameof(ResourceAllocator.LogicCacheCap):
+                LogicCache.ValueText.text = ((decimal)value).ToString("#.###");
+                break;
+            case nameof(ResourceAllocator.LogicBufferCap):
+                LogicBufferCap.ValueText.text = ((decimal)value).ToString("#.###");
+                break;
+            case nameof(ResourceAllocator.LogicPowerCap):
+                LogicPowerCap.ValueText.text = ((decimal)value).ToString("#.###");
+                break;
+            // LogicPower
+            // LogicBuffer
+            // LogicTemp
             default:
                 break;
         }

@@ -14,6 +14,8 @@ namespace Assets.Scripts.Computer.Core.CoreModules
         public decimal DataCapacity { get; protected set; }
         // Maximum transfer speed (TB/s)
         public decimal BusSpeed { get; protected set; }
+        // Temprorary transfer storage (TB/kQ)
+        public decimal Buffer { get; protected set; }
         // Coefficients used to calculate the thermal profile
         public decimal[] ThermalCoefficients { get; protected set; }
 

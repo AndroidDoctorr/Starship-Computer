@@ -10,6 +10,8 @@ namespace Assets.Scripts.Computer.Core.CoreModules
     {
         // Data transfer rate between module and socket (GHz)
         public decimal BusSpeed { get; }
+        // Temprorary transfer storage (TB/kQ)
+        public decimal Buffer { get; }
         // Maximum power input
         public decimal PowerCap { get; }
         // Coefficients used to calculate the thermal profile

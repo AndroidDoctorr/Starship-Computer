@@ -19,6 +19,7 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
         public Color DefaultColor = Color.white;
         public float DefaultBrightness = 0.6f;
         public LightingMode LightingMode { get; private set; } = LightingMode.Solid;
+        public int Count => LightFixtures.Length;
         public float Brightness { get; private set; }
         public Color Color { get; private set; }
         public bool IsOn { get; private set; }

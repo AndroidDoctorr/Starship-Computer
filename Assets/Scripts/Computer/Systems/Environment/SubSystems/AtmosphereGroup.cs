@@ -17,6 +17,7 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
         // Get the actual values (measured by sensors)
         public double Humidity => GetHumidity();
         public double Temperature => GetTemperature();
+        public int Count => ACUnits.Length;
         public override event ISystem.PropertyChangeDelegate OnPropertyChange;
 
         private void OnEnable()

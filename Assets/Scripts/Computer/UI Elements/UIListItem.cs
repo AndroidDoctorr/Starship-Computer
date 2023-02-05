@@ -1,4 +1,5 @@
 using Assets.Scripts;
+using Assets.Scripts.Computer.Core;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,6 +22,10 @@ public class UIListItem : UIElement
     }
 
     public virtual void Populate(ListItemData data)
+    {
+
+    }
+    public virtual void ConnectSystem(SystemBase system)
     {
 
     }

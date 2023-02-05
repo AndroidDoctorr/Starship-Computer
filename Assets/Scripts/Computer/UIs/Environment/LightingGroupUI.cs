@@ -84,8 +84,6 @@ public class LightingGroupUI : PadUI
     private void MenuToggle(bool isOpen)
     {
         if (isOpen)
-        {
             Toggle.Disable();
-        }
     }
 }

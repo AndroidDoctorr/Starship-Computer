@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Computer.Systems.Environment.SubSystems;
+﻿using Assets.Scripts.Computer.Core;
+using Assets.Scripts.Computer.Systems.Environment.SubSystems;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.Computer.UI_Elements.ListItems
@@ -35,7 +37,32 @@ namespace Assets.Scripts.Computer.UI_Elements.ListItems
             Count.text = $"{lightData.Count:0.##}";
             Color.color = new Color(lightData.R, lightData.G, lightData.B);
         }
+        public override void ConnectSystem(SystemBase system)
+        {
+            if (system is not LightingGroup) return;
+            LightingGroup lightingGroup = system as LightingGroup;
+
+            Name.text = lightingGroup.Name;
+            Type.text = lightingGroup.GetType().Name;
+            Mode.text = $"{lightingGroup.LightingMode}";
+            Brightness.text = $"{lightingGroup.Brightness:0.##}";
+            Count.text = $"{lightingGroup.Count}";
+            Color.color = new Color(lightingGroup.Color.r, lightingGroup.Color.g, lightingGroup.Color.b);
+        }
+        public void DisconnectSystem(SystemBase system)
+        {
+            if (system is not LightingGroup) return;
+            LightingGroup lightingGroup = system as LightingGroup;
+            lightingGroup.OnPropertyChange -= UpdateSystemProperty;
+        }
+
+        private void UpdateSystemProperty(string propertyName, object newValue, params object[] parameters)
+        {
+
+        }
     }
+
+
     public class LightingGroupData : ListItemData
     {
         public string Name;

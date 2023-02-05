@@ -21,13 +21,7 @@ public class EnvironmentUI : GenericUI
     void Start()
     {
         // Device[] devices = Environment.GetDevices();
-
-        AtmosphereList.PopulateList(Environment.AtmosphereGroups.Select(ag =>
-            new AtmosphereData(ag)
-        ).ToArray());
-
-        LightGroupList.PopulateList(Environment.LightingGroups.Select(lg =>
-            new LightingGroupData(lg)
-        ).ToArray());
+        AtmosphereList.PopulateSystemList(Environment.AtmosphereGroups);
+        LightGroupList.PopulateSystemList(Environment.LightingGroups);
     }
 }

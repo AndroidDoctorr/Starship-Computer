@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Computer.Systems.Environment.SubSystems;
+﻿using Assets.Scripts.Computer.Core;
+using Assets.Scripts.Computer.Systems.Environment.SubSystems;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
+using UnityEngine.Rendering.VirtualTexturing;
 using UnityEngine.UI;
 using static UnityEditor.PlayerSettings;
 
@@ -35,7 +37,33 @@ namespace Assets.Scripts.Computer.UI_Elements.ListItems
             Humidity.text = $"{atmosData.Humidity:0.##}";
             Count.text = atmosData.Count.ToString();
         }
+        public override void ConnectSystem(SystemBase system)
+        {
+            if (system is not AtmosphereGroup) return;
+            AtmosphereGroup atmoGroup = system as AtmosphereGroup;
+
+            Name.text = atmoGroup.Name;
+            Type.text = atmoGroup.GetType().Name;
+            Temperature.text = $"{atmoGroup.Temperature:0.##}";
+            Humidity.text = $"{atmoGroup.Humidity:0.##}";
+            Count.text = atmoGroup.Count.ToString();
+
+            atmoGroup.OnPropertyChange += UpdateSystemProperty;
+        }
+        public void DisconnectSystem(SystemBase system)
+        {
+            if (system is not AtmosphereGroup) return;
+            AtmosphereGroup atmoGroup = system as AtmosphereGroup;
+            atmoGroup.OnPropertyChange -= UpdateSystemProperty;
+        }
+
+        private void UpdateSystemProperty(string propertyName, object newValue, params object[] parameters)
+        {
+
+        }
     }
+
+
     public class AtmosphereData : ListItemData
     {
         public string Name;

@@ -1,9 +1,11 @@
 using Assets.Scripts;
+using Assets.Scripts.Computer.Core;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditorInternal.VersionControl;
 using UnityEngine;
+using UnityEngine.Rendering.VirtualTexturing;
 using UnityEngine.UI;
 
 public class UIScrollView : UIElement
@@ -41,20 +43,39 @@ public class UIScrollView : UIElement
     }
 
 
-
-    public void PopulateList(ListItemData[] data)
+    public void PopulateDataList(ListItemData[] data)
     {
         float offset = -0.125f;
         foreach (ListItemData item in data)
-        {
-            UIListItem model = Instantiate(ListItemModel, ScrollOffset);
-            model.Populate(item);
-            _listItems.Add(model);
-            Vector3 pos = model.transform.localPosition;
-            pos.y = offset;
-            offset -= ListItemModel.Spacing;
-            model.transform.localPosition = pos;
-        }
+            SetUpDataListItem(item, offset);
+    }
+    public virtual void PopulateSystemList(SystemBase[] systems)
+    {
+        float offset = -0.125f;
+        foreach (SystemBase system in systems)
+            SetUpSystemListItem(system, offset);
+    }
+
+
+    private void SetUpDataListItem(ListItemData item, float offset)
+    {
+        UIListItem model = SetUpListItem(offset);
+        model.Populate(item);
+    }
+    private void SetUpSystemListItem(SystemBase system, float offset)
+    {
+        UIListItem model = SetUpListItem(offset);
+        model.ConnectSystem(system);
+    }
+    private UIListItem SetUpListItem(float offset)
+    {
+        UIListItem model = Instantiate(ListItemModel, ScrollOffset);
+        _listItems.Add(model);
+        Vector3 pos = model.transform.localPosition;
+        offset -= ListItemModel.Spacing;
+        pos.y = offset;
+        model.transform.localPosition = pos;
+        return model;
     }
     private void Scroll(float amount)
     {

@@ -213,46 +213,46 @@ namespace Assets.Scripts.Computer.Core
         }
         private void UpdateLogicProps()
         {
-            OnPropertyChange(nameof(LogicModuleCount), LogicModuleCount);
-            OnPropertyChange(nameof(ClockSpeedTotal), ClockSpeedTotal);
-            OnPropertyChange(nameof(ClockSpeedAvg), ClockSpeedAvg);
-            OnPropertyChange(nameof(Threads), Threads);
-            OnPropertyChange(nameof(LogicBusSpeedTotal), LogicBusSpeedTotal);
-            OnPropertyChange(nameof(LogicBusSpeedAvg), LogicBusSpeedAvg);
-            OnPropertyChange(nameof(LogicCacheCap), LogicCacheCap);
-            OnPropertyChange(nameof(LogicCacheAvg), LogicCacheAvg);
-            OnPropertyChange(nameof(LogicPowerCap), LogicPowerCap);
-            OnPropertyChange(nameof(LogicPowerAvg), LogicPowerAvg);
-            OnPropertyChange(nameof(LogicDCap), LogicDCap);
-            OnPropertyChange(nameof(LogicQCap), LogicQCap);
+            OnPropertyChange(nameof(LogicModuleCount), LogicModuleCount, ResourcePropertyGroup.Logic);
+            OnPropertyChange(nameof(ClockSpeedTotal), ClockSpeedTotal, ResourcePropertyGroup.Logic);
+            OnPropertyChange(nameof(ClockSpeedAvg), ClockSpeedAvg, ResourcePropertyGroup.Logic);
+            OnPropertyChange(nameof(Threads), Threads, ResourcePropertyGroup.Logic);
+            OnPropertyChange(nameof(LogicBusSpeedTotal), LogicBusSpeedTotal, ResourcePropertyGroup.Logic);
+            OnPropertyChange(nameof(LogicBusSpeedAvg), LogicBusSpeedAvg, ResourcePropertyGroup.Logic);
+            OnPropertyChange(nameof(LogicCacheCap), LogicCacheCap, ResourcePropertyGroup.Logic);
+            OnPropertyChange(nameof(LogicCacheAvg), LogicCacheAvg, ResourcePropertyGroup.Logic);
+            OnPropertyChange(nameof(LogicPowerCap), LogicPowerCap, ResourcePropertyGroup.Logic);
+            OnPropertyChange(nameof(LogicPowerAvg), LogicPowerAvg, ResourcePropertyGroup.Logic);
+            OnPropertyChange(nameof(LogicDCap), LogicDCap, ResourcePropertyGroup.Logic);
+            OnPropertyChange(nameof(LogicQCap), LogicQCap, ResourcePropertyGroup.Logic);
     }
         private void UpdateLearningProps()
         {
-            OnPropertyChange(nameof(LearningModuleCount), LearningModuleCount);
-            OnPropertyChange(nameof(LearningTotal), LearningTotal);
-            OnPropertyChange(nameof(LearningDataAvg), LearningDataAvg);
-            OnPropertyChange(nameof(LearningBusSpeedCap), LearningBusSpeedCap);
-            OnPropertyChange(nameof(LearningBusSpeedAvg), LearningBusSpeedAvg);
-            OnPropertyChange(nameof(LearningCache), LearningCache);
-            OnPropertyChange(nameof(LearningCacheAvg), LearningCacheAvg);
-            OnPropertyChange(nameof(LearningPowerCap), LearningPowerCap);
-            OnPropertyChange(nameof(LearningPowerAvg), LearningPowerAvg);
-            OnPropertyChange(nameof(LearningDCap), LearningDCap);
-            OnPropertyChange(nameof(LearningNCap), LearningNCap);
+            OnPropertyChange(nameof(LearningModuleCount), LearningModuleCount, ResourcePropertyGroup.Learning);
+            OnPropertyChange(nameof(LearningTotal), LearningTotal, ResourcePropertyGroup.Learning);
+            OnPropertyChange(nameof(LearningDataAvg), LearningDataAvg, ResourcePropertyGroup.Learning);
+            OnPropertyChange(nameof(LearningBusSpeedCap), LearningBusSpeedCap, ResourcePropertyGroup.Learning);
+            OnPropertyChange(nameof(LearningBusSpeedAvg), LearningBusSpeedAvg, ResourcePropertyGroup.Learning);
+            OnPropertyChange(nameof(LearningCache), LearningCache, ResourcePropertyGroup.Learning);
+            OnPropertyChange(nameof(LearningCacheAvg), LearningCacheAvg, ResourcePropertyGroup.Learning);
+            OnPropertyChange(nameof(LearningPowerCap), LearningPowerCap, ResourcePropertyGroup.Learning);
+            OnPropertyChange(nameof(LearningPowerAvg), LearningPowerAvg, ResourcePropertyGroup.Learning);
+            OnPropertyChange(nameof(LearningDCap), LearningDCap, ResourcePropertyGroup.Learning);
+            OnPropertyChange(nameof(LearningNCap), LearningNCap, ResourcePropertyGroup.Learning);
         }
         private void UpdateMemoryProps()
         {
-            OnPropertyChange(nameof(MemoryModuleCount), MemoryModuleCount);
-            OnPropertyChange(nameof(MemoryTotal), MemoryTotal);
-            OnPropertyChange(nameof(MemoryDataAvg), MemoryDataAvg);
-            OnPropertyChange(nameof(MemoryBusSpeedCap), MemoryBusSpeedCap);
-            OnPropertyChange(nameof(MemoryBusSpeedAvg), MemoryBusSpeedAvg);
-            OnPropertyChange(nameof(MemoryCache), MemoryCache);
-            OnPropertyChange(nameof(MemoryCacheAvg), MemoryCacheAvg);
-            OnPropertyChange(nameof(MemoryPowerCap), MemoryPowerCap);
-            OnPropertyChange(nameof(MemoryPowerAvg), MemoryPowerAvg);
-            OnPropertyChange(nameof(MemoryDCap), MemoryDCap);
-            OnPropertyChange(nameof(MemoryNCap), MemoryNCap);
+            OnPropertyChange(nameof(MemoryModuleCount), MemoryModuleCount, ResourcePropertyGroup.Memory);
+            OnPropertyChange(nameof(MemoryTotal), MemoryTotal, ResourcePropertyGroup.Memory);
+            OnPropertyChange(nameof(MemoryDataAvg), MemoryDataAvg, ResourcePropertyGroup.Memory);
+            OnPropertyChange(nameof(MemoryBusSpeedCap), MemoryBusSpeedCap, ResourcePropertyGroup.Memory);
+            OnPropertyChange(nameof(MemoryBusSpeedAvg), MemoryBusSpeedAvg, ResourcePropertyGroup.Memory);
+            OnPropertyChange(nameof(MemoryCache), MemoryCache, ResourcePropertyGroup.Memory);
+            OnPropertyChange(nameof(MemoryCacheAvg), MemoryCacheAvg, ResourcePropertyGroup.Memory);
+            OnPropertyChange(nameof(MemoryPowerCap), MemoryPowerCap, ResourcePropertyGroup.Memory);
+            OnPropertyChange(nameof(MemoryPowerAvg), MemoryPowerAvg, ResourcePropertyGroup.Memory);
+            OnPropertyChange(nameof(MemoryDCap), MemoryDCap, ResourcePropertyGroup.Memory);
+            OnPropertyChange(nameof(MemoryNCap), MemoryNCap, ResourcePropertyGroup.Memory);
         }
         private IEnumerable<T> GetModulesFromPanels<T>(CircuitPanel[] panels) where T : IModule
         {

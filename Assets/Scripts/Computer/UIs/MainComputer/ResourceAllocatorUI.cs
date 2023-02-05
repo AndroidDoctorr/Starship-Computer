@@ -9,6 +9,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 
+public enum ResourcePropertyGroup { None, Logic, Learning, Memory, LogicUsage, LearningUsage, MemoryUsage }
 public class ResourceAllocatorUI : GenericUI
 {
     public ResourceAllocator ResourceAllocator;
@@ -57,6 +58,37 @@ public class ResourceAllocatorUI : GenericUI
 
     private void UpdateProp(string name, object value, params object[] parameters)
     {
+        ResourcePropertyGroup group = parameters[0] != null &&
+            parameters[0] is ResourcePropertyGroup ?
+            (ResourcePropertyGroup) parameters[0] : default;
+
+        switch (group)
+        {
+            case ResourcePropertyGroup.Logic:
+                UpdateLogicProps(name, value);
+                break;
+            case ResourcePropertyGroup.Learning:
+                UpdateLearningProps(name, value);
+                break;
+            case ResourcePropertyGroup.Memory:
+                UpdateMemoryProps(name, value);
+                break;
+            case ResourcePropertyGroup.LogicUsage:
+                UpdateLogicUsageProps(name, value);
+                break;
+            case ResourcePropertyGroup.LearningUsage:
+                UpdateLearningUsageProps(name, value);
+                break;
+            case ResourcePropertyGroup.MemoryUsage:
+                UpdateMemoryUsageProps(name, value);
+                break;
+            default:
+                break;
+        }
+        
+    }
+    private void UpdateLogicProps(string name, object value)
+    {
         switch (name)
         {
             // Logic properties
@@ -64,13 +96,10 @@ public class ResourceAllocatorUI : GenericUI
                 LogicDevices.ValueText.text = value.ToString();
                 break;
             case nameof(ResourceAllocator.LogicDCap):
-                DLogicTotal.ValueText.text = ((decimal) value).ToString("#.###");
+                DLogicTotal.ValueText.text = ((decimal)value).ToString("#.###");
                 break;
             case nameof(ResourceAllocator.LogicQCap):
                 QLogicTotal.ValueText.text = ((decimal)value).ToString("#.###");
-                break;
-            case nameof(ResourceAllocator.LogicUsage):
-                LogicUsage.ValueText.text = ((decimal)value).ToString("#.###");
                 break;
             case nameof(ResourceAllocator.LogicCacheCap):
                 LogicCache.ValueText.text = ((decimal)value).ToString("#.###");
@@ -81,14 +110,14 @@ public class ResourceAllocatorUI : GenericUI
             case nameof(ResourceAllocator.LogicPowerCap):
                 LogicPowerCap.ValueText.text = ((decimal)value).ToString("#.###");
                 break;
-            case nameof(ResourceAllocator.LogicBufferUsage):
-                LogicBuffer.ValueText.text = ((decimal)value).ToString("#.###");
+            default:
                 break;
-            case nameof(ResourceAllocator.LogicPowerDraw):
-                LogicPower.ValueText.text = ((decimal)value).ToString("#.###");
-                break;
-            // LogicTemp
-
+        }
+    }
+    private void UpdateLearningProps(string name, object value)
+    {
+        switch (name)
+        {
             // Learning properties
             case nameof(ResourceAllocator.LearningModuleCount):
                 LearningDevices.ValueText.text = value.ToString();
@@ -99,9 +128,6 @@ public class ResourceAllocatorUI : GenericUI
             case nameof(ResourceAllocator.LearningNCap):
                 NLearningTotal.ValueText.text = ((decimal)value).ToString("#.###");
                 break;
-            case nameof(ResourceAllocator.LearningUsage):
-                LearningUsage.ValueText.text = ((decimal)value).ToString("#.###");
-                break;
             case nameof(ResourceAllocator.LearningCache):
                 LearningCache.ValueText.text = ((decimal)value).ToString("#.###");
                 break;
@@ -111,14 +137,14 @@ public class ResourceAllocatorUI : GenericUI
             case nameof(ResourceAllocator.LearningPowerCap):
                 LearningPowerCap.ValueText.text = ((decimal)value).ToString("#.###");
                 break;
-            case nameof(ResourceAllocator.LearningBufferUsage):
-                LearningBuffer.ValueText.text = ((decimal)value).ToString("#.###");
+            default:
                 break;
-            case nameof(ResourceAllocator.LearningPowerDraw):
-                LearningPower.ValueText.text = ((decimal)value).ToString("#.###");
-                break;
-            // LearningTemp
-
+        }
+    }
+    private void UpdateMemoryProps(string name, object value)
+    {
+        switch (name)
+        {
             // Memory properties
             case nameof(ResourceAllocator.MemoryModuleCount):
                 MemoryDevices.ValueText.text = value.ToString();
@@ -129,9 +155,6 @@ public class ResourceAllocatorUI : GenericUI
             case nameof(ResourceAllocator.MemoryNCap):
                 NMemoryTotal.ValueText.text = ((decimal)value).ToString("#.###");
                 break;
-            case nameof(ResourceAllocator.MemoryUsage):
-                MemoryUsage.ValueText.text = ((decimal)value).ToString("#.###");
-                break;
             case nameof(ResourceAllocator.MemoryCache):
                 MemoryCache.ValueText.text = ((decimal)value).ToString("#.###");
                 break;
@@ -141,14 +164,60 @@ public class ResourceAllocatorUI : GenericUI
             case nameof(ResourceAllocator.MemoryPowerCap):
                 MemoryPowerCap.ValueText.text = ((decimal)value).ToString("#.###");
                 break;
+            default:
+                break;
+        }
+    }
+    private void UpdateLogicUsageProps(string name, object value)
+    {
+        switch (name)
+        {
+            case nameof(ResourceAllocator.LogicUsage):
+                LogicCache.ValueText.text = ((decimal)value).ToString("#.###");
+                break;
+            case nameof(ResourceAllocator.LogicBufferUsage):
+                LogicBuffer.ValueText.text = ((decimal)value).ToString("#.###");
+                break;
+            case nameof(ResourceAllocator.LogicPowerDraw):
+                LogicPower.ValueText.text = ((decimal)value).ToString("#.###");
+                break;
+            // Logic Temp
+            default:
+                break;
+        }
+    }
+    private void UpdateLearningUsageProps(string name, object value)
+    {
+        switch (name)
+        {
+            case nameof(ResourceAllocator.LearningUsage):
+                LearningUsage.ValueText.text = ((decimal)value).ToString("#.###");
+                break;
+            case nameof(ResourceAllocator.LearningBufferUsage):
+                LearningBuffer.ValueText.text = ((decimal)value).ToString("#.###");
+                break;
+            case nameof(ResourceAllocator.LearningPowerDraw):
+                LearningPower.ValueText.text = ((decimal)value).ToString("#.###");
+                break;
+            // Learning Temp
+            default:
+                break;
+        }
+    }
+    private void UpdateMemoryUsageProps(string name, object value)
+    {
+        switch (name)
+        {
+            case nameof(ResourceAllocator.MemoryUsage):
+                MemoryUsage.ValueText.text = ((decimal)value).ToString("#.###");
+                break;
             case nameof(ResourceAllocator.MemoryBufferUsage):
                 MemoryBuffer.ValueText.text = ((decimal)value).ToString("#.###");
                 break;
             case nameof(ResourceAllocator.MemoryPowerDraw):
                 MemoryPower.ValueText.text = ((decimal)value).ToString("#.###");
                 break;
-            // MemoryTemp;
-
+            // Memory Temp
             default:
                 break;
         }

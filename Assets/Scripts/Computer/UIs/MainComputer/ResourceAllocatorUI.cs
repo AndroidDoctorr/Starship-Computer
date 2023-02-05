@@ -81,8 +81,12 @@ public class ResourceAllocatorUI : GenericUI
             case nameof(ResourceAllocator.LogicPowerCap):
                 LogicPowerCap.ValueText.text = ((decimal)value).ToString("#.###");
                 break;
-            // LogicPower
-            // LogicBuffer
+            case nameof(ResourceAllocator.LogicBufferUsage):
+                LogicBuffer.ValueText.text = ((decimal)value).ToString("#.###");
+                break;
+            case nameof(ResourceAllocator.LogicPowerDraw):
+                LogicPower.ValueText.text = ((decimal)value).ToString("#.###");
+                break;
             // LogicTemp
 
             // Learning properties
@@ -107,12 +111,43 @@ public class ResourceAllocatorUI : GenericUI
             case nameof(ResourceAllocator.LearningPowerCap):
                 LearningPowerCap.ValueText.text = ((decimal)value).ToString("#.###");
                 break;
-            // LearningBuffer
-            // LearningPower
+            case nameof(ResourceAllocator.LearningBufferUsage):
+                LearningBuffer.ValueText.text = ((decimal)value).ToString("#.###");
+                break;
+            case nameof(ResourceAllocator.LearningPowerDraw):
+                LearningPower.ValueText.text = ((decimal)value).ToString("#.###");
+                break;
             // LearningTemp
 
             // Memory properties
-
+            case nameof(ResourceAllocator.MemoryModuleCount):
+                MemoryDevices.ValueText.text = value.ToString();
+                break;
+            case nameof(ResourceAllocator.MemoryDCap):
+                DMemoryTotal.ValueText.text = ((decimal)value).ToString("#.###");
+                break;
+            case nameof(ResourceAllocator.MemoryNCap):
+                NMemoryTotal.ValueText.text = ((decimal)value).ToString("#.###");
+                break;
+            case nameof(ResourceAllocator.MemoryUsage):
+                MemoryUsage.ValueText.text = ((decimal)value).ToString("#.###");
+                break;
+            case nameof(ResourceAllocator.MemoryCache):
+                MemoryCache.ValueText.text = ((decimal)value).ToString("#.###");
+                break;
+            case nameof(ResourceAllocator.MemoryBufferCap):
+                MemoryBufferCap.ValueText.text = ((decimal)value).ToString("#.###");
+                break;
+            case nameof(ResourceAllocator.MemoryPowerCap):
+                MemoryPowerCap.ValueText.text = ((decimal)value).ToString("#.###");
+                break;
+            case nameof(ResourceAllocator.MemoryBufferUsage):
+                MemoryBuffer.ValueText.text = ((decimal)value).ToString("#.###");
+                break;
+            case nameof(ResourceAllocator.MemoryPowerDraw):
+                MemoryPower.ValueText.text = ((decimal)value).ToString("#.###");
+                break;
+            // MemoryTemp;
 
             default:
                 break;

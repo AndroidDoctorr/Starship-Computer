@@ -13,9 +13,9 @@ public class ResourceAllocatorUI : GenericUI
 {
     public ResourceAllocator ResourceAllocator;
 
+    public UIProperty MemoryDevices;
     public UIProperty DMemoryTotal;
     public UIProperty NMemoryTotal;
-    public UIProperty MemoryDevices;
     public UIProperty MemoryUsage;
     public UIProperty MemoryBufferCap;
     public UIProperty MemoryBuffer;
@@ -24,9 +24,9 @@ public class ResourceAllocatorUI : GenericUI
     public UIProperty MemoryCache;
     public UIProperty MemoryTemp;
 
+    public UIProperty LearningDevices;
     public UIProperty DLearningTotal;
     public UIProperty NLearningTotal;
-    public UIProperty LearningDevices;
     public UIProperty LearningUsage;
     public UIProperty LearningBufferCap;
     public UIProperty LearningBuffer;
@@ -35,9 +35,9 @@ public class ResourceAllocatorUI : GenericUI
     public UIProperty LearningCache;
     public UIProperty LearningTemp;
 
+    public UIProperty LogicDevices;
     public UIProperty DLogicTotal;
     public UIProperty QLogicTotal;
-    public UIProperty LogicDevices;
     public UIProperty LogicUsage;
     public UIProperty LogicBufferCap;
     public UIProperty LogicBuffer;
@@ -48,12 +48,25 @@ public class ResourceAllocatorUI : GenericUI
 
     private void OnEnable()
     {
-        // Subscribe to RA property updates
-        // These happen whenever hardware is connected or disconnected
-
-        // if memory updated, do memory properties
-        // etc.
+        ResourceAllocator.OnPropertyChange += UpdateProp;
+    }
+    private void OnDestroy()
+    {
+        ResourceAllocator.OnPropertyChange -= UpdateProp;
     }
 
-    
+    private void UpdateProp(string name, object value)
+    {
+        switch (name)
+        {
+            case nameof(ResourceAllocator.LogicModuleCount):
+                LogicDevices.ValueText.text = value.ToString();
+                break;
+            case nameof(ResourceAllocator.LogicDCap):
+                DLogicTotal.ValueText.text = value.ToString();
+                break;
+            default:
+                break;
+        }
+    }
 }

@@ -10,7 +10,6 @@ namespace Assets.Scripts.Computer.Core
 {
     public abstract class SubSystem : SystemBase
     {
-        public GenericUI[] UIs;
         public IODevice[] IODevices;
         public SubSystem ()
         {

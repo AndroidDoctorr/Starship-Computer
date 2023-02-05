@@ -14,6 +14,7 @@ namespace Assets.Scripts.Computer.Core
         public string Name;
         public int Priority;
         public byte Address;
+        public GenericUI[] UIs;
         public UsageProfile UsageProfile;
         public PowerProfile PowerProfile;
 

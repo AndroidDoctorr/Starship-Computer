@@ -8,18 +8,18 @@ using UnityEngine;
 
 namespace Assets.Scripts.Computer.Core.CoreModules
 {
-    public class CircuitPanel<T> : MonoBehaviour where T : Circuit
+    public class CircuitPanel : MonoBehaviour
     {
-        private Dictionary<string, T> _modules = new Dictionary<string, T>();
+        private Dictionary<string, IModule> _modules = new Dictionary<string, IModule>();
 
         public List<CircuitSlot> Slots;
         public Dictionary<string, DeviceStatus> ModuleStatus =>
             (Dictionary<string, DeviceStatus>) _modules.Select(m =>
-                new KeyValuePair<string, DeviceStatus>(m.Key, m.Value.Status));
+                new KeyValuePair<string, DeviceStatus>(m.Key, ((Circuit) m.Value).Status));
 
         public bool DoDebug = false;
 
-        public IEnumerable<T> Modules { get { return _modules.Select(m => m.Value); } }
+        public IEnumerable<IModule> Modules { get { return _modules.Select(m => m.Value); } }
 
         // Called whenever modules are added or removed
         public delegate void ModuleChangeDelegate(bool isConnected, string slotName, Circuit circuit);
@@ -47,7 +47,7 @@ namespace Assets.Scripts.Computer.Core.CoreModules
         private void DisconnectSlots()
         {
             // Empty dictionary
-            _modules = new Dictionary<string, T>();
+            _modules = new Dictionary<string, IModule>();
             // Unsubscribe from connect events
             foreach (CircuitSlot slot in Slots)
                 DisconnectSlot(slot);
@@ -63,7 +63,7 @@ namespace Assets.Scripts.Computer.Core.CoreModules
             slot.OnConnect += UpdateModule;
             // Add connected modules to dictionary
             if (!_modules.ContainsKey(slot.Name))
-                _modules.Add(slot.Name, slot.ConnectedCircuit.GetComponent<T>());
+                _modules.Add(slot.Name, slot.ConnectedCircuit.GetComponent<IModule>());
         }
         private void DisconnectSlot(CircuitSlot slot)
         {
@@ -89,7 +89,7 @@ namespace Assets.Scripts.Computer.Core.CoreModules
         private void ConnectModule(string slotName, Circuit circuit)
         {
             // Add or update
-            T module = circuit.GetComponent<T>();
+            IModule module = circuit.GetComponent<IModule>();
             if (_modules.ContainsKey(slotName))
                 _modules[slotName] = module;
             else _modules.Add(slotName, module);

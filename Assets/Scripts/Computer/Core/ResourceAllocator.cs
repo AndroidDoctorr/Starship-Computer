@@ -13,10 +13,10 @@ namespace Assets.Scripts.Computer.Core
     public class ResourceAllocator : CoreSystem
     {
         // Module Panels
-        public CircuitPanel<LogicModule>[] LogicPanels;
-        public CircuitPanel<LearningModule>[] LearningPanels;
-        public CircuitPanel<MemoryModule>[] MemoryPanels;
-        public CircuitPanel<HybridModule>[] HybridPanels;
+        public CircuitPanel[] LogicPanels;
+        public CircuitPanel[] LearningPanels;
+        public CircuitPanel[] MemoryPanels;
+        public CircuitPanel[] HybridPanels;
 
         // Called whenever modules are added or removed
         public delegate void ModuleChangeDelegate(Circuit circuit);
@@ -26,8 +26,10 @@ namespace Assets.Scripts.Computer.Core
         {
             get
             {
-                IEnumerable<ILogicModule> dedicatedModules = GetModulesFromPanels(LogicPanels);
-                IEnumerable<ILogicModule> hybridModules = GetModulesFromPanels(HybridPanels);
+                IEnumerable<ILogicModule> dedicatedModules =
+                    GetModulesFromPanels<ILogicModule>(LogicPanels);
+                IEnumerable<ILogicModule> hybridModules =
+                    GetModulesFromPanels<ILogicModule>(HybridPanels);
                 return dedicatedModules.Concat(hybridModules);
             }
         }
@@ -35,8 +37,10 @@ namespace Assets.Scripts.Computer.Core
         {
             get
             {
-                IEnumerable<IDataModule> dedicatedModules = GetModulesFromPanels(LearningPanels);
-                IEnumerable<IDataModule> hybridModules = GetModulesFromPanels(HybridPanels);
+                IEnumerable<IDataModule> dedicatedModules =
+                    GetModulesFromPanels<IDataModule>(LearningPanels);
+                IEnumerable<IDataModule> hybridModules =
+                    GetModulesFromPanels<IDataModule>(HybridPanels);
                 return dedicatedModules.Concat(hybridModules);
             }
         }
@@ -44,8 +48,10 @@ namespace Assets.Scripts.Computer.Core
         {
             get
             {
-                IEnumerable<IDataModule> dedicatedModules = GetModulesFromPanels(MemoryPanels);
-                IEnumerable<IDataModule> hybridModules = GetModulesFromPanels(HybridPanels);
+                IEnumerable<IDataModule> dedicatedModules =
+                    GetModulesFromPanels<IDataModule>(MemoryPanels);
+                IEnumerable<IDataModule> hybridModules =
+                    GetModulesFromPanels<IDataModule>(HybridPanels);
                 return dedicatedModules.Concat(hybridModules);
             }
         }
@@ -76,10 +82,11 @@ namespace Assets.Scripts.Computer.Core
             
         }
 
-        private IEnumerable<T> GetModulesFromPanels<T>(CircuitPanel<T>[] panels) where T : Circuit
+        private IEnumerable<T> GetModulesFromPanels<T>(CircuitPanel[] panels) where T : IModule
         {
             return panels
-                .Select(p => p.Modules)
+                .Where(p => p.Modules is IEnumerable<T>)
+                .Select(p => (IEnumerable <T>) p.Modules)
                 .SelectMany(m => m);
         }
     }

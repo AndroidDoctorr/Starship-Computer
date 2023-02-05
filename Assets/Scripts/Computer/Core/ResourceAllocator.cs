@@ -27,6 +27,7 @@ namespace Assets.Scripts.Computer.Core
         // Called whenever modules are added or removed
         // public delegate void ModuleChangeDelegate(IModule module);
         // public event ModuleChangeDelegate OnModuleChange;
+        public override event ISystem.PropertyChangeDelegate OnPropertyChange;
 
         public IEnumerable<ILogicModule> LogicModules =>
             _logicModules.Concat((IEnumerable<ILogicModule>) _hybridModules);
@@ -38,7 +39,7 @@ namespace Assets.Scripts.Computer.Core
         // Logic properties
         public int LogicModuleCount => LogicModules.Count();
         public decimal ClockSpeedTotal => LogicModules.Sum(s => s.ClockSpeed);
-        public decimal ClockSpeedAcg => LogicModules.Average(s => s.ClockSpeed);
+        public decimal ClockSpeedAvg => LogicModules.Average(s => s.ClockSpeed);
         public decimal LogicBusSpeedTotal => LogicModules.Sum(s => s.BusSpeed);
         public decimal LogicBusSpeedAvg => LogicModules.Average(s => s.BusSpeed);
         public decimal LogicCacheCap => LogicModules.Sum(s => s.CacheSize);
@@ -62,8 +63,8 @@ namespace Assets.Scripts.Computer.Core
         public int LearningModuleCount => LearningModules.Count();
         public decimal LearningTotal => LearningModules.Sum(s => s.DataCapacity);
         public decimal LearningDataAvg => LearningModules.Average(s => s.DataCapacity);
-        public decimal LearningIOCap => LearningModules.Sum(s => s.BusSpeed);
-        public decimal LearningIOAvg => LearningModules.Average(s => s.BusSpeed);
+        public decimal LearningBusSpeedCap => LearningModules.Sum(s => s.BusSpeed);
+        public decimal LearningBusSpeedAvg => LearningModules.Average(s => s.BusSpeed);
         public decimal LearningCache => LearningModules.Sum(s => s.CacheSize);
         public decimal LearningCacheAvg => LearningModules.Average(s => s.CacheSize);
         public decimal LearningPowerCap => LearningModules.Sum(s => s.PowerCap);
@@ -84,8 +85,8 @@ namespace Assets.Scripts.Computer.Core
         public int MemoryModuleCount => MemoryModules.Count();
         public decimal MemoryTotal => MemoryModules.Sum(s => s.DataCapacity);
         public decimal MemoryDataAvg => MemoryModules.Average(s => s.DataCapacity);
-        public decimal MemoryBusCap => MemoryModules.Sum(s => s.BusSpeed);
-        public decimal MemoryBusAvg => MemoryModules.Average(s => s.BusSpeed);
+        public decimal MemoryBusSpeedCap => MemoryModules.Sum(s => s.BusSpeed);
+        public decimal MemoryBusSpeedAvg => MemoryModules.Average(s => s.BusSpeed);
         public decimal MemoryCache => MemoryModules.Sum(s => s.CacheSize);
         public decimal MemoryCacheAvg => MemoryModules.Average(s => s.CacheSize);
         public decimal MemoryPowerCap => MemoryModules.Sum(s => s.PowerCap);
@@ -144,18 +145,71 @@ namespace Assets.Scripts.Computer.Core
         private void GetHybridModules()
         {
             _hybridModules = GetModulesFromPanels<IModule>(HybridPanels);
+            UpdateAllProps();
         }
         private void GetLogicModules()
         {
             _logicModules = GetModulesFromPanels<ILogicModule>(LogicPanels);
+            UpdateLogicProps();
         }
         private void GetLearningModules()
         {
             _learningModules = GetModulesFromPanels<IDataModule>(LearningPanels);
+            UpdateLearningProps();
         }
         private void GetMemoryModules()
         {
             _memoryModules = GetModulesFromPanels<IDataModule>(MemoryPanels);
+            UpdateMemoryProps();
+        }
+        private void UpdateAllProps()
+        {
+            UpdateLogicProps();
+            UpdateLearningProps();
+            UpdateMemoryProps();
+        }
+        private void UpdateLogicProps()
+        {
+            OnPropertyChange(nameof(LogicModuleCount), LogicModuleCount);
+            OnPropertyChange(nameof(ClockSpeedTotal), ClockSpeedTotal);
+            OnPropertyChange(nameof(ClockSpeedAvg), ClockSpeedAvg);
+            OnPropertyChange(nameof(Threads), Threads);
+            OnPropertyChange(nameof(LogicBusSpeedTotal), LogicBusSpeedTotal);
+            OnPropertyChange(nameof(LogicBusSpeedAvg), LogicBusSpeedAvg);
+            OnPropertyChange(nameof(LogicCacheCap), LogicCacheCap);
+            OnPropertyChange(nameof(LogicCacheAvg), LogicCacheAvg);
+            OnPropertyChange(nameof(LogicPowerCap), LogicPowerCap);
+            OnPropertyChange(nameof(LogicPowerAvg), LogicPowerAvg);
+            OnPropertyChange(nameof(LogicDCap), LogicDCap);
+            OnPropertyChange(nameof(LogicQCap), LogicQCap);
+    }
+        private void UpdateLearningProps()
+        {
+            OnPropertyChange(nameof(LearningModuleCount), LearningModuleCount);
+            OnPropertyChange(nameof(LearningTotal), LearningTotal);
+            OnPropertyChange(nameof(LearningDataAvg), LearningDataAvg);
+            OnPropertyChange(nameof(LearningBusSpeedCap), LearningBusSpeedCap);
+            OnPropertyChange(nameof(LearningBusSpeedAvg), LearningBusSpeedAvg);
+            OnPropertyChange(nameof(LearningCache), LearningCache);
+            OnPropertyChange(nameof(LearningCacheAvg), LearningCacheAvg);
+            OnPropertyChange(nameof(LearningPowerCap), LearningPowerCap);
+            OnPropertyChange(nameof(LearningPowerAvg), LearningPowerAvg);
+            OnPropertyChange(nameof(LearningDCap), LearningDCap);
+            OnPropertyChange(nameof(LearningNCap), LearningNCap);
+        }
+        private void UpdateMemoryProps()
+        {
+            OnPropertyChange(nameof(MemoryModuleCount), MemoryModuleCount);
+            OnPropertyChange(nameof(MemoryTotal), MemoryTotal);
+            OnPropertyChange(nameof(MemoryDataAvg), MemoryDataAvg);
+            OnPropertyChange(nameof(MemoryBusSpeedCap), MemoryBusSpeedCap);
+            OnPropertyChange(nameof(MemoryBusSpeedAvg), MemoryBusSpeedAvg);
+            OnPropertyChange(nameof(MemoryCache), MemoryCache);
+            OnPropertyChange(nameof(MemoryCacheAvg), MemoryCacheAvg);
+            OnPropertyChange(nameof(MemoryPowerCap), MemoryPowerCap);
+            OnPropertyChange(nameof(MemoryPowerAvg), MemoryPowerAvg);
+            OnPropertyChange(nameof(MemoryDCap), MemoryDCap);
+            OnPropertyChange(nameof(MemoryNCap), MemoryNCap);
         }
         private IEnumerable<T> GetModulesFromPanels<T>(CircuitPanel[] panels) where T : IModule
         {

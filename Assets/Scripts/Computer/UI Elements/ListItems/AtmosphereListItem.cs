@@ -59,7 +59,20 @@ namespace Assets.Scripts.Computer.UI_Elements.ListItems
 
         private void UpdateSystemProperty(string propertyName, object newValue, params object[] parameters)
         {
-
+            switch (name)
+            {
+                case nameof(AtmosphereGroup.Humidity):
+                    Humidity.text = $"{newValue:0.##}";
+                    break;
+                case nameof(AtmosphereGroup.Temperature):
+                    Temperature.text = $"{newValue:0.##}";
+                    break;
+                case nameof(AtmosphereGroup.Count):
+                    Count.text = $"{newValue}";
+                    break;
+                default:
+                    break;
+            }
         }
     }
 

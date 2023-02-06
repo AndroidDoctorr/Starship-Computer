@@ -16,14 +16,11 @@ namespace Assets.Scripts.Computer.Systems.Environment
         public LightingGroup[] LightingGroups;
         public AtmosphereGroup[] AtmosphereGroups;
 
-        public override event ISystem.PropertyChangeDelegate OnPropertyChange;
+        // public override event ISystem.PropertyChangeDelegate OnPropertyChange;
 
         private void OnEnable()
         {
-            foreach (LightingGroup group in LightingGroups)
-                group.OnPropertyChange += UpdateLighting;
-            foreach (AtmosphereGroup group in AtmosphereGroups)
-                group.OnPropertyChange += UpdateAtmosphere;
+            // Set up average or other props??
         }
 
         public bool TurnOnLightingGroup(string name)
@@ -66,11 +63,11 @@ namespace Assets.Scripts.Computer.Systems.Environment
 
         private void UpdateLighting(string name, object value, params object[] parameters)
         {
-            OnPropertyChange(name, value, EnvironmentPropGroup.Lighting);
+            // OnPropertyChange(name, value, EnvironmentPropGroup.Lighting);
         }
         private void UpdateAtmosphere(string name, object value, params object[] parameters)
         {
-            OnPropertyChange(name, value, EnvironmentPropGroup.Atmosphere);
+            // OnPropertyChange(name, value, EnvironmentPropGroup.Atmosphere);
         }
     }
 }

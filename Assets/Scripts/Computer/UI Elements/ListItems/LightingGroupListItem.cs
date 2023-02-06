@@ -19,7 +19,7 @@ namespace Assets.Scripts.Computer.UI_Elements.ListItems
         public TMP_Text Mode;
         public TMP_Text Brightness;
         public TMP_Text Count;
-        public Image Color;
+        public Image ColorSample;
         public override void Populate(ListItemData data)
         {
             if (data is not LightingGroupData)
@@ -35,7 +35,7 @@ namespace Assets.Scripts.Computer.UI_Elements.ListItems
             Mode.text = lightData.Mode;
             Brightness.text = $"{lightData.Brightness:0.##}";
             Count.text = $"{lightData.Count:0.##}";
-            Color.color = new Color(lightData.R, lightData.G, lightData.B);
+            ColorSample.color = new Color(lightData.R, lightData.G, lightData.B);
         }
         public override void ConnectSystem(SystemBase system)
         {
@@ -47,7 +47,7 @@ namespace Assets.Scripts.Computer.UI_Elements.ListItems
             Mode.text = $"{lightingGroup.LightingMode}";
             Brightness.text = $"{lightingGroup.Brightness:0.##}";
             Count.text = $"{lightingGroup.Count}";
-            Color.color = new Color(lightingGroup.Color.r, lightingGroup.Color.g, lightingGroup.Color.b);
+            ColorSample.color = new Color(lightingGroup.Color.r, lightingGroup.Color.g, lightingGroup.Color.b);
         }
         public void DisconnectSystem(SystemBase system)
         {
@@ -56,9 +56,26 @@ namespace Assets.Scripts.Computer.UI_Elements.ListItems
             lightingGroup.OnPropertyChange -= UpdateSystemProperty;
         }
 
-        private void UpdateSystemProperty(string propertyName, object newValue, params object[] parameters)
+        private void UpdateSystemProperty(string name, object newValue, params object[] parameters)
         {
-
+            switch (name)
+            {
+                case nameof(LightingGroup.LightingMode):
+                    Mode.text = newValue.ToString();
+                    break;
+                case nameof(LightingGroup.Brightness):
+                    Brightness.text = $"{newValue:0.##}";
+                    break;
+                case nameof(LightingGroup.Color):
+                    Color color = newValue is Color ? (Color) newValue : Color.white;
+                    ColorSample.color = new Color(color.r, color.g, color.b);
+                    break;
+                case nameof(LightingGroup.Count):
+                    Count.text = $"{newValue}";
+                    break;
+                default:
+                    break;
+            }
         }
     }
 

@@ -1203,7 +1203,7 @@ MonoBehaviour:
   Mode: {fileID: 4910574037548885042}
   Brightness: {fileID: 5175886173580680011}
   Count: {fileID: 168093387525205732}
-  Color: {fileID: 4278989091935967188}
+  ColorSample: {fileID: 4278989091935967188}
 --- !u!224 &8603564721820703513 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8655804613772521057, guid: 0e7051d75f46dd74e8c1f827a2c6b64f, type: 3}

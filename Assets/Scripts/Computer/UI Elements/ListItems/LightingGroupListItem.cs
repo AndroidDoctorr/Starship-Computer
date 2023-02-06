@@ -48,6 +48,8 @@ namespace Assets.Scripts.Computer.UI_Elements.ListItems
             Brightness.text = $"{lightingGroup.Brightness:0.##}";
             Count.text = $"{lightingGroup.Count}";
             ColorSample.color = new Color(lightingGroup.Color.r, lightingGroup.Color.g, lightingGroup.Color.b);
+            
+            lightingGroup.OnPropertyChange += UpdateSystemProperty;
         }
         public void DisconnectSystem(SystemBase system)
         {

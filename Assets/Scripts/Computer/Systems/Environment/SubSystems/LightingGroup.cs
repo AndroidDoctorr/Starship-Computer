@@ -134,9 +134,12 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
 
         private void UpdateProperties()
         {
-            OnPropertyChange(nameof(LightingMode), LightingMode);
-            OnPropertyChange(nameof(Brightness), Brightness);
-            OnPropertyChange(nameof(Color), Color);
+            if (OnPropertyChange != null)
+            {
+                OnPropertyChange(nameof(LightingMode), LightingMode);
+                OnPropertyChange(nameof(Brightness), Brightness);
+                OnPropertyChange(nameof(Color), Color);
+            }
         }
     }
 }

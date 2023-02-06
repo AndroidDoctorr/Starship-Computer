@@ -10,6 +10,7 @@ using UnityEngine.UI;
 
 public class UIScrollView : UIElement
 {
+    private float _offset = -0.125f;
     private int _scrollDirection = 0;
     private List<UIListItem> _listItems = new List<UIListItem>();
 
@@ -45,35 +46,35 @@ public class UIScrollView : UIElement
 
     public void PopulateDataList(ListItemData[] data)
     {
-        float offset = -0.125f;
+        _offset = 0.75f;
         foreach (ListItemData item in data)
-            SetUpDataListItem(item, offset);
+            SetUpDataListItem(item);
     }
     public virtual void PopulateSystemList(SystemBase[] systems)
     {
-        float offset = -0.125f;
+        _offset = 0.75f;
         foreach (SystemBase system in systems)
-            SetUpSystemListItem(system, offset);
+            SetUpSystemListItem(system);
     }
 
 
-    private void SetUpDataListItem(ListItemData item, float offset)
+    private void SetUpDataListItem(ListItemData item)
     {
-        UIListItem model = SetUpListItem(offset);
+        UIListItem model = SetUpListItem();
         model.Populate(item);
     }
-    private void SetUpSystemListItem(SystemBase system, float offset)
+    private void SetUpSystemListItem(SystemBase system)
     {
-        UIListItem model = SetUpListItem(offset);
+        UIListItem model = SetUpListItem();
         model.ConnectSystem(system);
     }
-    private UIListItem SetUpListItem(float offset)
+    private UIListItem SetUpListItem()
     {
         UIListItem model = Instantiate(ListItemModel, ScrollOffset);
         _listItems.Add(model);
         Vector3 pos = model.transform.localPosition;
-        offset -= ListItemModel.Spacing;
-        pos.y = offset;
+        _offset -= ListItemModel.Spacing;
+        pos.y = _offset;
         model.transform.localPosition = pos;
         return model;
     }

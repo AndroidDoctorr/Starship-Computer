@@ -7,8 +7,13 @@ public class ThermalProcess : MonoBehaviour
     public virtual double Mass { get; protected set; } // Kg
     public double HeatCapacity { get; protected set; } // J / Kg / K
     public virtual double Temperature { get; protected set; } // K
+    public double InitialTemperature; // K
     public delegate void TemperatureChangeDelegate(double newTemp);
     public virtual event TemperatureChangeDelegate OnTemperatureChange;
+    public ThermalProcess()
+    {
+        Temperature = InitialTemperature;
+    }
 
     public void AddHeat(double q) // in J
     {

@@ -15,7 +15,7 @@ public class ACUnit : Device
     public static double MinimumTemperature = 280;
 
     public double HeatRate = 50;
-    public double HumidifyRate = 0.01f;
+    public double HumidifyRate = 10;
 
     public double HumiditySetting { get; private set; } = 0.1f;
     public double TempSetting { get; private set; } = 0.5f;
@@ -31,7 +31,7 @@ public class ACUnit : Device
         if (targetTemp != currentTemp)
             HeatOrCoolToSetting();
 
-        if (Atmosphere.Humidity != currentHumidity)
+        if (HumiditySetting != currentHumidity)
             HumidifyToSetting();
     }
 

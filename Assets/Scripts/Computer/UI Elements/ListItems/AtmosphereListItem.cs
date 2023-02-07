@@ -1,17 +1,8 @@
 ﻿using Assets.Scripts.Computer.Core;
 using Assets.Scripts.Computer.Systems.Environment.SubSystems;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Experimental.GlobalIllumination;
-using UnityEngine.Rendering.VirtualTexturing;
-using UnityEngine.UI;
-using static UnityEditor.PlayerSettings;
 
 namespace Assets.Scripts.Computer.UI_Elements.ListItems
 {
@@ -25,7 +16,7 @@ namespace Assets.Scripts.Computer.UI_Elements.ListItems
         {
             if (data is not AtmosphereData)
             {
-                Debug.LogError($"Data not formatted for Lighting Group item: {data.GetType().Name}");
+                Debug.LogError($"Data not formatted for Atmosphere Group item: {data.GetType().Name}");
                 return;
             }
 
@@ -40,6 +31,7 @@ namespace Assets.Scripts.Computer.UI_Elements.ListItems
         public override void ConnectSystem(SystemBase system)
         {
             if (system is not AtmosphereGroup) return;
+
             AtmosphereGroup atmoGroup = system as AtmosphereGroup;
 
             Name.text = atmoGroup.Name;
@@ -54,18 +46,19 @@ namespace Assets.Scripts.Computer.UI_Elements.ListItems
         {
             if (system is not AtmosphereGroup) return;
             AtmosphereGroup atmoGroup = system as AtmosphereGroup;
+
             atmoGroup.OnPropertyChange -= UpdateSystemProperty;
         }
 
-        private void UpdateSystemProperty(string propertyName, object newValue, params object[] parameters)
+        private void UpdateSystemProperty(string name, object newValue, params object[] parameters)
         {
             switch (name)
             {
                 case nameof(AtmosphereGroup.Humidity):
-                    Humidity.text = $"{newValue:0.##}";
+                    Humidity.text = $"{newValue:0.#}";
                     break;
                 case nameof(AtmosphereGroup.Temperature):
-                    Temperature.text = $"{newValue:0.##}";
+                    Temperature.text = $"{newValue:0.#}";
                     break;
                 case nameof(AtmosphereGroup.Count):
                     Count.text = $"{newValue}";

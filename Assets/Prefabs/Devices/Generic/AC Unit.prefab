@@ -5250,11 +5250,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79d2aab1ffc6dfa48bf22cf960832ff9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: 
+  Status: 2
   HasPower: 0
-  Temperature: 295
-  Humidity: 0.1
-  HumiditySetting: 0.1
-  TempSetting: 0.5
+  IsBroken: 0
+  IsInMaintenance: 0
+  Icon: {fileID: 0}
+  Atmosphere: {fileID: 0}
+  AtmosphereGroup: {fileID: 0}
+  HeatRate: 50
+  HumidifyRate: 10
+  StartAtSettings: 1
 --- !u!1 &7617645936583803441
 GameObject:
   m_ObjectHideFlags: 0

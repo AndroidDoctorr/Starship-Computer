@@ -5,8 +5,7 @@ using UnityEngine;
 public class Atmosphere : ThermalProcess
 {
     public ACUnit[] ACUnits;
-    public double StartTemp = 295; // Room temperature
-    public double StartHumidity = 0.1;
+    public double InitialHumidity = 0.1;
     public double Volume = 1000; // m3
     // Linear approximation of density as function of temp
     public double Density { get => 2.42 - 0.00413 * Temperature; } // kg / m3
@@ -14,12 +13,15 @@ public class Atmosphere : ThermalProcess
     public double Humidity { get; protected set; } // % maximum humidity
     public delegate void HumidityChangeDelegate(double newHumid);
     public virtual event HumidityChangeDelegate OnHumidityChange;
-    private void Start()
+
+    public Atmosphere()
     {
+        InitialTemperature = 295;
         HeatCapacity = 700; // Air at STP
-        Temperature = StartTemp;
-        Humidity = StartHumidity;
+        Humidity = InitialHumidity;
+        Temperature = InitialTemperature;
     }
+
     public void AddHumidity(double mass) // g
     {
         // 3rd poly approximation of maximum water capacity of

@@ -244,8 +244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ACUnits:
   - {fileID: 3090220674500377251}
-  StartTemp: 295
-  StartHumidity: 0.1
+  InitialHumidity: 0.1
   Volume: 62.5
 --- !u!4 &7929826
 Transform:
@@ -8821,6 +8820,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 235847892}
     m_Modifications:
+    - target: {fileID: 1817589432888905517, guid: b7bd6a134d2c173468f9c2190cae5849, type: 3}
+      propertyPath: LabelText
+      value: Humidity
+      objectReference: {fileID: 0}
+    - target: {fileID: 1817589432888905517, guid: b7bd6a134d2c173468f9c2190cae5849, type: 3}
+      propertyPath: StartValue
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346867469666150134, guid: b7bd6a134d2c173468f9c2190cae5849, type: 3}
+      propertyPath: LabelText
+      value: Temperature
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346867469666150134, guid: b7bd6a134d2c173468f9c2190cae5849, type: 3}
+      propertyPath: StartValue
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4545538823449315432, guid: b7bd6a134d2c173468f9c2190cae5849, type: 3}
       propertyPath: ACUnit
       value: 
@@ -12771,7 +12786,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2476052192377780411, guid: 0dec49022c5db964381bc8ff42442834, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.4997
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2476052192377780411, guid: 0dec49022c5db964381bc8ff42442834, type: 3}
       propertyPath: m_LocalRotation.w

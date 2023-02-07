@@ -1299,6 +1299,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Temp Slider
       objectReference: {fileID: 0}
+    - target: {fileID: 7026600090522554631, guid: 4999045f30b6ec543bdae3db76d1039f, type: 3}
+      propertyPath: LabelText
+      value: Temperature
+      objectReference: {fileID: 0}
+    - target: {fileID: 7026600090522554631, guid: 4999045f30b6ec543bdae3db76d1039f, type: 3}
+      propertyPath: StartValue
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4999045f30b6ec543bdae3db76d1039f, type: 3}
 --- !u!114 &2346867469666150134 stripped
@@ -1568,6 +1576,14 @@ PrefabInstance:
     - target: {fileID: 6274255858909286348, guid: 4999045f30b6ec543bdae3db76d1039f, type: 3}
       propertyPath: m_Name
       value: Humid Slider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7026600090522554631, guid: 4999045f30b6ec543bdae3db76d1039f, type: 3}
+      propertyPath: LabelText
+      value: Humidity
+      objectReference: {fileID: 0}
+    - target: {fileID: 7026600090522554631, guid: 4999045f30b6ec543bdae3db76d1039f, type: 3}
+      propertyPath: StartValue
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4999045f30b6ec543bdae3db76d1039f, type: 3}

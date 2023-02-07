@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEditor.Presets;
 using UnityEngine;
 
 namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
@@ -34,28 +35,20 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
         {
             // Generic method for subsystems - ConnectDevice?
             // Or this makes use of it/extends it?
-            OnPropertyChange("Devices", LightFixtures.Length);
+            OnPropertyChange("Count", LightFixtures.Length);
             return true;
         }
         public bool ConnectLightFixture()
         {
-            OnPropertyChange("Devices", LightFixtures.Length);
+            OnPropertyChange("Count", LightFixtures.Length);
             return true;
         }
         public void TurnOnAllLights(bool doReset)
         {
             IsOn = true;
             foreach (LightFixture fixture in LightFixtures)
-            {
-                Color.RGBToHSV(DefaultColor, out float h, out float s, out float v);
-                if (doReset)
-                {
-                    fixture.SetColor(h, s);
-                    fixture.SetBrightness(DefaultBrightness);
-                    LightingMode = LightingMode.Solid;
-                }
-                fixture.TurnOn();
-            }
+                TurnOnLight(fixture, doReset);
+
             Brightness = DefaultBrightness;
             Color = DefaultColor;
 
@@ -66,6 +59,7 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
             IsOn = false;
             foreach (LightFixture fixture in LightFixtures)
                 fixture.TurnOff();
+
             Brightness = 0;
             Color = Color.black;
 
@@ -76,6 +70,7 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
             LightingMode = LightingMode.Solid;
             foreach (LightFixture fixture in LightFixtures)
                 fixture.SetColor(hue, saturation);
+
             Color = Color.HSVToRGB(hue, saturation, 1);
 
             UpdateProperties();
@@ -84,6 +79,7 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
         {
             foreach (LightFixture fixture in LightFixtures)
                 fixture.SetBrightness(brightness);
+
             Brightness = brightness;
 
             UpdateProperties();
@@ -92,6 +88,7 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
         {
             LightingMode = LightingMode.Candle;
             if (!IsOn) TurnOnAllLights(false);
+
             foreach (LightFixture fixture in LightFixtures)
                 fixture.SetCandleMode();
             Brightness = 1;
@@ -115,12 +112,8 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
         {
             LightingMode = LightingMode.Various;
             foreach (LightFixture fixture in LightFixtures)
-            {
-                float hue = Random.Range(0f, 1f);
-                float saturation = Random.Range(0.5f, 1f);
+                SetLightColor(fixture);
 
-                fixture.SetColor(hue, saturation);
-            }
             Color = Color.white;
 
             UpdateProperties();
@@ -132,6 +125,24 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
             return devices.ToArray();
         }
 
+        private void TurnOnLight(LightFixture fixture, bool doReset)
+        {
+            Color.RGBToHSV(DefaultColor, out float h, out float s, out float v);
+            if (doReset)
+            {
+                fixture.SetColor(h, s);
+                fixture.SetBrightness(DefaultBrightness);
+                LightingMode = LightingMode.Solid;
+            }
+            fixture.TurnOn();
+        }
+        private void SetLightColor(LightFixture fixture)
+        {
+            float hue = Random.Range(0f, 1f);
+            float saturation = Random.Range(0.5f, 1f);
+
+            fixture.SetColor(hue, saturation);
+        }
         private void UpdateProperties()
         {
             if (OnPropertyChange != null)

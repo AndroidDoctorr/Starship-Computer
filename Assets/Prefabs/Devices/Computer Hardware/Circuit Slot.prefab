@@ -1430,6 +1430,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 342d19630c11b89419029339aa2dcff2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: 
+  Status: 2
+  HasPower: 0
+  IsBroken: 0
+  IsInMaintenance: 0
+  Icon: {fileID: 0}
+  DoDebug: 0
   Type: 0
   Connector1: {fileID: 4350006536145396409}
   Connector2: {fileID: 3229715008853042861}
@@ -1451,7 +1458,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 0
   Mute: 0

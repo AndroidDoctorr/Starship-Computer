@@ -15,7 +15,7 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
         public TemperatureSensor[] TemperatureSensors;
         public HumiditySensor[] HumiditySensors;
         // Get the actual values (measured by sensors)
-        public double Humidity => GetHumidity();
+        public double Humidity => (GetHumidity() * 100);
         public double Temperature => GetTemperature();
         public int Count => ACUnits.Length;
         public override event ISystem.PropertyChangeDelegate OnPropertyChange;
@@ -36,11 +36,11 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
         }
         private void UpdateTemperature(double temp)
         {
-            OnPropertyChange(nameof(Temperature), Math.Round(temp, 1));
+            OnPropertyChange(nameof(Temperature), Temperature);
         }
         private void UpdateHumidity(double humid)
         {
-            OnPropertyChange(nameof(Humidity), Math.Round(humid, 1));
+            OnPropertyChange(nameof(Humidity), Humidity);
         }
         public void SetTemperature(double temp)
         {
@@ -56,13 +56,11 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
         }
         public double GetTemperature()
         {
-            return TemperatureSensors.Select(s => s.GetTemperature()).Sum() /
-                TemperatureSensors.Length;
+            return TemperatureSensors.Average(s => s.GetTemperature());
         }
         public double GetHumidity()
         {
-            return HumiditySensors.Select(s => s.GetHumidity()).Sum() /
-                HumiditySensors.Length;
+            return HumiditySensors.Average(s => s.GetHumidity());
         }
     }
 }

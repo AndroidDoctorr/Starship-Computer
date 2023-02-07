@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Computer.Core;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,22 +11,22 @@ namespace Assets.Scripts.Computer.Core
 {
     public abstract class SubSystem : SystemBase
     {
-        public IODevice[] IODevices;
+        public List<IODevice> IODevices;
         public SubSystem ()
         {
             Id = Guid.NewGuid();
         }
-        public Device[] GetDevices()
+        public IEnumerable<Device> GetDevices()
         {
-            return GetIODevices().Concat(GetSystemDevices()).ToArray();
+            return GetIODevices().Concat(GetSystemDevices());
         }
-        public Device[] GetIODevices()
+        public IEnumerable<Device> GetIODevices()
         {
             return IODevices;
         }
-        public virtual Device[] GetSystemDevices()
+        public virtual IEnumerable<Device> GetSystemDevices()
         {
-            return new Device[] { };
+            return new List<Device>();
         }
     }
 }

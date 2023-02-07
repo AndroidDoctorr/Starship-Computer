@@ -242,6 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b55b590117f0454429d247e34210be39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InitialTemperature: 295
   ACUnits:
   - {fileID: 3090220674500377251}
   InitialHumidity: 0.1
@@ -8820,6 +8821,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 235847892}
     m_Modifications:
+    - target: {fileID: 1136104181683380614, guid: b7bd6a134d2c173468f9c2190cae5849, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136104181683380614, guid: b7bd6a134d2c173468f9c2190cae5849, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1817589432888905517, guid: b7bd6a134d2c173468f9c2190cae5849, type: 3}
       propertyPath: LabelText
       value: Humidity
@@ -8844,6 +8853,10 @@ PrefabInstance:
       propertyPath: AtmosphereGroup
       value: 
       objectReference: {fileID: 2088897033}
+    - target: {fileID: 8724836474564798777, guid: b7bd6a134d2c173468f9c2190cae5849, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 117.00007
+      objectReference: {fileID: 0}
     - target: {fileID: 9109981595229720248, guid: b7bd6a134d2c173468f9c2190cae5849, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -12824,6 +12837,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4165271254213634431, guid: 0dec49022c5db964381bc8ff42442834, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4323830975183713373, guid: 0dec49022c5db964381bc8ff42442834, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4323830975183713373, guid: 0dec49022c5db964381bc8ff42442834, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4323830975183713373, guid: 0dec49022c5db964381bc8ff42442834, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4489675370202621911, guid: 0dec49022c5db964381bc8ff42442834, type: 3}
       propertyPath: Environment
       value: 
@@ -12831,6 +12860,14 @@ PrefabInstance:
     - target: {fileID: 4936044387042776201, guid: 0dec49022c5db964381bc8ff42442834, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5391316087385849058, guid: 0dec49022c5db964381bc8ff42442834, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.000008374453
+      objectReference: {fileID: 0}
+    - target: {fileID: 5391316087385849058, guid: 0dec49022c5db964381bc8ff42442834, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 116.993774
       objectReference: {fileID: 0}
     - target: {fileID: 5891550194984879863, guid: 0dec49022c5db964381bc8ff42442834, type: 3}
       propertyPath: m_Name
@@ -12977,7 +13014,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8724836474564798777, guid: 070010dbfeca2ca459f78c6d6f1f0e0a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 116.99997
+      value: 117.00017
       objectReference: {fileID: 0}
     - target: {fileID: 8981738899287966596, guid: 070010dbfeca2ca459f78c6d6f1f0e0a, type: 3}
       propertyPath: LightingGroup

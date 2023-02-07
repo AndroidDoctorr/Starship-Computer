@@ -118,8 +118,9 @@ namespace Assets.Scripts.Computer.Systems.Environment.SubSystems
 
             UpdateProperties();
         }
-        public override Device[] GetSystemDevices()
+        public override IEnumerable <Device> GetSystemDevices()
         {
+            // This includes all system devices that are NOT IO devices
             List<Device> devices = new List<Device>();
             devices.AddRange(LightFixtures);
             return devices.ToArray();

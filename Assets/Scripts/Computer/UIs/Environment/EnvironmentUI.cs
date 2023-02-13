@@ -14,10 +14,6 @@ public class EnvironmentUI : GenericUI
     public UIScrollView AtmosphereList;
     public UIScrollView LightGroupList;
 
-    private void OnEnable()
-    {
-        
-    }
     void Start()
     {
         // Device[] devices = Environment.GetDevices();

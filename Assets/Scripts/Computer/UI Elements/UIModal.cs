@@ -31,10 +31,10 @@ public class UIModal : UIElement
         if (_isTouching) return;
         _isTouching = true;
 
-        OnToggle(!IsOpen);
-
         if (IsOpen) SetMenuOpen(false);
         else SetMenuOpen(true);
+
+        OnToggle(!IsOpen);
     }
     private void SetMenuOpen(bool isOpen)
     {

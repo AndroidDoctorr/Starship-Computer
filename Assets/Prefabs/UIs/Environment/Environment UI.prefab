@@ -243,6 +243,8 @@ MonoBehaviour:
   EnabledObject: {fileID: 4335724850049210315}
   DisabledObject: {fileID: 1383442275868354802}
   RedAlertObject: {fileID: 9080153376401698048}
+  CommandModal: {fileID: 221560611976232837}
+  SystemModal: {fileID: 1398742524048225586}
   Type: 0
   Environment: {fileID: 0}
   AtmosphereList: {fileID: 6510870959802421488}
@@ -1017,6 +1019,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: System Menu
       objectReference: {fileID: 0}
+    - target: {fileID: 6286957071469412967, guid: 38a8d97375f512a4f8b04cfe5c7391dd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6286957071977524272, guid: 38a8d97375f512a4f8b04cfe5c7391dd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6647930004954912100, guid: 38a8d97375f512a4f8b04cfe5c7391dd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7152188000200358306, guid: 38a8d97375f512a4f8b04cfe5c7391dd, type: 3}
       propertyPath: m_text
       value: Environment - Engineering
@@ -1107,6 +1121,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38a8d97375f512a4f8b04cfe5c7391dd, type: 3}
+--- !u!114 &221560611976232837 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3813457534316541511, guid: 38a8d97375f512a4f8b04cfe5c7391dd, type: 3}
+  m_PrefabInstance: {fileID: 4035009073173154242}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea9b0281004ffab45b07b06e4c0c5d1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1398742524048225586 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2636417457364303088, guid: 38a8d97375f512a4f8b04cfe5c7391dd, type: 3}
+  m_PrefabInstance: {fileID: 4035009073173154242}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea9b0281004ffab45b07b06e4c0c5d1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5047550436036901279 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8211112425994203229, guid: 38a8d97375f512a4f8b04cfe5c7391dd, type: 3}

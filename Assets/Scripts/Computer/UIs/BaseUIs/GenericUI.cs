@@ -34,6 +34,7 @@ namespace Assets.Scripts
         private ISystem _system;
         private AudioSource _as;
         private bool _isInteracting = false;
+        protected bool _isModalOpen = false;
         public bool IsEnabled { get; protected set; } = false;
         public bool HasPower { get; protected set; } = false;
         public float PowerDraw = 1;
@@ -45,16 +46,30 @@ namespace Assets.Scripts
         public GameObject EnabledObject;
         public GameObject DisabledObject;
         public GameObject RedAlertObject;
+        public UIModal CommandModal;
+        public UIModal SystemModal;
 
         public ConsoleType Type;
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
+            if (CommandModal != null)
+                CommandModal.OnToggle += ToggleCommandModal;
+            if (SystemModal != null)
+                SystemModal.OnToggle += ToggleSystemModal;
+
             // TODO EPIC:
             // Refactor UIs to allow ONE ACTION PER USER AT A TIME
             // This way if your finger touches another button
             //   it keeps controlling the first one pressed and
             //      ignores any subsequent actions until the user's
             //      hand exits the collider of the first button
+        }
+        protected virtual void OnDestroy()
+        {
+            if (CommandModal != null)
+                CommandModal.OnToggle -= ToggleCommandModal;
+            if (SystemModal != null)
+                SystemModal.OnToggle -= ToggleSystemModal;
         }
         void Start()
         {
@@ -119,6 +134,15 @@ namespace Assets.Scripts
 
             foreach (TMP_Text text in TextsToColor)
                 text.color = color;
+        }
+
+        protected void ToggleSystemModal(bool isOpen)
+        {
+            _isModalOpen = isOpen;
+        }
+        protected void ToggleCommandModal(bool isOpen)
+        {
+            _isModalOpen = isOpen;
         }
     }
 }

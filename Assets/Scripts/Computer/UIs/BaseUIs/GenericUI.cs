@@ -139,10 +139,14 @@ namespace Assets.Scripts
         protected void ToggleSystemModal(bool isOpen)
         {
             _isModalOpen = isOpen;
+            if (CommandModal.IsOpen)
+                CommandModal.Close();
         }
         protected void ToggleCommandModal(bool isOpen)
         {
             _isModalOpen = isOpen;
+            if (SystemModal.IsOpen)
+                SystemModal.Close();
         }
     }
 }

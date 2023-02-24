@@ -1,11 +1,10 @@
 using Assets.Scripts;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using Image = UnityEngine.UI.Image;
 
 public class UIModal : UIElement
 {
-    private bool _isTouching = false;
-
     public bool IsOpen { get; private set; } = false;
     public UIButton MenuToggle;
     public Image OutlineArea;
@@ -26,20 +25,20 @@ public class UIModal : UIElement
     {
         MenuToggle.onButtonPress -= ToggleMenu;
     }
+
+    public void Close()
+    {
+        SetMenuOpen(false);
+    }
+
     private void ToggleMenu(string actionName, GameObject interactor)
     {
-        if (_isTouching) return;
-        _isTouching = true;
-
-        if (IsOpen) SetMenuOpen(false);
-        else SetMenuOpen(true);
-
-        OnToggle(!IsOpen);
+        SetMenuOpen(!IsOpen);
+        OnToggle(IsOpen);
     }
     private void SetMenuOpen(bool isOpen)
     {
         IsOpen = isOpen;
-
         Content.SetActive(isOpen);
     }
 }

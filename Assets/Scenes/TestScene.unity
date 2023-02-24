@@ -5755,7 +5755,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CustomConfigPath: 
   Systems: []
-  ResourceAllocator: {fileID: 0}
+  ResourceAllocator: {fileID: 203386494}
   BootOnEnable: 1
 --- !u!1001 &938065854
 PrefabInstance:

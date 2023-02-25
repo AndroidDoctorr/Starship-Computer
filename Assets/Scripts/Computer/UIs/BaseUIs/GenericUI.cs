@@ -52,10 +52,8 @@ namespace Assets.Scripts
         public ConsoleType Type;
         protected virtual void OnEnable()
         {
-            if (CommandModal != null)
-                CommandModal.OnToggle += ToggleCommandModal;
-            if (SystemModal != null)
-                SystemModal.OnToggle += ToggleSystemModal;
+            CommandModal.OnToggle += ToggleCommandModal;
+            SystemModal.OnToggle += ToggleSystemModal;
 
             // TODO EPIC:
             // Refactor UIs to allow ONE ACTION PER USER AT A TIME
@@ -66,10 +64,8 @@ namespace Assets.Scripts
         }
         protected virtual void OnDestroy()
         {
-            if (CommandModal != null)
-                CommandModal.OnToggle -= ToggleCommandModal;
-            if (SystemModal != null)
-                SystemModal.OnToggle -= ToggleSystemModal;
+            CommandModal.OnToggle -= ToggleCommandModal;
+            SystemModal.OnToggle -= ToggleSystemModal;
         }
         void Start()
         {
@@ -141,12 +137,16 @@ namespace Assets.Scripts
             _isModalOpen = isOpen;
             if (CommandModal.IsOpen)
                 CommandModal.Close();
+
+            EnabledObject.SetActive(!isOpen);
         }
         protected void ToggleCommandModal(bool isOpen)
         {
             _isModalOpen = isOpen;
             if (SystemModal.IsOpen)
                 SystemModal.Close();
+
+            EnabledObject.SetActive(!isOpen);
         }
     }
 }

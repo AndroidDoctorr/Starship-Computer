@@ -47,13 +47,19 @@ public class ResourceAllocatorUI : GenericUI
     public UIProperty LogicCache;
     public UIProperty LogicTemp;
 
-    private void OnEnable()
+    public override SystemBase System { get { return ResourceAllocator; } }
+
+    protected override void OnEnable()
     {
         ResourceAllocator.OnPropertyChange += UpdateProp;
+
+        base.OnEnable();
     }
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
         ResourceAllocator.OnPropertyChange -= UpdateProp;
+
+        base.OnDestroy();
     }
 
     private void UpdateProp(string name, object value, params object[] parameters)

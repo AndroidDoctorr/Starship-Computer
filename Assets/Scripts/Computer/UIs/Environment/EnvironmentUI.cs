@@ -1,5 +1,6 @@
 using Assets.Scripts;
 using Assets.Scripts.Computer;
+using Assets.Scripts.Computer.Core;
 using Assets.Scripts.Computer.Systems.Environment;
 using Assets.Scripts.Computer.Systems.Environment.SubSystems;
 using Assets.Scripts.Computer.UI_Elements.ListItems;
@@ -13,6 +14,7 @@ public class EnvironmentUI : GenericUI
     public Environment Environment;
     public UIScrollView AtmosphereList;
     public UIScrollView LightGroupList;
+    public override SystemBase System { get { return Environment; } } 
 
     void Start()
     {

@@ -35,6 +35,7 @@ namespace Assets.Scripts
         private AudioSource _as;
         private bool _isInteracting = false;
         protected bool _isModalOpen = false;
+        public abstract SystemBase System { get; }
         public bool IsEnabled { get; protected set; } = false;
         public bool HasPower { get; protected set; } = false;
         public float PowerDraw = 1;

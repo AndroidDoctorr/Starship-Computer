@@ -26,7 +26,7 @@ public class LightingGroupUI : PadUI
         }
     }
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
         ColorInput.OnLevelSet += SetColor;
         BrightnessSlider.OnLevelSet += SetBrightness;
@@ -36,8 +36,10 @@ public class LightingGroupUI : PadUI
         Multiple.onButtonPress += SetMultipleMode;
 
         Menu.OnToggle += MenuToggle;
+
+        base.OnEnable();
     }
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
         ColorInput.OnLevelSet -= SetColor;
         BrightnessSlider.OnLevelSet -= SetBrightness;
@@ -47,6 +49,8 @@ public class LightingGroupUI : PadUI
         Multiple.onButtonPress -= SetMultipleMode;
 
         Menu.OnToggle -= MenuToggle;
+
+        base.OnDestroy();
     }
     private void SetColor(string action, GameObject interactor, float unSaturation, float hue)
     {

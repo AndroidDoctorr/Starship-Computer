@@ -1,4 +1,5 @@
 using Assets.Scripts;
+using Assets.Scripts.Computer.Core;
 using Assets.Scripts.Computer.Systems.Environment.SubSystems;
 using Assets.Scripts.Computer.UIs.BaseUIs;
 using System.Collections;
@@ -14,8 +15,9 @@ public class AtmosphereUI : PadUI
     public UISlider HumidSlider;
     public UIProperty TempProp;
     public UIProperty HumidProp;
-    
-    private void OnEnable()
+    public override SystemBase System { get { return AtmosphereGroup; } }
+
+    protected override void OnEnable()
     {
         Menu.OnToggle += MenuToggle;
 
@@ -24,13 +26,17 @@ public class AtmosphereUI : PadUI
 
         TempProp.SetSystem(AtmosphereGroup);
         HumidProp.SetSystem(AtmosphereGroup);
+
+        base.OnEnable();
     }
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
         Menu.OnToggle -= MenuToggle;
 
         TempSlider.OnLevelSet -= SetTemp;
         HumidSlider.OnLevelSet -= SetHumidity;
+
+        base.OnDestroy();
     }
     private void SetTemp(float temp)
     {
